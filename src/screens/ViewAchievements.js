@@ -6,7 +6,7 @@ function ViewAchievements() {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}> You do not have any Achievements Yet </Text>
+        <Text style={styles.title}> You have not saved any Achievements yet!</Text>
       </View>
     </View>
   )
