@@ -2,13 +2,18 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-paper';
 
+import Header from '../components/Header'
+
 function AddAchievement() {
   return (
-    <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Add Achievement modal screen</Text>
+    <>
+      <Header titleText='Add an Achievement' />
+      <View style={styles.container}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Add Achievement modal screen</Text>
+        </View>
       </View>
-    </View>
+    </>
   )
 }
 

@@ -3,20 +3,25 @@ import { StyleSheet, View } from 'react-native';
 import { Text, FAB } from 'react-native-paper';
 import navigation from '../navigation';
 
+import Header from '../components/Header'
+
 function ViewAchievements({ navigation }) {
   return (
-    <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}> You have not saved any Achievements yet!</Text>
+    <>
+      <Header titleText='Access' />
+      <View style={styles.container}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}> You have not saved any Achievements yet!</Text>
+        </View>
+        <FAB
+          style={styles.fab}
+          small
+          icon='plus'
+          label='Add Achievement'
+          onPress={() => navigation.navigate('AddAchievement')}
+        />
       </View>
-      <FAB
-        style={styles.fab}
-        small
-        icon='plus'
-        label='Add Achievement'
-        onPress={() => navigation.navigate('AddAchievement')}
-      />
-    </View>
+    </>
   )
 }
 
