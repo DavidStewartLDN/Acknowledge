@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 import { Text, FAB, List } from 'react-native-paper';
 import navigation from '../navigation';
 
 import Header from '../components/Header'
 
-function ViewAchievements({ navigation }) {
-  const [achievements, setAchievements] = useState([])
+// Access state in Redux
+import { useSelector, useDispatch } from 'react-redux'
+import { addachievement, deleteachievement} from '../redux/accessApp'
 
-  const addAchievement = achievement => {
-    achievement.id = achievements.length + 1
-    setAchievements([...achievements, achievement])
-  }
+function ViewAchievements({ navigation }) {
+  const achievements = useSelector(state => state)
+
+  const dispatch = useDispatch()
+  const addAchievement = achievement => dispatch(addachievement(achievement))
+  const deleteAchievement = id => dispatch(deleteachievement(id))
+
+  // const addAchievement = achievement => {
+  //   achievement.id = achievements.length + 1
+  //   setAchievements([...achievements, achievement])
+  // }
 
   return (
     <>
@@ -24,12 +32,13 @@ function ViewAchievements({ navigation }) {
         ) : (
           <FlatList
             data={achievements}
-            renderItem={({item}) => (
+            renderItem={({ item }) => (
               <List.Item
-                title={item.achievementTitle}
-                description = {item.achievementValue}
+                title={item.achievement.achievementTitle}
+                description = {item.achievement.achievementValue}
                 descriptionNumberOfLines={1}
                 titleStyle={styles.listTitle}
+                onPress={() => deleteAchievement(item.id)}
               />
             )}
             keyExtractor={item => item.id.toString()}
