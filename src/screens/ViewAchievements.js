@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 import { Text, FAB, List } from 'react-native-paper';
-import navigation from '../navigation';
 
 import Header from '../components/Header'
 
