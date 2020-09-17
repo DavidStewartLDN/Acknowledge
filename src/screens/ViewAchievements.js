@@ -1,24 +1,50 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Text, FAB } from 'react-native-paper';
+import React, { useState } from 'react';
+import { StyleSheet, View, FlatList } from 'react-native';
+import { Text, FAB, List } from 'react-native-paper';
 import navigation from '../navigation';
 
 import Header from '../components/Header'
 
 function ViewAchievements({ navigation }) {
+  const [achievements, setAchievements] = useState([])
+
+  const addAchievement = note => {
+    achievement.id = notes.length + 1
+    setAchievements([...achievements, achievement])
+  }
+
   return (
     <>
       <Header titleText='Access' />
       <View style={styles.container}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}> You have not saved any Achievements yet!</Text>
-        </View>
+        {achievements.length === 0 ? (
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}> You have not saved any Achievements yet!</Text>
+          </View>
+        ) : (
+          <FlatList
+            data={achievements}
+            renderItem={({item}) => (
+              <List.Item
+                title={item.achievementTitle}
+                description = {item.achievementValue}
+                descriptionNumberOfLines={1}
+                titleStyle={styles.listTitle}
+              />
+            )}
+            keyExtractor={item => item.id.toString()}
+          />
+        )}
         <FAB
           style={styles.fab}
           small
           icon='plus'
           label='Add Achievement'
-          onPress={() => navigation.navigate('AddAchievement')}
+          onPress={() =>
+            navigation.navigate('AddAchievement', {
+              addAchievement
+          })
+        }
         />
       </View>
     </>
@@ -45,6 +71,9 @@ const styles = StyleSheet.create({
     margin: 20,
     right: 0,
     bottom: 10
+  },
+  listTitle: {
+    fontSize: 20
   }
 })
 
