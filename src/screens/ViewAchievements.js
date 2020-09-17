@@ -15,11 +15,6 @@ function ViewAchievements({ navigation }) {
   const addAchievement = achievement => dispatch(addachievement(achievement))
   const deleteAchievement = id => dispatch(deleteachievement(id))
 
-  // const addAchievement = achievement => {
-  //   achievement.id = achievements.length + 1
-  //   setAchievements([...achievements, achievement])
-  // }
-
   return (
     <>
       <Header titleText='Access' />
