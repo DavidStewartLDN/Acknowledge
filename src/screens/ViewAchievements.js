@@ -8,8 +8,8 @@ import Header from '../components/Header'
 function ViewAchievements({ navigation }) {
   const [achievements, setAchievements] = useState([])
 
-  const addAchievement = note => {
-    achievement.id = notes.length + 1
+  const addAchievement = achievement => {
+    achievement.id = achievements.length + 1
     setAchievements([...achievements, achievement])
   }
 
