@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { IconButton, TextInput, FAB, Text } from 'react-native-paper';
+import { IconButton, TextInput, FAB, Text, Checkbox } from 'react-native-paper';
 
 import Header from '../components/Header'
 
 function AddAchievement({ navigation }) {
   const [achievementTitle, setAchievementTitle] = useState('')
   const [achievementValue, setAchievementValue] = useState('')
+  const [checked, setChecked] = useState('')
 
   function onSaveAchievement() {
     navigation.state.params.addAchievement({ achievementTitle, achievementValue })
@@ -31,17 +32,14 @@ function AddAchievement({ navigation }) {
           onChangeText={setAchievementTitle}
           style={styles.title}
         />
-        <TextInput
-          label='Add details Here'
-          value={achievementValue}
-          onChangeText={setAchievementValue}
-          mode='flat'
-          multiline={true}
-          style={styles.text}
-          scrollEnabled={true}
-          returnKeyType='done'
-          blurOnSubmit={true}
+        <Checkbox.Android label="Item" value="hello moto" title="This should be the title" status={checked ? 'checked' : 'unchecked'}
+          onPress={() => {
+            setChecked(!checked);
+          }}
         />
+        <Checkbox.Android />
+        <Checkbox.Android />
+        <Checkbox.Android />
         <FAB
           style={styles.fab}
           small
