@@ -10,7 +10,7 @@ function AddAchievement({ navigation }) {
   const [achievementTitle, setAchievementTitle] = useState('')
   const [achievementValue, setAchievementValue] = useState('')
   const [checked, setChecked] = useState('')
-  const [selected, setSelected] = useState({prop1: 'prop1Value', prop2: 'prop2Value', child: {childProp1: 'childProp1Value'}})
+  const [selected, setSelected] = useState({selectedArray: []})
 
   function onSaveAchievement() {
     navigation.state.params.addAchievement({ achievementTitle, achievementValue })
@@ -27,9 +27,10 @@ function AddAchievement({ navigation }) {
     isSelected ? setCount(count - 1) : setCount(count + 1);
   };
 
-  const saveSelected = (isSelected) => {
-    setSelected({...setState, david: isSelected });
+  const saveSelected = (isSelected, label) => {
+    isSelected ? setSelected({ selectedArray: [...selected.selectedArray.filter(x => x !== label)]}) : setSelected({ selectedArray: [...selected.selectedArray, label]})
   };
+
   
   return (
     <>
@@ -51,20 +52,26 @@ function AddAchievement({ navigation }) {
         />
         <Checkbox
             label="Work"
+            value="Work"
             incrementCount={incrementCount}
             saveSelected={saveSelected}
           />
           <Checkbox
             label="Self"
             incrementCount={incrementCount}
+            saveSelected={saveSelected}
           />
           <Checkbox
             label="Play"
             incrementCount={incrementCount}
+            saveSelected={saveSelected}
+
           />
           <Checkbox
             label="Living"
             incrementCount={incrementCount}
+            saveSelected={saveSelected}
+
           />
         <FAB
           style={styles.fab}
