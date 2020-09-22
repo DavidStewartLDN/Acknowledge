@@ -9,27 +9,22 @@ import Header from '../components/Header'
 function AddAchievement({ navigation }) {
   const [achievementTitle, setAchievementTitle] = useState('')
   const [achievementValue, setAchievementValue] = useState('')
-  const [checked, setChecked] = useState('')
-  const [selected, setSelected] = useState({selectedArray: []})
+  const [selected, setSelected] = useState({selectedArrayPartOfLife: [], selectedArraySatisfier: []})
 
   function onSaveAchievement() {
     navigation.state.params.addAchievement({ achievementTitle, achievementValue })
     navigation.goBack()
   }
 
-  const [count, setCount] = useState(0);
-  console.log(count);
+
+  const saveSelectedPartOfLife = (isSelected, label) => {
+    isSelected ? setSelected({ selectedArrayPartOfLife: [...selected.selectedArrayPartOfLife.filter(x => x !== label)]}) : setSelected({ selectedArrayPartOfLife: [...selected.selectedArrayPartOfLife, label]})
+  };
+
+  const saveSelectedSatisfied = (isSelected, label) => {
+    isSelected ? setSelected({ selectedArraySatisfier: [...selected.selectedArraySatisfier.filter(x => x !== label)]}) : setSelected({ selectedArraySatisfier: [...selected.selectedArraySatisfier, label]})
+  };
   console.log(selected);
-
-  const showCount = count;
-
-  const incrementCount = (isSelected) => {
-    isSelected ? setCount(count - 1) : setCount(count + 1);
-  };
-
-  const saveSelected = (isSelected, label) => {
-    isSelected ? setSelected({ selectedArray: [...selected.selectedArray.filter(x => x !== label)]}) : setSelected({ selectedArray: [...selected.selectedArray, label]})
-  };
 
   
   return (
@@ -52,26 +47,35 @@ function AddAchievement({ navigation }) {
         />
         <Checkbox
             label="Work"
-            value="Work"
-            incrementCount={incrementCount}
-            saveSelected={saveSelected}
+            saveSelected={saveSelectedPartOfLife}
           />
           <Checkbox
             label="Self"
-            incrementCount={incrementCount}
-            saveSelected={saveSelected}
+            saveSelected={saveSelectedPartOfLife}
           />
           <Checkbox
             label="Play"
-            incrementCount={incrementCount}
-            saveSelected={saveSelected}
-
+            saveSelected={saveSelectedPartOfLife}
           />
           <Checkbox
             label="Living"
-            incrementCount={incrementCount}
-            saveSelected={saveSelected}
-
+            saveSelected={saveSelectedPartOfLife}
+          />
+          <Checkbox
+            label="Health, Wellbeing, Fitness"
+            saveSelected={saveSelectedSatisfied}
+          />
+          <Checkbox
+            label="Creating"
+            saveSelected={saveSelectedSatisfied}
+          />
+          <Checkbox
+            label="New Developments"
+            saveSelected={saveSelectedSatisfied}
+          />
+          <Checkbox
+            label="Giving"
+            saveSelected={saveSelectedSatisfied}
           />
         <FAB
           style={styles.fab}

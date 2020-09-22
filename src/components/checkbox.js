@@ -8,7 +8,6 @@ export default function Checkbox(props) {
 
   const updateValue = () => {
     setSelection(!isSelected);
-    props.incrementCount(isSelected);
     props.saveSelected(isSelected, props.label);
   };
 
