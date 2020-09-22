@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { IconButton, TextInput, FAB, Text, Checkbox } from 'react-native-paper';
+import { IconButton, TextInput, FAB, Text } from 'react-native-paper';
+
+import Checkbox from "../components/checkbox";
 
 import Header from '../components/Header'
 
@@ -8,11 +10,26 @@ function AddAchievement({ navigation }) {
   const [achievementTitle, setAchievementTitle] = useState('')
   const [achievementValue, setAchievementValue] = useState('')
   const [checked, setChecked] = useState('')
+  const [selected, setSelected] = useState({prop1: 'prop1Value', prop2: 'prop2Value', child: {childProp1: 'childProp1Value'}})
 
   function onSaveAchievement() {
     navigation.state.params.addAchievement({ achievementTitle, achievementValue })
     navigation.goBack()
   }
+
+  const [count, setCount] = useState(0);
+  console.log(count);
+  console.log(selected);
+
+  const showCount = count;
+
+  const incrementCount = (isSelected) => {
+    isSelected ? setCount(count - 1) : setCount(count + 1);
+  };
+
+  const saveSelected = (isSelected) => {
+    setSelected({...setState, david: isSelected });
+  };
   
   return (
     <>
@@ -32,14 +49,23 @@ function AddAchievement({ navigation }) {
           onChangeText={setAchievementTitle}
           style={styles.title}
         />
-        <Checkbox.Android label="Item" value="hello moto" title="This should be the title" status={checked ? 'checked' : 'unchecked'}
-          onPress={() => {
-            setChecked(!checked);
-          }}
-        />
-        <Checkbox.Android />
-        <Checkbox.Android />
-        <Checkbox.Android />
+        <Checkbox
+            label="Work"
+            incrementCount={incrementCount}
+            saveSelected={saveSelected}
+          />
+          <Checkbox
+            label="Self"
+            incrementCount={incrementCount}
+          />
+          <Checkbox
+            label="Play"
+            incrementCount={incrementCount}
+          />
+          <Checkbox
+            label="Living"
+            incrementCount={incrementCount}
+          />
         <FAB
           style={styles.fab}
           small
