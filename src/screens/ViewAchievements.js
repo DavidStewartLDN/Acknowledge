@@ -44,10 +44,10 @@ function ViewAchievements({ navigation }) {
         <FAB
           style={styles.fabGraph}
           small
-          icon='plus'
+          icon='chart-bar'
           label='View Graph'
           onPress={() =>
-            navigation.navigate('AddAchievement', {
+            navigation.navigate('GraphAchievements', {
               addAchievement
           })
         }

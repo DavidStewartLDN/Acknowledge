@@ -18,7 +18,7 @@ function ViewAchievements({ navigation }) {
       <Header titleText='Access' />
       <View style={styles.container}>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}> You have not saved any Achievements yet!</Text>
+            <Text style={styles.title}> No Graph here yet!</Text>
           </View>
       </View>
     </>
