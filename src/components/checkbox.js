@@ -4,7 +4,6 @@ import { CheckBox } from 'react-native-elements';
 
 export default function Checkbox(props) {
   const [isSelected, setSelection] = useState(false);
-  console.log(isSelected);
 
   const updateValue = () => {
     setSelection(!isSelected);
