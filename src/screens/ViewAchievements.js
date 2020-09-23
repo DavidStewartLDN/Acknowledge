@@ -42,7 +42,18 @@ function ViewAchievements({ navigation }) {
           />
         )}
         <FAB
-          style={styles.fab}
+          style={styles.fabGraph}
+          small
+          icon='plus'
+          label='View Graph'
+          onPress={() =>
+            navigation.navigate('AddAchievement', {
+              addAchievement
+          })
+        }
+        />
+        <FAB
+          style={styles.fabAdd}
           small
           icon='plus'
           label='Add Achievement'
@@ -72,7 +83,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20
   },
-  fab: {
+  fabGraph: {
+    position: 'absolute',
+    margin: 20,
+    right: 0,
+    bottom: 80
+  },
+  fabAdd: {
     position: 'absolute',
     margin: 20,
     right: 0,
