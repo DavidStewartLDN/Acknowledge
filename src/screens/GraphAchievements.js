@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View} from 'react-native';
-import { Text, FAB, List } from 'react-native-paper';
+import { IconButton, Text, FAB, List } from 'react-native-paper';
 
 import Header from '../components/Header'
 
@@ -16,6 +16,13 @@ function ViewAchievements({ navigation }) {
   return (
     <>
       <Header titleText='Access' />
+      <IconButton
+        icon='close'
+        size={25}
+        color='white'
+        onPress={() => navigation.goBack()}
+        style={styles.iconButton}
+      />
       <View style={styles.container}>
           <View style={styles.titleContainer}>
             <Text style={styles.title}> No Graph here yet!</Text>
@@ -31,6 +38,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingHorizontal: 10,
     paddingVertical: 20
+  },
+  iconButton: {
+    backgroundColor: 'rgba(46, 113, 102, 0.8)',
+    position: 'absolute',
+    right: 0,
+    top: 40,
+    margin: 10
   },
   titleContainer: {
     alignItems: 'center',
