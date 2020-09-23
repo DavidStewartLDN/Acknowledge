@@ -15,6 +15,7 @@ function ViewAchievements({ navigation }) {
   const addAchievement = achievement => dispatch(addachievement(achievement))
   const deleteAchievement = id => dispatch(deleteachievement(id))
 
+  console.log(achievements)
   return (
     <>
       <Header titleText='Access' />
@@ -25,12 +26,14 @@ function ViewAchievements({ navigation }) {
           </View>
         ) : (
           <FlatList
+          
             data={achievements}
             renderItem={({ item }) => (
               <List.Item
                 title={item.achievement.achievementTitle}
-                description = {item.achievement.achievementValue}
-                descriptionNumberOfLines={1}
+                description = {[item.achievement.selectedA.selectedArrayPartOfLife, item.achievement.selectedB.selectedArraySatisfier]}
+                subtitle={item.achievement.selectedB.selectedArraySatisfier}
+                descriptionNumberOfLines={2}
                 titleStyle={styles.listTitle}
                 onPress={() => deleteAchievement(item.id)}
               />
