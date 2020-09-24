@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { StyleSheet, View, Dimensions} from 'react-native';
 import { IconButton, Text, FAB, List } from 'react-native-paper';
 
@@ -19,18 +19,25 @@ function ViewAchievements({ navigation }) {
       data: [ 20, 45, 28, 80, 99, 43 ]
     }]
   }
+
+  
   const chartConfig = {
     backgroundGradientFrom: '#1E2923',
     backgroundGradientTo: '#60DBC5',
     backgroundColor: '#60DBC5',
     color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`
   }
-  const achievements = [{"id":0,"achievement":{"achievementTitle":"Test","selectedA":{"selectedArrayPartOfLife":["Work"]},"selectedB":{"selectedArraySatisfier":["Health, Wellbeing, Fitness","New Developments"]}}},{"id":1,"achievement":{"achievementTitle":"Test 2","selectedA":{"selectedArrayPartOfLife":["Living","Self"]},"selectedB":{"selectedArraySatisfier":["New Developments"]}}}]
+  const achievements = [{"id":0,"achievement":{"achievementTitle":"Test","selectedA":{"selectedArrayPartOfLife":["Work", "Living"]},"selectedB":{"selectedArraySatisfier":["Health, Wellbeing, Fitness","New Developments"]}}},{"id":1,"achievement":{"achievementTitle":"Test 2","selectedA":{"selectedArrayPartOfLife":["Living","Self"]},"selectedB":{"selectedArraySatisfier":["New Developments"]}}}]
 
+  const [count, setCount] = useState([])
+
+  const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
+  
   const countLabels = () => {
     const partOfLife = ["Work", "Self", "Play", "Living"]
     // const satisfier = ["Health, Wellbeing, Fitness","Creating","New Developments","Giving"]
     const allData = []
+    const countValues = []
     var i;
     for (i = 0; i < achievements.length; i++) {
       var j;
@@ -41,9 +48,23 @@ function ViewAchievements({ navigation }) {
       }
     }
     console.log(allData)
+    var k;
+    for (k = 0; k < partOfLife.length; k++) {
+      countValues.push(countOccurrences(allData,partOfLife[k]))
+    }
+    setCount(countValues)
   }
 
-  countLabels()
+  useEffect(() => {
+    countLabels()
+  }, []);
+
+  const data2 = {
+    labels: ["Work", "Self", "Play", "Living"],
+    datasets: [{
+      data: count
+    }]
+  }
 
   return (
     <>
@@ -57,7 +78,7 @@ function ViewAchievements({ navigation }) {
       />
       <View style={styles.container}>
       <BarChart
-        data={data}
+        data={data2}
         width={Dimensions.get("window").width-20} // from react-native
         height={600}
         chartConfig={chartConfig}
