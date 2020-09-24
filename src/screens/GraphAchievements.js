@@ -1,14 +1,30 @@
 import React from 'react';
-import { StyleSheet, View} from 'react-native';
+import { StyleSheet, View, Dimensions} from 'react-native';
 import { IconButton, Text, FAB, List } from 'react-native-paper';
 
 import Header from '../components/Header'
+
+import {
+  BarChart,
+} from "react-native-chart-kit";
 
 // Access state in Redux
 import { useSelector, useDispatch } from 'react-redux'
 
 function ViewAchievements({ navigation }) {
   const achievements = useSelector(state => state)
+  const data = {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+    datasets: [{
+      data: [ 20, 45, 28, 80, 99, 43 ]
+    }]
+  }
+
+  const chartConfig = {
+    backgroundGradientFrom: '#1E2923',
+    backgroundGradientTo: '#08130D',
+    color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`
+  }
 
   const dispatch = useDispatch()
 
@@ -24,6 +40,12 @@ function ViewAchievements({ navigation }) {
         style={styles.iconButton}
       />
       <View style={styles.container}>
+      <BarChart
+        data={data}
+        width={Dimensions.get("window").width-20} // from react-native
+        height={600}
+        chartConfig={chartConfig}
+      />
           <View style={styles.titleContainer}>
             <Text style={styles.title}> No Graph here yet!</Text>
           </View>
