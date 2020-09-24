@@ -26,12 +26,11 @@ function ViewAchievements({ navigation }) {
           </View>
         ) : (
           <FlatList
-          
             data={achievements}
             renderItem={({ item }) => (
               <List.Item
                 title={item.achievement.achievementTitle}
-                description = {[item.achievement.selectedA.selectedArrayPartOfLife, item.achievement.selectedB.selectedArraySatisfier]}
+                description = {[item.achievement.selectedA.selectedArrayPartOfLife.join(),",", item.achievement.selectedB.selectedArraySatisfier.join()]}
                 subtitle={item.achievement.selectedB.selectedArraySatisfier}
                 descriptionNumberOfLines={2}
                 titleStyle={styles.listTitle}
@@ -42,7 +41,18 @@ function ViewAchievements({ navigation }) {
           />
         )}
         <FAB
-          style={styles.fab}
+          style={styles.fabGraph}
+          small
+          icon='chart-bar'
+          label='View Graph'
+          onPress={() =>
+            navigation.navigate('GraphAchievements', {
+              addAchievement
+          })
+        }
+        />
+        <FAB
+          style={styles.fabAdd}
           small
           icon='plus'
           label='Add Achievement'
@@ -72,7 +82,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20
   },
-  fab: {
+  fabGraph: {
+    position: 'absolute',
+    margin: 20,
+    right: 0,
+    bottom: 80
+  },
+  fabAdd: {
     position: 'absolute',
     margin: 20,
     right: 0,
