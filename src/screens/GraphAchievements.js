@@ -12,23 +12,39 @@ import {
 import { useSelector, useDispatch } from 'react-redux'
 
 function ViewAchievements({ navigation }) {
-  const achievements = useSelector(state => state)
+  // const achievements = useSelector(state => state)
   const data = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June'],
     datasets: [{
       data: [ 20, 45, 28, 80, 99, 43 ]
     }]
   }
-
   const chartConfig = {
     backgroundGradientFrom: '#1E2923',
-    backgroundGradientTo: '#08130D',
-    color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`
+    backgroundGradientTo: '#60DBC5',
+    backgroundColor: '#60DBC5',
+    color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`
+  }
+  const achievements = [{"id":0,"achievement":{"achievementTitle":"Test","selectedA":{"selectedArrayPartOfLife":["Work"]},"selectedB":{"selectedArraySatisfier":["Health, Wellbeing, Fitness","New Developments"]}}},{"id":1,"achievement":{"achievementTitle":"Test 2","selectedA":{"selectedArrayPartOfLife":["Living","Self"]},"selectedB":{"selectedArraySatisfier":["New Developments"]}}}]
+
+  const countLabels = () => {
+    const partOfLife = ["Work", "Self", "Play", "Living"]
+    // const satisfier = ["Health, Wellbeing, Fitness","Creating","New Developments","Giving"]
+    const allData = []
+    var i;
+    for (i = 0; i < achievements.length; i++) {
+      var j;
+      const partOfLifeValues = achievements[i].achievement.selectedA.selectedArrayPartOfLife
+      console.log(partOfLifeValues)
+      for (j = 0; j < partOfLifeValues.length; j++) {
+        allData.push(partOfLifeValues[j])
+      }
+    }
+    console.log(allData)
   }
 
-  const dispatch = useDispatch()
+  countLabels()
 
-  console.log(achievements)
   return (
     <>
       <Header titleText='Access' />

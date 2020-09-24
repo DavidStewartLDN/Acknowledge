@@ -26,7 +26,6 @@ function ViewAchievements({ navigation }) {
           </View>
         ) : (
           <FlatList
-          
             data={achievements}
             renderItem={({ item }) => (
               <List.Item
