@@ -4,37 +4,21 @@ import { IconButton, Text, FAB, List } from 'react-native-paper';
 
 import Header from '../components/Header'
 
-import {
-  BarChart,
-} from "react-native-chart-kit";
+import { BarChart } from "react-native-chart-kit";
 
 // Access state in Redux
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 function ViewAchievements({ navigation }) {
   const achievements = useSelector(state => state)
-  const data = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-    datasets: [{
-      data: [ 20, 45, 28, 80, 99, 43 ]
-    }]
-  }
-
-  
-  const chartConfig = {
-    backgroundGradientFrom: '#1E2923',
-    backgroundGradientTo: '#60DBC5',
-    backgroundColor: '#60DBC5',
-    color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`
-  }
 
   const [count, setCount] = useState([])
-
+  const partOfLife = ["Work", "Self", "Play", "Living"]
+  // const satisfier = ["Health, Wellbeing, Fitness","Creating","New Developments","Giving"]
+  
   const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
   
   const countLabels = () => {
-    const partOfLife = ["Work", "Self", "Play", "Living"]
-    // const satisfier = ["Health, Wellbeing, Fitness","Creating","New Developments","Giving"]
     const allData = []
     const countValues = []
     var i;
@@ -58,11 +42,19 @@ function ViewAchievements({ navigation }) {
     countLabels()
   }, []);
 
-  const data2 = {
-    labels: ["Work", "Self", "Play", "Living"],
+  const data = {
+    labels: partOfLife,
     datasets: [{
       data: count
     }]
+  }
+
+  const chartConfig = {
+    backgroundGradientFrom: '#1E2923',
+    backgroundGradientTo: '#60DBC5',
+    backgroundColor: '#60DBC5',
+    decimalPlaces: 0,
+    color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`
   }
 
   return (
@@ -76,15 +68,12 @@ function ViewAchievements({ navigation }) {
         style={styles.iconButton}
       />
       <View style={styles.container}>
-      <BarChart
-        data={data2}
-        width={Dimensions.get("window").width-20} // from react-native
-        height={600}
-        chartConfig={chartConfig}
-      />
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}> No Graph here yet!</Text>
-          </View>
+        <BarChart
+          data={data}
+          width={Dimensions.get("window").width-20} // from react-native
+          height={600}
+          chartConfig={chartConfig}
+        />
       </View>
     </>
   )
