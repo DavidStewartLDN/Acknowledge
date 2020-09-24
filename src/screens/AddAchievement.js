@@ -46,6 +46,7 @@ function AddAchievement({ navigation }) {
           onChangeText={setAchievementTitle}
           style={styles.title}
         />
+        <Text style={styles.text}> Where does it sit? </Text>
         <Checkbox
             label="Work"
             saveSelected={saveSelectedPartOfLife}
@@ -62,6 +63,7 @@ function AddAchievement({ navigation }) {
             label="Living"
             saveSelected={saveSelectedPartOfLife}
           />
+          <Text style={styles.text}> What does it cover? </Text>
           <Checkbox
             label="Health, Wellbeing, Fitness"
             saveSelected={saveSelectedSatisfied}
@@ -109,8 +111,7 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   text: {
-    height: 300,
-    fontSize: 16
+    fontSize: 20
   },
   fab: {
     position: 'absolute',
