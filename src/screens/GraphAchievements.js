@@ -12,7 +12,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux'
 
 function ViewAchievements({ navigation }) {
-  // const achievements = useSelector(state => state)
+  const achievements = useSelector(state => state)
   const data = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June'],
     datasets: [{
@@ -27,7 +27,6 @@ function ViewAchievements({ navigation }) {
     backgroundColor: '#60DBC5',
     color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`
   }
-  const achievements = [{"id":0,"achievement":{"achievementTitle":"Test","selectedA":{"selectedArrayPartOfLife":["Work", "Living"]},"selectedB":{"selectedArraySatisfier":["Health, Wellbeing, Fitness","New Developments"]}}},{"id":1,"achievement":{"achievementTitle":"Test 2","selectedA":{"selectedArrayPartOfLife":["Living","Self"]},"selectedB":{"selectedArraySatisfier":["New Developments"]}}}]
 
   const [count, setCount] = useState([])
 
