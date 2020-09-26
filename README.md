@@ -44,7 +44,7 @@ Enjoy!
 
 ### User Stories
 
-Completed
+Minimum Viable Product - Complete
 
 ```
 As a user,
@@ -55,11 +55,6 @@ As a user,
 I want to retrieve my achievements,
 So that I can view my past successes.
 
-```
-
-Minimum Viable Product
-
-```
 As a user,
 I want my achievements to be saved locally,
 So that they are saved after closing the app.
@@ -68,6 +63,7 @@ As a user,
 I want to view my achievements in categories,
 So that I can see which parts of my life I am currently filling up the most.
 ```
+
 Additional User Stories
 ```
 As a user,

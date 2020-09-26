@@ -80,6 +80,10 @@ function AddAchievement({ navigation }) {
             label="Giving"
             saveSelected={saveSelectedSatisfied}
           />
+          <Checkbox
+            label="Receiving"
+            saveSelected={saveSelectedSatisfied}
+          />
         <FAB
           style={styles.fab}
           small
