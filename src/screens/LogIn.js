@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, View, Button} from 'react-native';
 import { Text, FAB, TextInput} from 'react-native-paper';
 
 import Header from '../components/Header'
@@ -13,6 +13,7 @@ function LogIn({ navigation }) {
     <>
       <Header titleText='Access' />
       <View style={styles.container}>
+      <Text style={styles.large}>Login</Text>
         <TextInput
           label='Username'
           value={username}
@@ -42,7 +43,7 @@ function LogIn({ navigation }) {
           icon='skip-next'
           label='Skip'
           onPress={() =>
-            navigation.navigate('ViewAchievement', {})
+            navigation.navigate('ViewAchievements')
         }
         />
       </View>
@@ -62,8 +63,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flex:1
   },
+  large: {
+    textAlign: 'center',
+    fontSize: 40
+  },
   title: {
     fontSize: 20
+  },
+  button: {
+    position: 'absolute',
+    margin: 20,
   },
   fabSubmit: {
     position: 'absolute',
