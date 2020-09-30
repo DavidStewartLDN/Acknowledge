@@ -3,12 +3,12 @@ import { createStackNavigator } from 'react-navigation-stack';
 import ViewAchievements from '../screens/ViewAchievements';
 import AddAchievement from '../screens/AddAchievement';
 import GraphAchievements from '../screens/GraphAchievements';
-import LogIn from '../screens/LogIn';
+import Login from '../screens/Login';
 
 const StackNavigator = createStackNavigator(
   {
     LogIn: {
-      screen: LogIn
+      screen: Login
     },
     ViewAchievements: {
       screen: ViewAchievements
@@ -21,7 +21,7 @@ const StackNavigator = createStackNavigator(
     }
   },
   {
-    initialRouteName: 'LogIn',
+    initialRouteName: 'Login',
     headerMode: 'none',
     mode: 'modal'
   }

@@ -5,7 +5,7 @@ import { Text, FAB, TextInput} from 'react-native-paper';
 import Header from '../components/Header'
 
 
-function LogIn({ navigation }) {
+function Login({ navigation }) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
@@ -91,4 +91,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default LogIn
+export default Login
