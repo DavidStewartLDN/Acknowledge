@@ -20,10 +20,26 @@ function LogIn({ navigation }) {
           onChangeText={setUsername}
           style={styles.title}
         />
+        <TextInput
+          label='Password'
+          value={password}
+          mode='outlined'
+          onChangeText={setPassword}
+          style={styles.title}
+        />
         <FAB
-          style={styles.fabAdd}
+          style={styles.fabSubmit}
           small
-          icon='plus'
+          icon='login'
+          label='Login'
+          onPress={() =>
+            { setUsername(''), setPassword('')}
+        }
+        />
+        <FAB
+          style={styles.fabSkip}
+          small
+          icon='skip-next'
           label='Skip'
           onPress={() =>
             navigation.navigate('ViewAchievement', {})
@@ -49,13 +65,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20
   },
-  fabGraph: {
+  fabSubmit: {
     position: 'absolute',
     margin: 20,
     right: 0,
     bottom: 80
   },
-  fabAdd: {
+  fabSkip: {
     position: 'absolute',
     margin: 20,
     right: 0,
