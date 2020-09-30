@@ -4,6 +4,10 @@ Access is an app to save your achievements over your day. A lot of acheivements 
 
 This coding project is being built by David Stewat with the direction of Julie McManus.
 
+## Try out the app now!
+
+The app has been deployed to netlify using a web build version of the project. It can be access(ed) [here](https://access-your-achievements.netlify.app/).
+
 ## Getting Started
 
 To run this project you will need to have the React Native Expo client installed and Node.js. You will also need to have either Xcode or AndroidSDK installed to run the mobile application in an emulator. Therefore it is recommended that you only run this application on your local computer if you already have these installed, else there will be a browser deploymemnt available in the near future.
