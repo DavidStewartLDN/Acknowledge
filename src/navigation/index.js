@@ -7,7 +7,7 @@ import Login from '../screens/Login';
 
 const StackNavigator = createStackNavigator(
   {
-    LogIn: {
+    Login: {
       screen: Login
     },
     ViewAchievements: {
