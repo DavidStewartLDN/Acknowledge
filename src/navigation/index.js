@@ -25,7 +25,7 @@ const StackNavigator = createStackNavigator(
     }
   },
   {
-    initialRouteName: 'Signup',
+    initialRouteName: 'Login',
     headerMode: 'none',
     mode: 'modal'
   }
