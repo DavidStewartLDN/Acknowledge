@@ -1,6 +1,11 @@
 import React from 'react'
 import { View, TextInput, StyleSheet, TouchableOpacity, Text } from 'react-native'
 
+// Imports from redux
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { updateEmail, updatePassword, signup } from '../redux/user'
+
 // firebase for Login
 import Firebase from '../../config/Firebase'
 
@@ -19,26 +24,22 @@ class Signup extends React.Component {
           .catch(error => console.log(error))
     }
 
+    // We use props coming from the Redux store via mapStateToProps
+
     render() {
         return (
             <View style={styles.container}>
                 <TextInput
                     style={styles.inputBox}
-                    value={this.state.name}
-                    onChangeText={name => this.setState({ name })}
-                    placeholder='Full Name'
-                />
-                <TextInput
-                    style={styles.inputBox}
-                    value={this.state.email}
-                    onChangeText={email => this.setState({ email })}
+                    value={this.props.user.email}
+                    onChangeText={email => this.props.updateEmail(email)}
                     placeholder='Email'
                     autoCapitalize='none'
                 />
                 <TextInput
                     style={styles.inputBox}
-                    value={this.state.password}
-                    onChangeText={password => this.setState({ password })}
+                    value={this.props.user.password}
+                    onChangeText={password => this.props.updatePassword(password)}
                     placeholder='Password'
                     secureTextEntry={true}
                 />
@@ -87,4 +88,17 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Signup
+const mapDispatchToProps = dispatch => {
+	return bindActionCreators({ updateEmail, updatePassword, signup }, dispatch)
+}
+
+const mapStateToProps = state => {
+	return {
+		user: state.user
+	}
+}
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Signup)
