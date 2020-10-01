@@ -6,15 +6,8 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { updateEmail, updatePassword, signup } from '../redux/user'
 
-// firebase for Login
-import Firebase from '../../config/Firebase'
 
 class Signup extends React.Component {
-    state = {
-        name: '',
-        email: '',
-        password: ''
-    }
 
     handleSignUp = () => {
         this.props.signup()
