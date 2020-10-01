@@ -1,6 +1,5 @@
 import React from 'react'
 import { View, TextInput, StyleSheet, TouchableOpacity, Text, Button } from 'react-native'
-import Firebase from '../../config/Firebase'
 
 // Imports for redux state storage
 import { bindActionCreators } from 'redux'
@@ -8,10 +7,6 @@ import { connect } from 'react-redux'
 import { updateEmail, updatePassword, login } from '../redux/user'
 
 class Login extends React.Component {
-    state = {
-        email: '',
-        password: ''
-    }
 
     handleLogin = () => {
         this.props.login()
