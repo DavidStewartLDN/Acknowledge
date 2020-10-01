@@ -17,11 +17,8 @@ class Signup extends React.Component {
     }
 
     handleSignUp = () => {
-      const { email, password } = this.state
-      Firebase.auth()
-          .createUserWithEmailAndPassword(email, password)
-          .then(() => this.props.navigation.navigate('Profile'))
-          .catch(error => console.log(error))
+        this.props.signup()
+        this.props.navigation.navigate('Profile')
     }
 
     // We use props coming from the Redux store via mapStateToProps
