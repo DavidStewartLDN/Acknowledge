@@ -27,7 +27,9 @@ class Login extends React.Component {
                 <TouchableOpacity style={styles.button}>
                     <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
-                <Button title="Don't have an account yet? Sign up" />
+                <Button 
+                title="Don't have an account yet? Sign up"
+                onPress={() => this.props.navigation.navigate('Signup')} />
             </View>
         )
     }
