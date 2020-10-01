@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         paddingVertical: 5,
         alignItems: 'center',
-        backgroundColor: '#FFA611',
-        borderColor: '#FFA611',
+        backgroundColor: '#60DBC5',
+        borderColor: '#60DBC5',
         borderWidth: 1,
         borderRadius: 5,
         width: 200
