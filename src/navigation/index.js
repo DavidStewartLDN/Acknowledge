@@ -7,7 +7,7 @@ import AddAchievement from '../screens/AddAchievement';
 import GraphAchievements from '../screens/GraphAchievements';
 
 
-const StackNavigator = createStackNavigator(
+const AppStackNavigator = createStackNavigator(
   {
     Login: {
       screen: Login
@@ -37,7 +37,7 @@ import Login from '../screens/Login';
 import Signup from '../screens/Signup';
 import Profile from '../screens/Profile'
   
-  const SwitchNavigator = createSwitchNavigator(
+const AuthSwitchNavigator = createSwitchNavigator(
   {
       Login: {
           screen: Login
@@ -58,5 +58,15 @@ import Profile from '../screens/Profile'
 // export default createAppContainer(StackNavigator)
 
 // New export for login flow only
+const FullStack = createSwitchNavigator(
+  {
+    Auth: AuthSwitchNavigator,
+    App: AppStackNavigator,
+  },
+  {
+    initialRouteName: 'Auth',
+  }
+);
+  
 
-export default createAppContainer(SwitchNavigator)
+  export default createAppContainer(FullStack)
