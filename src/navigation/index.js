@@ -9,12 +9,6 @@ import GraphAchievements from '../screens/GraphAchievements';
 
 const AppStackNavigator = createStackNavigator(
   {
-    Login: {
-      screen: Login
-    },
-    Signup: {
-      screen: Signup
-    },
     ViewAchievements: {
       screen: ViewAchievements
     },
@@ -26,7 +20,7 @@ const AppStackNavigator = createStackNavigator(
     }
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'ViewAchievements',
     headerMode: 'none',
     mode: 'modal'
   }
