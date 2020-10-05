@@ -9,7 +9,7 @@ import { BarChart } from "react-native-chart-kit";
 // Access state in Redux
 import { useSelector } from 'react-redux'
 
-function ViewAchievements({ navigation }) {
+function GraphAchievements({ navigation }) {
   const achievements = useSelector(state => state)
 
   const [count, setCount] = useState([])
@@ -112,4 +112,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default ViewAchievements
+export default GraphAchievements
