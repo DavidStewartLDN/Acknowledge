@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, View, Dimensions} from 'react-native';
-import { IconButton, Text, FAB, List } from 'react-native-paper';
+import { IconButton } from 'react-native-paper';
 
 import Header from '../components/Header'
 
