@@ -4,7 +4,7 @@ import { View, TextInput, StyleSheet, TouchableOpacity, Text } from 'react-nativ
 // Imports from redux
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { updateEmail, updatePassword, signup } from '../redux/user'
+import { updateEmail, updatePassword, signup } from '../redux/user/user.actions'
 
 
 class Signup extends React.Component {

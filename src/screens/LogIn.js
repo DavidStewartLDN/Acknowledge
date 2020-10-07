@@ -4,7 +4,7 @@ import { View, TextInput, StyleSheet, TouchableOpacity, Text, Button } from 'rea
 // Imports for redux state storage
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { updateEmail, updatePassword, login } from '../redux/user'
+import { updateEmail, updatePassword, login } from '../redux/user/user.actions'
 
 class Login extends React.Component {
 

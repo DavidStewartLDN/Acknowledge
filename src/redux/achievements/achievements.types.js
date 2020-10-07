@@ -1,0 +1,4 @@
+export const AchievementActionTypes = {
+  ADD_ACHIEVEMENT = 'ADD_ACHIEVEMENT',
+  DELETE_ACHIEVEMENT = 'DELETE_ACHIEVEMENT'
+}
