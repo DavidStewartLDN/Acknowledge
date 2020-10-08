@@ -6,39 +6,44 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { updateEmail, updatePassword, signup } from '../redux/user/user.actions'
 
+import Header from '../components/Header'
+
 
 class Signup extends React.Component {
 
-    handleSignUp = () => {
-        this.props.signup()
-        this.props.navigation.navigate('Profile')
-    }
+  handleSignUp = () => {
+      this.props.signup()
+      this.props.navigation.navigate('Profile')
+  }
 
-    // We use props coming from the Redux store via mapStateToProps
+  // We use props coming from the Redux store via mapStateToProps
 
-    render() {
-        return (
-            <View style={styles.container}>
-                <TextInput
-                    style={styles.inputBox}
-                    value={this.props.user.email}
-                    onChangeText={email => this.props.updateEmail(email)}
-                    placeholder='Email'
-                    autoCapitalize='none'
-                />
-                <TextInput
-                    style={styles.inputBox}
-                    value={this.props.user.password}
-                    onChangeText={password => this.props.updatePassword(password)}
-                    placeholder='Password'
-                    secureTextEntry={true}
-                />
-                <TouchableOpacity style={styles.button} onPress={this.handleSignUp}>
-                    <Text style={styles.buttonText}>Signup</Text>
-                </TouchableOpacity>
-            </View>
-        )
-    }
+  render() {
+    return (
+      <>
+        <Header titleText='Access' />
+        <View style={styles.container}>
+          <TextInput
+            style={styles.inputBox}
+            value={this.props.user.email}
+            onChangeText={email => this.props.updateEmail(email)}
+            placeholder='Email'
+            autoCapitalize='none'
+          />
+          <TextInput
+            style={styles.inputBox}
+            value={this.props.user.password}
+            onChangeText={password => this.props.updatePassword(password)}
+            placeholder='Password'
+            secureTextEntry={true}
+        />
+          <TouchableOpacity style={styles.button} onPress={this.handleSignUp}>
+            <Text style={styles.buttonText}>Signup</Text>
+          </TouchableOpacity>
+        </View>
+      </>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
