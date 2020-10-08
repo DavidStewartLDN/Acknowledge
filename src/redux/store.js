@@ -1,9 +1,4 @@
-// import { createStore } from 'redux'
 // import achievementsReducer from './achievements/achievements.actions'
-
-// const store = createStore(achievementsReducer)
-
-// export default store
 
 import { createStore, applyMiddleware } from 'redux'
 
