@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, Button } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 import { connect } from 'react-redux'
 import Firebase from '../../config/Firebase'
@@ -20,11 +20,11 @@ class Profile extends React.Component {
             <View style={styles.container}>
                 <Text>Profile Screen</Text>
                 <Text>{this.props.user.email}</Text>
-                <TouchableOpacity style={styles.button} onPress={this.handleSignout}>
-                    <Text style={styles.buttonText}>Log out</Text>
-                </TouchableOpacity>
                 <TouchableOpacity style={styles.button} onPress={this.moveStack}>
                     <Text style={styles.buttonText}>Go to main app</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button} onPress={this.handleSignout}>
+                    <Text style={styles.buttonText}>Log out</Text>
                 </TouchableOpacity>
             </View>
         )

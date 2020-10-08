@@ -7,6 +7,8 @@ import { connect } from 'react-redux'
 import { updateEmail, updatePassword, login, getUser } from '../redux/user/user.actions'
 import Firebase from '../../config/Firebase'
 
+import Header from '../components/Header'
+
 class Login extends React.Component {
 
     // handleLogin = () => {
@@ -28,28 +30,31 @@ class Login extends React.Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <TextInput
-                    style={styles.inputBox}
-                    value={this.props.user.email}
-                    onChangeText={email => this.props.updateEmail(email)}
-                    placeholder='Email'
-                    autoCapitalize='none'
-                />
-                <TextInput
-                    style={styles.inputBox}
-                    value={this.props.user.password}
-                    onChangeText={password => this.props.updatePassword(password)}
-                    placeholder='Password'
-                    secureTextEntry={true}
-                />
-                <TouchableOpacity style={styles.button} onPress={() => this.props.login()}>
-                    <Text style={styles.buttonText}>Login</Text>
-                </TouchableOpacity>
-                <Button 
-                title="Don't have an account yet? Sign up"
-                onPress={() => this.props.navigation.navigate('Signup')} />
-            </View>
+            <>
+            <Header titleText='Login to Access' />
+                <View style={styles.container}>
+                    <TextInput
+                        style={styles.inputBox}
+                        value={this.props.user.email}
+                        onChangeText={email => this.props.updateEmail(email)}
+                        placeholder='Email'
+                        autoCapitalize='none'
+                    />
+                    <TextInput
+                        style={styles.inputBox}
+                        value={this.props.user.password}
+                        onChangeText={password => this.props.updatePassword(password)}
+                        placeholder='Password'
+                        secureTextEntry={true}
+                    />
+                    <TouchableOpacity style={styles.button} onPress={() => this.props.login()}>
+                        <Text style={styles.buttonText}>Login</Text>
+                    </TouchableOpacity>
+                    <Button 
+                    title="Don't have an account yet? Sign up"
+                    onPress={() => this.props.navigation.navigate('Signup')} />
+                </View>
+            </>
         )
     }
 }
