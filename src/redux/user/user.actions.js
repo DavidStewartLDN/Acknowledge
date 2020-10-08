@@ -1,11 +1,6 @@
 import Firebase, { db } from '../../../config/Firebase.js'
 
-// define types
-
-export const UPDATE_EMAIL = 'UPDATE_EMAIL'
-export const UPDATE_PASSWORD = 'UPDATE_PASSWORD'
-export const LOGIN = 'LOGIN'
-export const SIGNUP = 'SIGNUP'
+import { LOGIN, SIGNUP, UPDATE_EMAIL, UPDATE_PASSWORD } from './user.actions'
 
 // actions
 
@@ -40,7 +35,6 @@ export const signup = () => {
       try {
           const { email, password } = getState().user
           const response = await Firebase.auth().createUserWithEmailAndPassword(email, password)
-          // dispatch({ type: SIGNUP, payload: response.user })
           if (response.user.uid) {
             const user = {
               uid: response.user.uid,

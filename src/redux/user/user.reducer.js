@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP, UPDATE_EMAIL, UPDATE_PASSWORD } from './user.actions'
+import { LOGIN, SIGNUP, UPDATE_EMAIL, UPDATE_PASSWORD } from './user.types'
 
 const userReducer = (state = {}, action) => {
     switch (action.type) {
