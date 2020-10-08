@@ -20,7 +20,9 @@ class Profile extends React.Component {
             <View style={styles.container}>
                 <Text>Profile Screen</Text>
                 <Text>{this.props.user.email}</Text>
-                    <Button title='Logout' onPress={this.handleSignout} />
+                <TouchableOpacity style={styles.button} onPress={this.handleSignout}>
+                    <Text style={styles.buttonText}>Log out</Text>
+                </TouchableOpacity>
                 <TouchableOpacity style={styles.button} onPress={this.moveStack}>
                     <Text style={styles.buttonText}>Go to main app</Text>
                 </TouchableOpacity>
