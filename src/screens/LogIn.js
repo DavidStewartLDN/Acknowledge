@@ -11,11 +11,6 @@ import Header from '../components/Header'
 
 class Login extends React.Component {
 
-    // handleLogin = () => {
-    //     this.props.login()
-    //     this.props.navigation.navigate('Profile')
-    // }
-
     componentDidMount = () => {
 		Firebase.auth().onAuthStateChanged(user => {
 			if (user) {
@@ -31,8 +26,9 @@ class Login extends React.Component {
     render() {
         return (
             <>
-            <Header titleText='Login to Access' />
+            <Header titleText='Access' />
                 <View style={styles.container}>
+                    <Text style={styles.title}>Welcome to Access</Text>
                     <TextInput
                         style={styles.inputBox}
                         value={this.props.user.email}
@@ -50,9 +46,9 @@ class Login extends React.Component {
                     <TouchableOpacity style={styles.button} onPress={() => this.props.login()}>
                         <Text style={styles.buttonText}>Login</Text>
                     </TouchableOpacity>
-                    <Button 
-                    title="Don't have an account yet? Sign up"
-                    onPress={() => this.props.navigation.navigate('Signup')} />
+                    <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Signup')}>
+                        <Text style={styles.buttonTextLong}>Don't have an account yet? {"\n"} Sign up</Text>
+                    </TouchableOpacity>
                 </View>
             </>
         )
@@ -84,16 +80,28 @@ const styles = StyleSheet.create({
         borderColor: '#60DBC5',
         borderWidth: 1,
         borderRadius: 5,
-        width: 200
+        width: 300
     },
     buttonText: {
         fontSize: 20,
         fontWeight: 'bold',
         color: '#fff'
     },
+    buttonTextLong: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#fff',
+        textAlign: 'center'
+    },
     buttonSignup: {
         fontSize: 12
+    },
+    title: {
+        fontSize: 45,
+        marginBottom: 40,
+        textAlign: 'center'
     }
+
 })
 
 const mapDispatchToProps = dispatch => {
