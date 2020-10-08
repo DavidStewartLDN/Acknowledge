@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { LOGIN, SIGNUP, UPDATE_EMAIL, UPDATE_PASSWORD } from './user.actions'
 
-const user = (state = {}, action) => {
+const userReducer = (state = {}, action) => {
     switch (action.type) {
         case LOGIN:
             return action.payload
@@ -16,8 +16,4 @@ const user = (state = {}, action) => {
     }
 }
 
-const rootReducer = combineReducers({
-    user
-})
-
-export default rootReducer
+export default userReducer
