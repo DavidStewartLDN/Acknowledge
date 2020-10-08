@@ -1,5 +1,3 @@
-// import achievementsReducer from './achievements/achievements.actions'
-
 import { createStore, applyMiddleware } from 'redux'
 
 import thunkMiddleware from 'redux-thunk'
