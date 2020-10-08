@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux'
 import { LOGIN, SIGNUP, UPDATE_EMAIL, UPDATE_PASSWORD } from './user.actions'
 
 const userReducer = (state = {}, action) => {
