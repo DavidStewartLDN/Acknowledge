@@ -5,15 +5,17 @@ import { Text, FAB, List } from 'react-native-paper';
 import Header from '../components/Header'
 
 // Access state in Redux
-import { useSelector, useDispatch } from 'react-redux'
-import { addachievement, deleteachievement} from '../redux/accessApp'
+// import { useSelector, useDispatch } from 'react-redux'
+// import { addachievement, deleteachievement} from '../redux/accessApp'
 
 function ViewAchievements({ navigation }) {
-  const achievements = useSelector(state => state)
+  // const achievements = useSelector(state => state)
 
-  const dispatch = useDispatch()
-  const addAchievement = achievement => dispatch(addachievement(achievement))
-  const deleteAchievement = id => dispatch(deleteachievement(id))
+  // const dispatch = useDispatch()
+  // const addAchievement = achievement => dispatch(addachievement(achievement))
+  // const deleteAchievement = id => dispatch(deleteachievement(id))
+
+  const achievements = []
 
   console.log(achievements)
   return (
@@ -46,9 +48,7 @@ function ViewAchievements({ navigation }) {
           icon='chart-bar'
           label='View Graph'
           onPress={() =>
-            navigation.navigate('GraphAchievements', {
-              addAchievement
-          })
+            navigation.navigate('GraphAchievements')
         }
         />
         <FAB

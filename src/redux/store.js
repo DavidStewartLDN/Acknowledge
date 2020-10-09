@@ -1,5 +1,5 @@
 import { createStore } from 'redux'
-import achievementsReducer from './accessApp'
+import achievementsReducer from './achievements/achievements.actions'
 
 const store = createStore(achievementsReducer)
 
