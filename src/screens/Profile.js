@@ -1,20 +1,37 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
+import { connect } from 'react-redux'
+import Firebase from '../../config/Firebase'
+
+import Header from '../components/Header'
+
 class Profile extends React.Component {
 
     moveStack = () => {
         this.props.navigation.navigate('ViewAchievements')
     }
 
+    handleSignout = () => {
+        Firebase.auth().signOut()
+        this.props.navigation.navigate('Login')
+    }
+
     render() {
         return (
-            <View style={styles.container}>
-                <Text>Profile Screen</Text>
-                <TouchableOpacity style={styles.button} onPress={this.moveStack}>
-                    <Text style={styles.buttonText}>Go to main app</Text>
-                </TouchableOpacity>
-            </View>
+            <>
+                <Header titleText='Access' />
+                <View style={styles.container}>
+                    <Text>Profile Screen</Text>
+                    <Text>{this.props.user.email}</Text>
+                    <TouchableOpacity style={styles.button} onPress={this.moveStack}>
+                        <Text style={styles.buttonText}>Go to main app</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button} onPress={this.handleSignout}>
+                        <Text style={styles.buttonText}>Log out</Text>
+                    </TouchableOpacity>
+                </View>
+            </>
         )
     }
 }
@@ -44,4 +61,10 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Profile
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps)(Profile)

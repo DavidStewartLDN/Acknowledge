@@ -1,6 +1,11 @@
-import { createStore } from 'redux'
-import achievementsReducer from './achievements/achievements.actions'
+import { createStore, applyMiddleware } from 'redux'
 
-const store = createStore(achievementsReducer)
+import thunkMiddleware from 'redux-thunk'
 
-export default store
+import rootReducer from './root-reducer';
+
+const middlewares = [thunkMiddleware]
+
+const store = createStore(rootReducer, applyMiddleware(...middlewares))
+
+export default store;

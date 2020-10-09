@@ -1,23 +1,18 @@
-import { combineReducers } from 'redux'
-import { LOGIN, SIGNUP, UPDATE_EMAIL, UPDATE_PASSWORD } from './user.actions'
+import { UserActionTypes } from './user.types'
 
-const user = (state = {}, action) => {
+const userReducer = (state = {}, action) => {
     switch (action.type) {
-        case LOGIN:
+        case UserActionTypes.LOGIN:
             return action.payload
-        case SIGNUP:
+        case UserActionTypes.SIGNUP:
             return action.payload
-        case UPDATE_EMAIL:
+        case UserActionTypes.UPDATE_EMAIL:
             return { ...state, email: action.payload }
-        case UPDATE_PASSWORD:
+        case UserActionTypes.UPDATE_PASSWORD:
             return { ...state, password: action.payload }
         default:
             return state
     }
 }
 
-const rootReducer = combineReducers({
-    user
-})
-
-export default rootReducer
+export default userReducer

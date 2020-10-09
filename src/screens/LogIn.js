@@ -4,40 +4,53 @@ import { View, TextInput, StyleSheet, TouchableOpacity, Text, Button } from 'rea
 // Imports for redux state storage
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { updateEmail, updatePassword, login } from '../redux/user/user.actions'
+import { updateEmail, updatePassword, login, getUser } from '../redux/user/user.actions'
+import Firebase from '../../config/Firebase'
+
+import Header from '../components/Header'
 
 class Login extends React.Component {
 
-    handleLogin = () => {
-        this.props.login()
-        this.props.navigation.navigate('Profile')
-    }
+    componentDidMount = () => {
+		Firebase.auth().onAuthStateChanged(user => {
+			if (user) {
+				this.props.getUser(user.uid)
+				if (this.props.user != null) {
+					this.props.navigation.navigate('Profile')
+				}
+			}
+		})
+	}
 
 
     render() {
         return (
-            <View style={styles.container}>
-                <TextInput
-                    style={styles.inputBox}
-                    value={this.props.user.email}
-                    onChangeText={email => this.props.updateEmail(email)}
-                    placeholder='Email'
-                    autoCapitalize='none'
-                />
-                <TextInput
-                    style={styles.inputBox}
-                    value={this.props.user.password}
-                    onChangeText={password => this.props.updatePassword(password)}
-                    placeholder='Password'
-                    secureTextEntry={true}
-                />
-                <TouchableOpacity style={styles.button} onPress={this.handleLogin}>
-                    <Text style={styles.buttonText}>Login</Text>
-                </TouchableOpacity>
-                <Button 
-                title="Don't have an account yet? Sign up"
-                onPress={() => this.props.navigation.navigate('Signup')} />
-            </View>
+            <>
+            <Header titleText='Access' />
+                <View style={styles.container}>
+                    <Text style={styles.title}>Welcome to Access</Text>
+                    <TextInput
+                        style={styles.inputBox}
+                        value={this.props.user.email}
+                        onChangeText={email => this.props.updateEmail(email)}
+                        placeholder='Email'
+                        autoCapitalize='none'
+                    />
+                    <TextInput
+                        style={styles.inputBox}
+                        value={this.props.user.password}
+                        onChangeText={password => this.props.updatePassword(password)}
+                        placeholder='Password'
+                        secureTextEntry={true}
+                    />
+                    <TouchableOpacity style={styles.button} onPress={() => this.props.login()}>
+                        <Text style={styles.buttonText}>Login</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Signup')}>
+                        <Text style={styles.buttonTextLong}>Don't have an account yet? {"\n"} Sign up</Text>
+                    </TouchableOpacity>
+                </View>
+            </>
         )
     }
 }
@@ -67,20 +80,32 @@ const styles = StyleSheet.create({
         borderColor: '#60DBC5',
         borderWidth: 1,
         borderRadius: 5,
-        width: 200
+        width: 300
     },
     buttonText: {
         fontSize: 20,
         fontWeight: 'bold',
         color: '#fff'
     },
+    buttonTextLong: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#fff',
+        textAlign: 'center'
+    },
     buttonSignup: {
         fontSize: 12
+    },
+    title: {
+        fontSize: 45,
+        marginBottom: 40,
+        textAlign: 'center'
     }
+
 })
 
 const mapDispatchToProps = dispatch => {
-    return bindActionCreators({ updateEmail, updatePassword, login }, dispatch)
+    return bindActionCreators({ updateEmail, updatePassword, login, getUser }, dispatch)
 }
 
 const mapStateToProps = state => {

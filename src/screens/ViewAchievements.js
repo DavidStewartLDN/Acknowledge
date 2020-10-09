@@ -5,17 +5,16 @@ import { Text, FAB, List } from 'react-native-paper';
 import Header from '../components/Header'
 
 // Access state in Redux
-// import { useSelector, useDispatch } from 'react-redux'
-// import { addachievement, deleteachievement} from '../redux/accessApp'
+import { useSelector, useDispatch } from 'react-redux'
+import { addachievement, deleteachievement} from '../redux/achievements/achievements.actions'
 
 function ViewAchievements({ navigation }) {
-  // const achievements = useSelector(state => state)
+  const achievements = useSelector(state => state.achievements)
+  const user = useSelector(state => state.user)
 
-  // const dispatch = useDispatch()
-  // const addAchievement = achievement => dispatch(addachievement(achievement))
-  // const deleteAchievement = id => dispatch(deleteachievement(id))
-
-  const achievements = []
+  const dispatch = useDispatch()
+  const addAchievement = achievement => dispatch(addachievement(achievement))
+  const deleteAchievement = id => dispatch(deleteachievement(id))
 
   console.log(achievements)
   return (
@@ -33,7 +32,6 @@ function ViewAchievements({ navigation }) {
               <List.Item
                 title={item.achievement.achievementTitle}
                 description = {[item.achievement.selectedA.selectedArrayPartOfLife.join(),",", item.achievement.selectedB.selectedArraySatisfier.join()]}
-                subtitle={item.achievement.selectedB.selectedArraySatisfier}
                 descriptionNumberOfLines={2}
                 titleStyle={styles.listTitle}
                 onPress={() => deleteAchievement(item.id)}

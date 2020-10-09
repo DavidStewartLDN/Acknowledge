@@ -10,7 +10,7 @@ import { BarChart } from "react-native-chart-kit";
 import { useSelector } from 'react-redux'
 
 function GraphAchievements({ navigation }) {
-  const achievements = useSelector(state => state)
+  const achievements = useSelector(state => state.achievements)
 
   const [count, setCount] = useState([])
   const partOfLife = ["Work", "Self", "Play", "Living"]
