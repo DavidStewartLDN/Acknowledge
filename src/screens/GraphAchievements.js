@@ -71,7 +71,7 @@ function GraphAchievements({ navigation }) {
         <BarChart
           data={data}
           width={Dimensions.get("window").width-20} // from react-native
-          height={600}
+          height={Dimensions.get("window").height-200}
           chartConfig={chartConfig}
         />
       </View>
