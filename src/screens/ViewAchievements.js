@@ -31,7 +31,7 @@ function ViewAchievements({ navigation }) {
             renderItem={({ item }) => (
               <List.Item
                 title={item.achievement.achievementTitle}
-                description = {[item.achievement.selectedA.selectedArrayPartOfLife.join(),",", item.achievement.selectedB.selectedArraySatisfier.join()]}
+                description = {[item.achievement.selectedA.join(),",", item.achievement.selectedB.join()]}
                 descriptionNumberOfLines={2}
                 titleStyle={styles.listTitle}
                 onPress={() => deleteAchievement(item.id)}

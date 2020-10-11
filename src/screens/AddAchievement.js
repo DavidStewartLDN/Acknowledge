@@ -8,8 +8,8 @@ import Header from '../components/Header'
 
 function AddAchievement({ navigation }) {
   const [achievementTitle, setAchievementTitle] = useState('')
-  const [selectedA, setSelectedA] = useState({selectedArrayPartOfLife: []})
-  const [selectedB, setSelectedB] = useState({selectedArraySatisfier: []})
+  const [selectedA, setSelectedA] = useState([])
+  const [selectedB, setSelectedB] = useState([])
 
   function onSaveAchievement() {
     navigation.state.params.addAchievement({ achievementTitle, selectedA, selectedB })
@@ -18,11 +18,11 @@ function AddAchievement({ navigation }) {
 
 
   const saveSelectedPartOfLife = (isSelected, label) => {
-    isSelected ? setSelectedA({ selectedArrayPartOfLife: [...selectedA.selectedArrayPartOfLife.filter(x => x !== label)]}) : setSelectedA({ selectedArrayPartOfLife: [...selectedA.selectedArrayPartOfLife, label]})
+    isSelected ? setSelectedA([...selectedA.filter(x => x !== label)]) : setSelectedA([...selectedA, label])
   };
 
   const saveSelectedSatisfied = (isSelected, label) => {
-    isSelected ? setSelectedB({ selectedArraySatisfier: [...selectedB.selectedArraySatisfier.filter(x => x !== label)]}) : setSelectedB({ selectedArraySatisfier: [...selectedB.selectedArraySatisfier, label]})
+    isSelected ? setSelectedB([...selectedB.filter(x => x !== label)]) : setSelectedB([...selectedB, label])
   };
   console.log(selectedA);
   console.log(selectedB);

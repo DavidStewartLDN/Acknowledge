@@ -24,7 +24,7 @@ function GraphAchievements({ navigation }) {
     var i;
     for (i = 0; i < achievements.length; i++) {
       var j;
-      const partOfLifeValues = achievements[i].achievement.selectedA.selectedArrayPartOfLife
+      const partOfLifeValues = achievements[i].achievement.selectedA
       console.log(partOfLifeValues)
       for (j = 0; j < partOfLifeValues.length; j++) {
         allData.push(partOfLifeValues[j])
@@ -71,7 +71,7 @@ function GraphAchievements({ navigation }) {
         <BarChart
           data={data}
           width={Dimensions.get("window").width-20} // from react-native
-          height={600}
+          height={Dimensions.get("window").height-200}
           chartConfig={chartConfig}
         />
       </View>
