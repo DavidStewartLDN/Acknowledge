@@ -23,6 +23,7 @@ class Signup extends React.Component {
       <>
         <Header titleText='Access' />
         <View style={styles.container}>
+          <Text style={styles.title}>Create an account today</Text>
           <TextInput
             style={styles.inputBox}
             value={this.props.user.email}
@@ -39,6 +40,9 @@ class Signup extends React.Component {
         />
           <TouchableOpacity style={styles.button} onPress={this.handleSignUp}>
             <Text style={styles.buttonText}>Signup</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Login')}>
+            <Text style={styles.buttonText}>Back to Login</Text>
           </TouchableOpacity>
         </View>
       </>
@@ -80,7 +84,12 @@ const styles = StyleSheet.create({
     },
     buttonSignup: {
         fontSize: 12
-    }
+    },
+    title: {
+      fontSize: 45,
+      marginBottom: 40,
+      textAlign: 'center'
+   }
 })
 
 const mapDispatchToProps = dispatch => {
