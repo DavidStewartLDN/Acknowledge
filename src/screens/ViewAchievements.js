@@ -3,6 +3,7 @@ import { StyleSheet, View, FlatList } from 'react-native';
 import { Text, FAB, List, IconButton } from 'react-native-paper';
 
 import Header from '../components/Header'
+import Firebase from '../../config/Firebase'
 
 // Access state in Redux
 import { useSelector, useDispatch } from 'react-redux'
@@ -16,6 +17,11 @@ function ViewAchievements({ navigation }) {
   const addAchievement = achievement => dispatch(addachievement(achievement))
   const deleteAchievement = id => dispatch(deleteachievement(id))
 
+  const handleSignout = () => {
+    Firebase.auth().signOut()
+    navigation.navigate('Login')
+  }
+
   console.log(achievements)
   return (
     <>
@@ -24,7 +30,7 @@ function ViewAchievements({ navigation }) {
         icon='logout'
         size={25}
         color='white'
-        onPress={() => navigation.goBack()}
+        onPress={handleSignout}
         style={styles.iconButton}
       />
       <View style={styles.container}>
