@@ -21,7 +21,8 @@ export const login = () => {
       try {
           const { email, password } = getState().user
           const response = await Firebase.auth().signInWithEmailAndPassword(email, password)
-          dispatch({ type: UserActionTypes.LOGIN, payload: user.data() })
+          
+          dispatch(getUser(response.user.uid))
       } catch (e) {
           console.log(e)
       }
