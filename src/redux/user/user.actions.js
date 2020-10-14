@@ -16,6 +16,12 @@ export const updatePassword = password => {
   }
 }
 
+export const logout = () => {
+  return {
+      type: UserActionTypes.LOGOUT
+  }
+}
+
 export const login = () => {
   return async (dispatch, getState) => {
       try {
@@ -64,11 +70,5 @@ export const signup = () => {
       } catch (e) {
           alert(e)
       }
-  }
-}
-
-export const logout = () => {
-  return {
-      type: UserActionTypes.LOGOUT
   }
 }
