@@ -14,7 +14,6 @@ const Stack = createStackNavigator()
 
 function MainStackNavigator() {
   const user = useSelector(state => state.user)
-  console.log(user.uid)
   return (
       <Stack.Navigator
         initialRouteName='ViewAchievements'
@@ -31,10 +30,6 @@ function MainStackNavigator() {
           <Stack.Screen
             name='Signup'
             component={Signup}
-          />
-          <Stack.Screen
-            name='Profile'
-            component={Profile}
           />
         </>) : (
           <>

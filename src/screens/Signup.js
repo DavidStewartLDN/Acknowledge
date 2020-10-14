@@ -13,7 +13,8 @@ class Signup extends React.Component {
 
   handleSignUp = () => {
       this.props.signup()
-      this.props.navigation.navigate('Profile')
+      // No longer navigating via fixed route name, Main Stakc Navigator now 
+      // this.props.navigation.navigate('Profile')
   }
 
   // We use props coming from the Redux store via mapStateToProps
