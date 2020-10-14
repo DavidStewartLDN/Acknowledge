@@ -6,13 +6,13 @@ import Checkbox from "../components/checkbox";
 
 import Header from '../components/Header'
 
-function AddAchievement({ navigation }) {
+function AddAchievement({ navigation, route }) {
   const [achievementTitle, setAchievementTitle] = useState('')
   const [selectedA, setSelectedA] = useState([])
   const [selectedB, setSelectedB] = useState([])
 
   function onSaveAchievement() {
-    navigation.state.params.addAchievement({ achievementTitle, selectedA, selectedB })
+    route.params.addAchievement({ achievementTitle, selectedA, selectedB })
     navigation.goBack()
   }
 

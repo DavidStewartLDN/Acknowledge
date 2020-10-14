@@ -14,10 +14,11 @@ class Login extends React.Component {
     componentDidMount = () => {
 		Firebase.auth().onAuthStateChanged(user => {
 			if (user) {
-				this.props.getUser(user.uid)
-				if (this.props.user != null) {
-					this.props.navigation.navigate('Profile')
-				}
+                this.props.getUser(user.uid)
+                // This is handled by the MainStack Navigator now
+				// if (this.props.user != null) {
+				// 	this.props.navigation.navigate('Profile')
+				// }
 			}
 		})
 	}

@@ -1,7 +1,13 @@
 import React from 'react';
 
 import { Provider as PaperProvider} from 'react-native-paper';
+
+// Likely remove App Navigator once finishing updating react-navigation to V.5
 import AppNavigator from './src/navigation';
+
+// Replaces createAppContainer from react-navigation V.4
+import { NavigationContainer } from '@react-navigation/native';
+import MainStackNavigator from './src/navigation/MainStackNavigation';
 
 // Imports for redux
 import { Provider } from 'react-redux'
@@ -13,7 +19,9 @@ export default function App() {
   return (
     <Provider store={store}>
       <PaperProvider>
-        <AppNavigator />
+        <NavigationContainer>
+          <MainStackNavigator />
+        </NavigationContainer>
       </PaperProvider>
     </Provider>
   );

@@ -6,6 +6,8 @@ const userReducer = (state = {}, action) => {
             return action.payload
         case UserActionTypes.SIGNUP:
             return action.payload
+        case UserActionTypes.LOGOUT:
+            return {...state, uid: undefined, email: undefined}
         case UserActionTypes.UPDATE_EMAIL:
             return { ...state, email: action.payload }
         case UserActionTypes.UPDATE_PASSWORD:
