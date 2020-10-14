@@ -66,3 +66,9 @@ export const signup = () => {
       }
   }
 }
+
+export const logout = () => {
+  return {
+      type: UserActionTypes.LOGOUT
+  }
+}
