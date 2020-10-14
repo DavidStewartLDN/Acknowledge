@@ -7,6 +7,7 @@ import AppNavigator from './src/navigation';
 
 // Replaces createAppContainer from react-navigation V.4
 import { NavigationContainer } from '@react-navigation/native';
+import MainStackNavigator from './src/navigation/MainStackNavigation';
 
 // Imports for redux
 import { Provider } from 'react-redux'
@@ -19,7 +20,7 @@ export default function App() {
     <Provider store={store}>
       <PaperProvider>
         <NavigationContainer>
-          <AppNavigator />
+          <MainStackNavigator />
         </NavigationContainer>
       </PaperProvider>
     </Provider>
