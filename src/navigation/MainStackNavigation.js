@@ -1,14 +1,18 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack'
 
+// Main App Screens
 import ViewAchievements from '../screens/ViewAchievements';
 import AddAchievement from '../screens/AddAchievement';
 import GraphAchievements from '../screens/GraphAchievements';
+import Profile from '../screens/Profile';
 
-import { useSelector } from 'react-redux'
+// Authentication Screens
 import Login from '../screens/Login';
 import Signup from '../screens/Signup';
-import Profile from '../screens/Profile';
+
+// Access to read Redux store for user.uid
+import { useSelector } from 'react-redux'
 
 const Stack = createStackNavigator()
 

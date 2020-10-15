@@ -12,7 +12,6 @@ import { logout } from '../redux/user/user.actions'
 
 function ViewAchievements({ navigation }) {
   const achievements = useSelector(state => state.achievements)
-  const user = useSelector(state => state.user)
 
   const dispatch = useDispatch()
   const addAchievement = achievement => dispatch(addachievement(achievement))
