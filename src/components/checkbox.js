@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { CheckBox } from 'react-native-elements';
 
 export default function Checkbox(props) {

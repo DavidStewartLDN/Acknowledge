@@ -1,7 +1,9 @@
+// Old Navigator for react-navigation V.4
+
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-// Generla App screens
+// General App screens
 import ViewAchievements from '../screens/ViewAchievements';
 import AddAchievement from '../screens/AddAchievement';
 import GraphAchievements from '../screens/GraphAchievements';
