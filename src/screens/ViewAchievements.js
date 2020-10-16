@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 import { Text, FAB, List, IconButton } from 'react-native-paper';
 
 import Header from '../components/Header'
-import Firebase from '../../config/Firebase'
+import Firebase, {db} from '../../config/Firebase'
 
 // Access state in Redux
 import { useSelector, useDispatch } from 'react-redux'
@@ -24,7 +24,32 @@ function ViewAchievements({ navigation }) {
     logOut()
   }
 
+  const [firebaseAchievements, setFirebaseAchievements] = useState([])
+
+  const achievementRef = db.collection("users").doc(user.uid).collection('achievements')
+
+  useEffect(() => {
+    achievementRef
+        // .orderBy('createdAt', 'desc')
+        .onSnapshot(
+            querySnapshot => {
+                const newAchievements = []
+                querySnapshot.forEach(doc => {
+                    const achievement = doc.data()
+                    achievement.id = doc.id
+                    newAchievements.push(achievement)
+                });
+                setFirebaseAchievements(newAchievements)
+            },
+            error => {
+                console.log(error)
+            }
+        )
+  }, [])
+
+
   console.log(achievements)
+  console.log(firebaseAchievements)
   return (
     <>
       <Header titleText='Access' />
@@ -36,17 +61,17 @@ function ViewAchievements({ navigation }) {
         style={styles.iconButton}
       />
       <View style={styles.container}>
-        {achievements.length === 0 ? (
+        {firebaseAchievements.length === 0 ? (
           <View style={styles.titleContainer}>
             <Text style={styles.title}> You have not saved any Achievements yet!</Text>
           </View>
         ) : (
           <FlatList
-            data={achievements}
+            data={firebaseAchievements}
             renderItem={({ item }) => (
               <List.Item
-                title={item.achievement.achievementTitle}
-                description = {[item.achievement.selectedA.join(),",", item.achievement.selectedB.join()]}
+                title={item.achievementTitle}
+                description = {[item.selectedA.join(),",", item.selectedB.join()]}
                 descriptionNumberOfLines={2}
                 titleStyle={styles.listTitle}
                 onPress={() => deleteAchievement(item.id)}
