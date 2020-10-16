@@ -12,7 +12,7 @@ function AddAchievement({ navigation, route }) {
   const [selectedB, setSelectedB] = useState([])
 
   function onSaveAchievement() {
-    route.params.addAchievement({ achievementTitle, selectedA, selectedB })
+    route.params.addAchievementFirebase({ achievementTitle, selectedA, selectedB })
     navigation.goBack()
   }
 

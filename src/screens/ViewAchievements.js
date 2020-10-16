@@ -26,10 +26,10 @@ function ViewAchievements({ navigation }) {
 
   const [firebaseAchievements, setFirebaseAchievements] = useState([])
 
-  const achievementRef = db.collection("users").doc(user.uid).collection('achievements')
+  const achievementRef = db.collection("users").doc(user.uid)
 
   useEffect(() => {
-    achievementRef
+    achievementRef.collection('achievements')
         // .orderBy('createdAt', 'desc')
         .onSnapshot(
             querySnapshot => {
@@ -47,6 +47,14 @@ function ViewAchievements({ navigation }) {
         )
   }, [])
 
+  const addAchievementFirebase = async (achievement) => {
+    try {
+      achievementRef.collection('achievements')
+        .add(achievement)
+    } catch (e) {
+        alert(e)
+    }
+  }
 
   console.log(achievements)
   console.log(firebaseAchievements)
@@ -96,7 +104,7 @@ function ViewAchievements({ navigation }) {
           label='Add Achievement'
           onPress={() =>
             navigation.navigate('AddAchievement', {
-              addAchievement
+              addAchievementFirebase
           })
         }
         />
