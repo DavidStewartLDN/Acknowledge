@@ -56,6 +56,16 @@ function ViewAchievements({ navigation }) {
     }
   }
 
+  const deleteAchievementFirebase = async (id) => {
+    try {
+      achievementRef.collection('achievements')
+        .doc(id)
+        .delete()
+    } catch (e) {
+        alert(e)
+    }
+  }
+
   console.log(achievements)
   console.log(firebaseAchievements)
   return (
@@ -82,7 +92,7 @@ function ViewAchievements({ navigation }) {
                 description = {[item.selectedA.join(),",", item.selectedB.join()]}
                 descriptionNumberOfLines={2}
                 titleStyle={styles.listTitle}
-                onPress={() => deleteAchievement(item.id)}
+                onPress={() => deleteAchievementFirebase(item.id)}
               />
             )}
             keyExtractor={item => item.id.toString()}
