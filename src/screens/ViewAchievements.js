@@ -28,7 +28,7 @@ function ViewAchievements({ navigation }) {
 
   useEffect(() => {
     db.collection("users").doc(user.uid).collection('achievements')
-        // .orderBy('createdAt', 'desc')
+        .orderBy('createdAt', 'desc')
         .onSnapshot(
             querySnapshot => {
                 const newAchievements = []
