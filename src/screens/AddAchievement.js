@@ -20,8 +20,6 @@ function AddAchievement({ navigation, route }) {
     navigation.goBack()
   }
 
-  console.log(firebase.firestore.FieldValue.serverTimestamp())
-
   const saveSelectedPartOfLife = (isSelected, label) => {
     isSelected ? setSelectedA([...selectedA.filter(x => x !== label)]) : setSelectedA([...selectedA, label])
   };
@@ -29,9 +27,6 @@ function AddAchievement({ navigation, route }) {
   const saveSelectedSatisfied = (isSelected, label) => {
     isSelected ? setSelectedB([...selectedB.filter(x => x !== label)]) : setSelectedB([...selectedB, label])
   };
-  // console.log(selectedA);
-  // console.log(selectedB);
-
   
   return (
     <>
