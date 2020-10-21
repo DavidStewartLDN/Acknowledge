@@ -31,25 +31,6 @@ function ViewAchievements({ navigation }) {
     getAchievementsFirebase()
   }, [])
 
-  // const addAchievementFirebase = async (achievement) => {
-  //   try {
-  //     db.collection("users").doc(user.uid).collection('achievements')
-  //       .add(achievement)
-  //   } catch (e) {
-  //       alert(e)
-  //   }
-  // }
-
-  // const deleteAchievementFirebase = async (id) => {
-  //   try {
-  //     db.collection("users").doc(user.uid).collection('achievements')
-  //       .doc(id)
-  //       .delete()
-  //   } catch (e) {
-  //       alert(e)
-  //   }
-  // }
-
   return (
     <>
       <Header titleText='Access' />

@@ -22,26 +22,6 @@ export function deleteachievement(id) {
   }
 }
 
-// export const updateAchievementTitle = achievementTitle => {
-//   return {
-//       type: UserActionTypes.UPDATE_ACHIEVEMENT_TITLE,
-//       payload: achievementTitle
-//   }
-// }
-
-// export const updateSelectedA = selectedA => {
-//   return {
-//       type: UserActionTypes.UPDATE_SELECTED_A,
-//       payload: selectedA
-//   }
-// }
-
-// export const updateSelectedB = selectedB => {
-//   return {
-//       type: UserActionTypes.UPDATE_SELECTED_B,
-//       payload: selectedB
-//   }
-// }
 
 export const addachievementfirebase = (achievement) => {
   return async (dispatch, getState) => {
