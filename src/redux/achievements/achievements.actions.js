@@ -70,12 +70,12 @@ export const getachievementsfirebase = () => {
           });
           dispatch({ type: AchievementActionTypes.GET_ACHIEVEMENTS, payload: newAchievements })
           },
-          error => {
-            console.log(error)
-          }
+        error => {
+          console.log(error)
+        }
       )
     } catch (e) {
-        alert(e)
+      alert(e)
     }
   }
 }
