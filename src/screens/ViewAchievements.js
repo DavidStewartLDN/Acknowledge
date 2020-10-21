@@ -43,15 +43,6 @@ function ViewAchievements({ navigation }) {
           />
         )}
         <FAB
-          style={styles.fabGraph}
-          small
-          icon='chart-bar'
-          label='View Graph'
-          onPress={() =>
-            navigation.navigate('GraphAchievements')
-        }
-        />
-        <FAB
           style={styles.fabAdd}
           small
           icon='plus'
@@ -81,12 +72,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20
-  },
-  fabGraph: {
-    position: 'absolute',
-    margin: 20,
-    right: 0,
-    bottom: 80
   },
   fabAdd: {
     position: 'absolute',
