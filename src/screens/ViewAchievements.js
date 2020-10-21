@@ -17,7 +17,7 @@ function ViewAchievements({ navigation }) {
   const dispatch = useDispatch()
   const addAchievement = achievement => dispatch(addachievement(achievement))
   const deleteAchievement = id => dispatch(deleteachievement(id))
-  const getAchievementsFirebase = (user) => dispatch(getachievementsfirebase(user))
+  const getAchievementsFirebase = () => dispatch(getachievementsfirebase())
   const logOut = () => dispatch(logout())
 
   const handleSignout = () => {
@@ -25,30 +25,8 @@ function ViewAchievements({ navigation }) {
     logOut()
   }
 
-  const [firebaseAchievements, setFirebaseAchievements] = useState([])
-
-  // useEffect(() => {
-  //   db.collection("users").doc(user.uid).collection('achievements')
-  //       .orderBy('createdAt', 'asc')
-  //       .onSnapshot(
-  //           querySnapshot => {
-  //               const newAchievements = []
-  //               querySnapshot.forEach(doc => {
-  //                   const achievement = doc.data()
-  //                   achievement.id = doc.id
-  //                   newAchievements.push(achievement)
-  //               });
-  //               setFirebaseAchievements(newAchievements)
-  //               console.log("I went and checked the Firebase server for you")
-  //           },
-  //           error => {
-  //               console.log(error)
-  //           }
-  //       )
-  // }, [])
-
   useEffect(() => {
-    getAchievementsFirebase(user)
+    getAchievementsFirebase()
   }, [])
 
   const addAchievementFirebase = async (achievement) => {
@@ -70,8 +48,6 @@ function ViewAchievements({ navigation }) {
     }
   }
 
-  console.log(achievements)
-  // console.log(firebaseAchievements)
   return (
     <>
       <Header titleText='Access' />

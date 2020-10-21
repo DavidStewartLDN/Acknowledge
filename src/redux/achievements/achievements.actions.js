@@ -1,6 +1,6 @@
 import { AchievementActionTypes } from './achievements.types'
 
-import Firebase, { db } from '../../../config/Firebase.js'
+import { db } from '../../../config/Firebase.js'
 
 
 // Action Creators
@@ -54,10 +54,11 @@ export function deleteachievement(id) {
 //   }
 // }
 
-export const getachievementsfirebase = (user) => {
+export const getachievementsfirebase = () => {
   return async (dispatch, getState) => {
     try {
-      db.collection("users").doc(user.uid).collection('achievements')
+      const { email, uid } = getState().user
+      db.collection("users").doc(uid).collection('achievements')
       .orderBy('createdAt', 'asc')
       .onSnapshot(
           querySnapshot => {
