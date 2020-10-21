@@ -7,6 +7,7 @@ import ViewAchievements from '../screens/ViewAchievements';
 import AddAchievement from '../screens/AddAchievement';
 import GraphAchievements from '../screens/GraphAchievements';
 import Profile from '../screens/Profile';
+//import bottomNav from '../screens/bottomNav'
 
 // Authentication Screens
 import Login from '../screens/Login';
@@ -17,56 +18,56 @@ import { useSelector } from 'react-redux'
 
 const Stack = createStackNavigator()
 const MaterialBottomTabs = createMaterialBottomTabNavigator();
+
 // const BottomNav = createBottomTabs();
+
+// function bottomNav() {
+//   return (
+
+//   )
+// }
 
 function MainStackNavigator() {
   const user = useSelector(state => state.user)
   return (
+    
+      <Stack.Navigator
+        initialRouteName='ViewAchievements'
+        screenOptions={{
+          gestureEnabled: true,
+          headerShown: false
+        }}
+        >
+        {user.uid == undefined ? (<>
+          <Stack.Screen
+            name='Login'
+            component={Login}
+          />
+          <Stack.Screen
+            name='Signup'
+            component={Signup}
+          />
+        </>) : (
+      
+          <>
+      
 
-   <MaterialBottomTabs.Navigator>
+            <Stack.Screen
+              name='AddAchievement'
+              component={AddAchievement}
+            />
+
+          </>
+        ) }
+      </Stack.Navigator>,       <MaterialBottomTabs.Navigator>
       <MaterialBottomTabs.Screen name="Profile" component={Profile} />
       <MaterialBottomTabs.Screen name="GraphAchievements" component={GraphAchievements} />
-      <MaterialBottomTabs.Screen name="ViewAchievements" component={ViewAchievements} />
+      <MaterialBottomTabs.Screen name="ViewAchievements" component={AddAchievement, ViewAchievements}/>
+      {/* <MaterialBottomTabs.Screen name="ViewAchievements" component={AddAchievement} /> */}
       </MaterialBottomTabs.Navigator>
-    
-      // <Stack.Navigator
-      //   initialRouteName='ViewAchievements'
-      //   screenOptions={{
-      //     gestureEnabled: true,
-      //     headerShown: false
-      //   }}
-      //   >
-      //   {user.uid == undefined ? (<>
-      //     <Stack.Screen
-      //       name='Login'
-      //       component={Login}
-      //     />
-      //     <Stack.Screen
-      //       name='Signup'
-      //       component={Signup}
-      //     />
-      //   </>) : (
-      //
-      //     <>
-      //
-      //       <Stack.Screen
-      //         name='ViewAchievements'
-      //         component={ViewAchievements}
-      //       />
-      //       <Stack.Screen
-      //         name='AddAchievement'
-      //         component={AddAchievement}
-      //       />
-      //       <Stack.Screen
-      //         name='GraphAchievements'
-      //         component={GraphAchievements}
-      //       />
-      //     </>
-      //   ) }
-      // </Stack.Navigator>
-
-
   )
+
+
 }
 
 export default MainStackNavigator
