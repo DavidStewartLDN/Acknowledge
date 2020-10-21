@@ -19,9 +19,11 @@ export default function App() {
     <Provider store={store}>
       <PaperProvider>
         <NavigationContainer>
-          <MainStackNavigator />
+
+          <MainStackNavigator/>
         </NavigationContainer>
       </PaperProvider>
     </Provider>
+
   );
 }
