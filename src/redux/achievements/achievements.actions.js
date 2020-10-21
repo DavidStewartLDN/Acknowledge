@@ -54,6 +54,19 @@ export function deleteachievement(id) {
 //   }
 // }
 
+export const deleteachievementfirebase = (id) => {
+  return async (dispatch, getState) => {
+    try {
+      const { email, uid } = getState().user
+      db.collection("users").doc(uid).collection('achievements')
+        .doc(id)
+        .delete()
+    } catch (e) {
+        alert(e)
+    }
+  }
+}
+
 export const getachievementsfirebase = () => {
   return async (dispatch, getState) => {
     try {
