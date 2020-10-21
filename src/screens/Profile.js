@@ -27,7 +27,7 @@ class Profile extends React.Component {
                     <TouchableOpacity style={styles.button} onPress={this.moveStack}>
                         <Text style={styles.buttonText}>Go to main app</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.button} onPress={this.handleSignout}>
+                    <TouchableOpacity style={styles.iconButton} onPress={this.handleSignout}>
                         <Text style={styles.buttonText}>Log out</Text>
                     </TouchableOpacity>
                 </View>
@@ -58,7 +58,14 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         color: '#fff'
-    }
+    },
+    iconButton: {
+      backgroundColor: 'rgba(46, 113, 102, 0.8)',
+      position: 'absolute',
+      right: 0,
+      top: 40,
+      margin: 10
+    },
 })
 
 const mapStateToProps = state => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
-import { Text, FAB, List, IconButton } from 'react-native-paper';
+import { Text, FAB, List } from 'react-native-paper';
 
 import Header from '../components/Header'
 import Firebase from '../../config/Firebase'
@@ -18,22 +18,10 @@ function ViewAchievements({ navigation }) {
   const deleteAchievement = id => dispatch(deleteachievement(id))
   const logOut = () => dispatch(logout())
 
-  const handleSignout = () => {
-    Firebase.auth().signOut()
-    logOut()
-  }
-
   console.log(achievements)
   return (
     <>
       <Header titleText='Access' />
-      <IconButton
-        icon='logout'
-        size={25}
-        color='white'
-        onPress={handleSignout}
-        style={styles.iconButton}
-      />
       <View style={styles.container}>
         {achievements.length === 0 ? (
           <View style={styles.titleContainer}>
@@ -108,13 +96,6 @@ const styles = StyleSheet.create({
   },
   listTitle: {
     fontSize: 20
-  },
-  iconButton: {
-    backgroundColor: 'rgba(46, 113, 102, 0.8)',
-    position: 'absolute',
-    right: 0,
-    top: 40,
-    margin: 10
   },
 })
 
