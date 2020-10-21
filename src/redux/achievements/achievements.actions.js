@@ -61,17 +61,17 @@ export const getachievementsfirebase = () => {
       db.collection("users").doc(uid).collection('achievements')
       .orderBy('createdAt', 'asc')
       .onSnapshot(
-          querySnapshot => {
-              const newAchievements = []
-              querySnapshot.forEach(doc => {
-                  const achievement = doc.data()
-                  achievement.id = doc.id
-                  newAchievements.push(achievement)
-              });
-              dispatch({ type: AchievementActionTypes.GET_ACHIEVEMENTS, payload: newAchievements })
+        querySnapshot => {
+          const newAchievements = []
+          querySnapshot.forEach(doc => {
+            const achievement = doc.data()
+            achievement.id = doc.id
+            newAchievements.push(achievement)
+          });
+          dispatch({ type: AchievementActionTypes.GET_ACHIEVEMENTS, payload: newAchievements })
           },
           error => {
-              console.log(error)
+            console.log(error)
           }
       )
     } catch (e) {
