@@ -112,7 +112,7 @@ function ViewAchievements({ navigation }) {
           label='Add Achievement'
           onPress={() =>
             navigation.navigate('AddAchievement', {
-              addAchievementFirebase
+              addAchievementFirebase, addAchievement
           })
         }
         />

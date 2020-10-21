@@ -40,7 +40,7 @@ export const updateSelectedB = selectedB => {
   }
 }
 
-export const addAchievementFirebase = () {
+export const addAchievementFirebase = () => {
   return async (dispatch, getState) => {
     try {
       db.collection("users").doc(user.uid).collection('achievements')
