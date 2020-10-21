@@ -7,7 +7,7 @@ import Firebase, {db} from '../../config/Firebase'
 
 // Access state in Redux
 import { useSelector, useDispatch } from 'react-redux'
-import { addachievement, deleteachievement} from '../redux/achievements/achievements.actions'
+import { addachievement, deleteachievement, getachievementsfirebase} from '../redux/achievements/achievements.actions'
 import { logout } from '../redux/user/user.actions'
 
 function ViewAchievements({ navigation }) {
@@ -17,6 +17,7 @@ function ViewAchievements({ navigation }) {
   const dispatch = useDispatch()
   const addAchievement = achievement => dispatch(addachievement(achievement))
   const deleteAchievement = id => dispatch(deleteachievement(id))
+  const getAchievementsFirebase = (user) => dispatch(getachievementsfirebase(user))
   const logOut = () => dispatch(logout())
 
   const handleSignout = () => {
@@ -26,23 +27,28 @@ function ViewAchievements({ navigation }) {
 
   const [firebaseAchievements, setFirebaseAchievements] = useState([])
 
+  // useEffect(() => {
+  //   db.collection("users").doc(user.uid).collection('achievements')
+  //       .orderBy('createdAt', 'asc')
+  //       .onSnapshot(
+  //           querySnapshot => {
+  //               const newAchievements = []
+  //               querySnapshot.forEach(doc => {
+  //                   const achievement = doc.data()
+  //                   achievement.id = doc.id
+  //                   newAchievements.push(achievement)
+  //               });
+  //               setFirebaseAchievements(newAchievements)
+  //               console.log("I went and checked the Firebase server for you")
+  //           },
+  //           error => {
+  //               console.log(error)
+  //           }
+  //       )
+  // }, [])
+
   useEffect(() => {
-    db.collection("users").doc(user.uid).collection('achievements')
-        .orderBy('createdAt', 'asc')
-        .onSnapshot(
-            querySnapshot => {
-                const newAchievements = []
-                querySnapshot.forEach(doc => {
-                    const achievement = doc.data()
-                    achievement.id = doc.id
-                    newAchievements.push(achievement)
-                });
-                setFirebaseAchievements(newAchievements)
-            },
-            error => {
-                console.log(error)
-            }
-        )
+    getAchievementsFirebase(user)
   }, [])
 
   const addAchievementFirebase = async (achievement) => {
@@ -65,7 +71,7 @@ function ViewAchievements({ navigation }) {
   }
 
   console.log(achievements)
-  console.log(firebaseAchievements)
+  // console.log(firebaseAchievements)
   return (
     <>
       <Header titleText='Access' />
@@ -77,13 +83,13 @@ function ViewAchievements({ navigation }) {
         style={styles.iconButton}
       />
       <View style={styles.container}>
-        {firebaseAchievements.length === 0 ? (
+        {achievements.length === 0 ? (
           <View style={styles.titleContainer}>
             <Text style={styles.title}> You have not saved any Achievements yet!</Text>
           </View>
         ) : (
           <FlatList
-            data={firebaseAchievements}
+            data={achievements}
             renderItem={({ item }) => (
               <List.Item
                 title={item.achievementTitle}
@@ -102,7 +108,9 @@ function ViewAchievements({ navigation }) {
           icon='chart-bar'
           label='View Graph'
           onPress={() =>
-            navigation.navigate('GraphAchievements')
+            navigation.navigate('GraphAchievements', {
+              achievements
+            })
         }
         />
         <FAB

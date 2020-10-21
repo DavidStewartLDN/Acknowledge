@@ -19,6 +19,9 @@ function achievementsReducer(state = initialState, action) {
         return obj.id != action.payload
       })
       return deletedNewArray
+
+    case AchievementActionTypes.GET_ACHIEVEMENTS:
+      return action.payload
     
     default:
       return state

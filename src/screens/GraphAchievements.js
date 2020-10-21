@@ -9,8 +9,9 @@ import { BarChart } from "react-native-chart-kit";
 // Access state in Redux
 import { useSelector } from 'react-redux'
 
-function GraphAchievements({ navigation }) {
-  const achievements = useSelector(state => state.achievements)
+function GraphAchievements({ navigation, route }) {
+  // const achievements = useSelector(state => state.achievements)
+  const achievements = route.params.firebaseAchievements
 
   const [count, setCount] = useState([])
   const partOfLife = ["Work", "Self", "Play", "Living"]
@@ -24,7 +25,7 @@ function GraphAchievements({ navigation }) {
     var i;
     for (i = 0; i < achievements.length; i++) {
       var j;
-      const partOfLifeValues = achievements[i].achievement.selectedA
+      const partOfLifeValues = achievements[i].selectedA
       console.log(partOfLifeValues)
       for (j = 0; j < partOfLifeValues.length; j++) {
         allData.push(partOfLifeValues[j])
