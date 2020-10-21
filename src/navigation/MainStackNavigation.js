@@ -30,7 +30,7 @@ const MaterialBottomTabs = createMaterialBottomTabNavigator();
 function MainStackNavigator() {
   const user = useSelector(state => state.user)
   return (
-    
+
       <Stack.Navigator
         initialRouteName='ViewAchievements'
         screenOptions={{
@@ -48,9 +48,9 @@ function MainStackNavigator() {
             component={Signup}
           />
         </>) : (
-      
+
           <>
-      
+
 
             <Stack.Screen
               name='AddAchievement'
@@ -61,8 +61,8 @@ function MainStackNavigator() {
         ) }
       </Stack.Navigator>,       <MaterialBottomTabs.Navigator>
       <MaterialBottomTabs.Screen name="Profile" component={Profile} />
-      <MaterialBottomTabs.Screen name="GraphAchievements" component={GraphAchievements} />
-      <MaterialBottomTabs.Screen name="ViewAchievements" component={AddAchievement, ViewAchievements}/>
+      <MaterialBottomTabs.Screen name="Graph" component={GraphAchievements} />
+      <MaterialBottomTabs.Screen name="View Achievements" component={AddAchievement, ViewAchievements}/>
       {/* <MaterialBottomTabs.Screen name="ViewAchievements" component={AddAchievement} /> */}
       </MaterialBottomTabs.Navigator>
   )
