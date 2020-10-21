@@ -43,16 +43,17 @@ export function deleteachievement(id) {
 //   }
 // }
 
-// export const addAchievementFirebase = () => {
-//   return async (dispatch, getState) => {
-//     try {
-//       db.collection("users").doc(user.uid).collection('achievements')
-//         .add(achievement)
-//     } catch (e) {
-//         alert(e)
-//     }
-//   }
-// }
+export const addachievementfirebase = (achievement) => {
+  return async (dispatch, getState) => {
+    try {
+      const { email, uid } = getState().user
+      db.collection("users").doc(uid).collection('achievements')
+        .add(achievement)
+    } catch (e) {
+        alert(e)
+    }
+  }
+}
 
 export const deleteachievementfirebase = (id) => {
   return async (dispatch, getState) => {

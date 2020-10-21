@@ -7,7 +7,7 @@ import Firebase, {db} from '../../config/Firebase'
 
 // Access state in Redux
 import { useSelector, useDispatch } from 'react-redux'
-import { addachievement, deleteachievement, getachievementsfirebase, deleteachievementfirebase } from '../redux/achievements/achievements.actions'
+import { addachievement, deleteachievement, getachievementsfirebase, deleteachievementfirebase, addachievementfirebase } from '../redux/achievements/achievements.actions'
 import { logout } from '../redux/user/user.actions'
 
 function ViewAchievements({ navigation }) {
@@ -19,6 +19,7 @@ function ViewAchievements({ navigation }) {
   const deleteAchievement = id => dispatch(deleteachievement(id))
   const getAchievementsFirebase = () => dispatch(getachievementsfirebase())
   const deleteAchievementFirebase = (id) => dispatch(deleteachievementfirebase(id))
+  const addAchievementFirebase = (achievement) => dispatch(addachievementfirebase(achievement))
   const logOut = () => dispatch(logout())
 
   const handleSignout = () => {
@@ -30,14 +31,14 @@ function ViewAchievements({ navigation }) {
     getAchievementsFirebase()
   }, [])
 
-  const addAchievementFirebase = async (achievement) => {
-    try {
-      db.collection("users").doc(user.uid).collection('achievements')
-        .add(achievement)
-    } catch (e) {
-        alert(e)
-    }
-  }
+  // const addAchievementFirebase = async (achievement) => {
+  //   try {
+  //     db.collection("users").doc(user.uid).collection('achievements')
+  //       .add(achievement)
+  //   } catch (e) {
+  //       alert(e)
+  //   }
+  // }
 
   // const deleteAchievementFirebase = async (id) => {
   //   try {
