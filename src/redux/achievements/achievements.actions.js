@@ -5,23 +5,6 @@ import { db } from '../../../config/Firebase.js'
 
 // Action Creators
 
-let achievementID = 0
-
-export function addachievement(achievement) {
-  return {
-    type: AchievementActionTypes.ADD_ACHIEVEMENT,
-    id: achievementID++,
-    achievement
-  }
-}
-
-export function deleteachievement(id) {
-  return {
-    type: AchievementActionTypes.DELETE_ACHIEVEMENT,
-    payload: id
-  }
-}
-
 
 export const addachievementfirebase = (achievement) => {
   return async (dispatch, getState) => {
