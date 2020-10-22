@@ -3,20 +3,17 @@ import { StyleSheet, View, FlatList } from 'react-native';
 import { Text, FAB, List, IconButton } from 'react-native-paper';
 
 import Header from '../components/Header'
-import Firebase, {db} from '../../config/Firebase'
+import Firebase from '../../config/Firebase'
 
 // Access state in Redux
 import { useSelector, useDispatch } from 'react-redux'
-import { addachievement, deleteachievement, getachievementsfirebase, deleteachievementfirebase, addachievementfirebase } from '../redux/achievements/achievements.actions'
+import { getachievementsfirebase, deleteachievementfirebase, addachievementfirebase } from '../redux/achievements/achievements.actions'
 import { logout } from '../redux/user/user.actions'
 
 function ViewAchievements({ navigation }) {
   const achievements = useSelector(state => state.achievements)
-  const user = useSelector(state => state.user)
 
   const dispatch = useDispatch()
-  const addAchievement = achievement => dispatch(addachievement(achievement))
-  const deleteAchievement = id => dispatch(deleteachievement(id))
   const getAchievementsFirebase = () => dispatch(getachievementsfirebase())
   const deleteAchievementFirebase = (id) => dispatch(deleteachievementfirebase(id))
   const addAchievementFirebase = (achievement) => dispatch(addachievementfirebase(achievement))
@@ -79,7 +76,7 @@ function ViewAchievements({ navigation }) {
           label='Add Achievement'
           onPress={() =>
             navigation.navigate('AddAchievement', {
-              addAchievementFirebase, addAchievement
+              addAchievementFirebase
           })
         }
         />
