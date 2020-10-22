@@ -6,6 +6,7 @@ import Header from '../components/Header'
 import Firebase from '../../config/Firebase'
 
 // Access state in Redux
+
 import { useSelector, useDispatch } from 'react-redux'
 import { getachievementsfirebase, deleteachievementfirebase, addachievementfirebase } from '../redux/achievements/achievements.actions'
 import { logout } from '../redux/user/user.actions'
@@ -49,7 +50,7 @@ function ViewAchievements({ navigation }) {
             renderItem={({ item }) => (
               <List.Item
                 title={item.achievementTitle}
-                description = {[item.selectedA.join(),",", item.selectedB.join()]}
+                description = {[item.selectedA.join(),',', item.selectedB.join()]}
                 descriptionNumberOfLines={2}
                 titleStyle={styles.listTitle}
                 onPress={() => deleteAchievementFirebase(item.id)}

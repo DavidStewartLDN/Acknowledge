@@ -1,15 +1,13 @@
 import { AchievementActionTypes } from './achievements.types'
-
 import { db } from '../../../config/Firebase.js'
-
 
 // Action Creators
 
 export const addachievementfirebase = (achievement) => {
   return async (dispatch, getState) => {
     try {
-      const { email, uid } = getState().user
-      db.collection("users").doc(uid).collection('achievements')
+      const { uid } = getState().user
+      db.collection('users').doc(uid).collection('achievements')
         .add(achievement)
     } catch (e) {
         alert(e)
@@ -20,8 +18,8 @@ export const addachievementfirebase = (achievement) => {
 export const deleteachievementfirebase = (id) => {
   return async (dispatch, getState) => {
     try {
-      const { email, uid } = getState().user
-      db.collection("users").doc(uid).collection('achievements')
+      const { uid } = getState().user
+      db.collection('users').doc(uid).collection('achievements')
         .doc(id)
         .delete()
     } catch (e) {
@@ -33,8 +31,8 @@ export const deleteachievementfirebase = (id) => {
 export const getachievementsfirebase = () => {
   return async (dispatch, getState) => {
     try {
-      const { email, uid } = getState().user
-      db.collection("users").doc(uid).collection('achievements')
+      const { uid } = getState().user
+      db.collection('users').doc(uid).collection('achievements')
       .orderBy('createdAt', 'asc')
       .onSnapshot(
         querySnapshot => {
