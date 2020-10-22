@@ -17,8 +17,6 @@ function ViewAchievements({ navigation }) {
   const addAchievement = achievement => dispatch(addachievement(achievement))
   const deleteAchievement = id => dispatch(deleteachievement(id))
   const logOut = () => dispatch(logout())
-
-  console.log(achievements)
   return (
     <>
       <Header titleText='Access' />
