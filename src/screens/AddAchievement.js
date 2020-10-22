@@ -27,7 +27,7 @@ function AddAchievement({ navigation, route }) {
   const saveSelectedSatisfied = (isSelected, label) => {
     isSelected ? setSelectedB([...selectedB.filter(x => x !== label)]) : setSelectedB([...selectedB, label])
   };
-  
+
   return (
     <>
       <Header titleText='Add an Achievement' />

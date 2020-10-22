@@ -12,7 +12,6 @@ import MainStackNavigator from './src/navigation/MainStackNavigation';
 // Imports for redux
 import { Provider } from 'react-redux'
 
-
 import store from './src/redux/store'
 
 export default function App() {
