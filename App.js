@@ -57,7 +57,13 @@ function AuthenticationStackScreen() {
 
   function AchievementsStackScreen() {
     return (
-      <AchievementStack.Navigator>
+      <AchievementStack.Navigator 
+      screenOptions={{
+          gestureEnabled: true,
+          headerShown: false
+        }}
+      >
+
       <AchievementStack.Screen
           name='ViewAchievements'
           component={ViewAchievements}
@@ -72,7 +78,12 @@ function AuthenticationStackScreen() {
 
 function GraphStackScreen() {
   return (
-    <GraphStack.Navigator>
+    <GraphStack.Navigator
+    screenOptions={{
+          gestureEnabled: true,
+          headerShown: false
+        }}
+        >
     <GraphStack.Screen
       name='Graph Achievements'
       component={GraphAchievements}
