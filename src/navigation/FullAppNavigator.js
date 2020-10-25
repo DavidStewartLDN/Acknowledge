@@ -1,11 +1,11 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack'
 
-import { useSelector } from 'react-redux'
-
 // Importing Navigation Stacks
 import AuthenticationStack from './AuthenticationStack'
 import MainAppBottomTabNavigator from './MainAppBottomTabNavigator'
+
+import { useSelector } from 'react-redux'
 
 const Stack = createStackNavigator()
 
