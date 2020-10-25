@@ -30,9 +30,7 @@ import { Provider } from 'react-redux'
 import store from './src/redux/store'
 
 function AuthenticationStackScreen() {
-  const user = useSelector(state => state.user)
   return (
-
       <AuthStack.Navigator
         initialRouteName='ViewAchievements'
         screenOptions={{
@@ -40,9 +38,6 @@ function AuthenticationStackScreen() {
           headerShown: false
         }}
         >
-        if user.uid == undefined {
-
-        <>
           <AuthStack.Screen
             name='Login'
             component={Login}
@@ -51,8 +46,7 @@ function AuthenticationStackScreen() {
             name='Signup'
             component={Signup}
           />
-        </>}
-        </AuthStack.Navigator>
+      </AuthStack.Navigator>
 
   ) }
 
@@ -96,49 +90,51 @@ function GraphStackScreen() {
 function BottomTabs() {
   return(
     <Tab.Navigator
-      initialRouteName="Feed"
-           tabBarOptions={{
-             activeTintColor: '#42f44b',
-           }}>
-           <Tab.Screen
-             name="ViewAchievements"
-             component={AchievementsStackScreen}
-             options={{
-               tabBarLabel: 'View Achievements',
-               tabBarIcon: ({ color, size }) => (
-                 <MaterialCommunityIcons name="home" color={color} size={size} />
-               ),
-             }}
-           />
-           <Tab.Screen
-             name="GraphAchievements"
-             component={GraphStackScreen}
-             options={{
-               tabBarLabel: 'Graph Achievements',
-               tabBarIcon: ({ color, size }) => (
-                 <MaterialCommunityIcons
-                   name="settings"
-                   color={color}
-                   size={size}
-                 />
-               ),
-             }}
-           />
-           <Tab.Screen
-             name="Profile"
-             component={Profile}
-             options={{
-               tabBarLabel: 'Profile',
-               tabBarIcon: ({ color, size }) => (
-                 <MaterialCommunityIcons
-                   name="settings"
-                   color={color}
-                   size={size}
-                 />
-               ),
-             }}
-           />
-         </Tab.Navigator>
+      initialRouteName="ViewAchievements"
+      shifting={true}
+      sceneAnimationEnabled={true}
+      tabBarOptions={{
+        activeTintColor: '#42f44b',
+      }}>
+      <Tab.Screen
+        name="ViewAchievements"
+        component={AchievementsStackScreen}
+        options={{
+          tabBarLabel: 'View Achievements',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="home" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="GraphAchievements"
+        component={GraphStackScreen}
+        options={{
+          tabBarLabel: 'Graph Achievements',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name="settings"
+              color={color}
+              size={size}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          tabBarLabel: 'Profile',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name="settings"
+              color={color}
+              size={size}
+            />
+          ),
+        }}
+      />
+    </Tab.Navigator>
   )
 }
 
@@ -151,22 +147,16 @@ function MainStackNavigator() {
           headerShown: false
         }}
         >
-        {user.uid == undefined ? (<>
+        {user.uid == undefined ? (
           <Stack.Screen
-            name='Login'
-            component={Login}
+            name='AuthenticationStackScreen'
+            component={AuthenticationStackScreen}
           />
-          <Stack.Screen
-            name='Signup'
-            component={Signup}
-          />
-        </>) : (
-          <>
+        ) : (
             <Stack.Screen
               name='Bottom'
               component={BottomTabs}
             />
-          </>
         ) }
       </Stack.Navigator>
   )
