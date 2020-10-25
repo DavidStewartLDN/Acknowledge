@@ -23,6 +23,7 @@ const AuthStack = createStackNavigator()
 const AchievementStack = createStackNavigator()
 const GraphStack = createStackNavigator()
 const Tab = createMaterialBottomTabNavigator();
+const Stack = createStackNavigator()
 
 import { Provider } from 'react-redux'
 
@@ -141,12 +142,42 @@ function BottomTabs() {
   )
 }
 
+function MainStackNavigator() {
+  const user = useSelector(state => state.user)
+  return (
+      <Stack.Navigator
+        screenOptions={{
+          gestureEnabled: true,
+          headerShown: false
+        }}
+        >
+        {user.uid == undefined ? (<>
+          <Stack.Screen
+            name='Login'
+            component={Login}
+          />
+          <Stack.Screen
+            name='Signup'
+            component={Signup}
+          />
+        </>) : (
+          <>
+            <Stack.Screen
+              name='Bottom'
+              component={BottomTabs}
+            />
+          </>
+        ) }
+      </Stack.Navigator>
+  )
+}
+
 function App() {
   return (
     <Provider store={store}>
       <PaperProvider>
         <NavigationContainer>
-          <BottomTabs />
+          <MainStackNavigator />
         </NavigationContainer>
       </PaperProvider>
     </Provider>
