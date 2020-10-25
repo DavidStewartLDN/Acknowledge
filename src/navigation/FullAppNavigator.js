@@ -8,38 +8,18 @@ import AddAchievement from '../screens/AddAchievement';
 import GraphAchievements from '../screens/GraphAchievements';
 import Profile from '../screens/Profile';
 
-// Authentication Screens
-import Login from '../screens/Login';
-import Signup from '../screens/Signup';
-
-
 import { useSelector } from 'react-redux'
 
+// Importing Navigators
 import AuthenticationStack from './AuthenticationStack'
+import AchievementsStack from './AchievementsStack'
 
 const AchievementStack = createStackNavigator()
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator()
 
 
-function AchievementsStack() {
-  return (
-    <AchievementStack.Navigator 
-    screenOptions={{
-        gestureEnabled: true,
-        headerShown: false
-      }}>
-      <AchievementStack.Screen
-          name='ViewAchievements'
-          component={ViewAchievements}
-        />
-      <AchievementStack.Screen
-        name='AddAchievement'
-        component={AddAchievement}
-      />
-    </AchievementStack.Navigator>
-  );
-}
+
 
 function MainAppBottomTabNavigator() {
   return(
