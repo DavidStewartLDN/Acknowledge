@@ -21,7 +21,6 @@ import { useSelector } from 'react-redux'
 
 const AuthStack = createStackNavigator()
 const AchievementStack = createStackNavigator()
-const GraphStack = createStackNavigator()
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator()
 
@@ -29,36 +28,32 @@ import { Provider } from 'react-redux'
 
 import store from './src/redux/store'
 
-function AuthenticationStackScreen() {
+function AuthenticationStack() {
   return (
-      <AuthStack.Navigator
-        initialRouteName='ViewAchievements'
-        screenOptions={{
-          gestureEnabled: true,
-          headerShown: false
-        }}
-        >
-          <AuthStack.Screen
-            name='Login'
-            component={Login}
-          />
-          <AuthStack.Screen
-            name='Signup'
-            component={Signup}
-          />
-      </AuthStack.Navigator>
-
+    <AuthStack.Navigator
+      initialRouteName='ViewAchievements'
+      screenOptions={{
+        gestureEnabled: true,
+        headerShown: false
+      }}>
+      <AuthStack.Screen
+        name='Login'
+        component={Login}
+      />
+      <AuthStack.Screen
+        name='Signup'
+        component={Signup}
+      />
+    </AuthStack.Navigator>
   ) }
 
-  function AchievementsStackScreen() {
-    return (
-      <AchievementStack.Navigator 
-      screenOptions={{
-          gestureEnabled: true,
-          headerShown: false
-        }}
-      >
-
+function AchievementsStack() {
+  return (
+    <AchievementStack.Navigator 
+    screenOptions={{
+        gestureEnabled: true,
+        headerShown: false
+      }}>
       <AchievementStack.Screen
           name='ViewAchievements'
           component={ViewAchievements}
@@ -67,23 +62,23 @@ function AuthenticationStackScreen() {
         name='AddAchievement'
         component={AddAchievement}
       />
-      </AchievementStack.Navigator>
-    );
-  }
+    </AchievementStack.Navigator>
+  );
+}
 
-
-function BottomTabs() {
+function MainAppBottomTabNavigator() {
   return(
     <Tab.Navigator
       initialRouteName="ViewAchievements"
       shifting={true}
       sceneAnimationEnabled={true}
-      tabBarOptions={{
-        activeTintColor: '#42f44b',
-      }}>
+      barStyle={{ backgroundColor: '#60DBC5' }}
+      activeColor="#f0edf6"
+      inactiveColor='#2E7166'
+      >
       <Tab.Screen
         name="ViewAchievements"
-        component={AchievementsStackScreen}
+        component={AchievementsStack}
         options={{
           tabBarLabel: 'Achievements',
           tabBarIcon: 'home',
@@ -112,24 +107,24 @@ function BottomTabs() {
 function MainStackNavigator() {
   const user = useSelector(state => state.user)
   return (
-      <Stack.Navigator
-        screenOptions={{
-          gestureEnabled: true,
-          headerShown: false
-        }}
-        >
-        {user.uid == undefined ? (
-          <Stack.Screen
-            name='AuthenticationStackScreen'
-            component={AuthenticationStackScreen}
-          />
-        ) : (
-            <Stack.Screen
-              name='Bottom'
-              component={BottomTabs}
-            />
-        ) }
-      </Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        gestureEnabled: true,
+        headerShown: false
+      }}
+      >
+      {user.uid == undefined ? (
+        <Stack.Screen
+          name='AuthenticationStack'
+          component={AuthenticationStack}
+        />
+      ) : (
+        <Stack.Screen
+          name='MainAppBottomTabNavigator'
+          component={MainAppBottomTabNavigator}
+        />
+      ) }
+    </Stack.Navigator>
   )
 }
 
