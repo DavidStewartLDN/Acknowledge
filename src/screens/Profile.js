@@ -5,6 +5,8 @@ import { IconButton } from 'react-native-paper'
 import { connect } from 'react-redux'
 import Firebase from '../../config/Firebase'
 
+import { logout } from '../redux/user/user.actions'
+
 import Header from '../components/Header'
 
 class Profile extends React.Component {
@@ -74,10 +76,17 @@ const styles = StyleSheet.create({
     },
 })
 
+const mapDispatchToProps = dispatch => {
+    return bindActionCreators({ logout }, dispatch)
+}
+
 const mapStateToProps = state => {
     return {
         user: state.user
     }
 }
 
-export default connect(mapStateToProps)(Profile)
+export default connect(
+    mapStateToProps, 
+    mapDispatchToProps
+)(Profile)
