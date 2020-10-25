@@ -100,24 +100,16 @@ function BottomTabs() {
         name="ViewAchievements"
         component={AchievementsStackScreen}
         options={{
-          tabBarLabel: 'View Achievements',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="home" color={color} size={size} />
-          ),
+          tabBarLabel: 'Achievements',
+          tabBarIcon: 'home',
         }}
       />
       <Tab.Screen
         name="GraphAchievements"
         component={GraphStackScreen}
         options={{
-          tabBarLabel: 'Graph Achievements',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name="settings"
-              color={color}
-              size={size}
-            />
-          ),
+          tabBarLabel: 'Graph',
+          tabBarIcon: 'chart-bar',
         }}
       />
       <Tab.Screen
@@ -125,13 +117,7 @@ function BottomTabs() {
         component={Profile}
         options={{
           tabBarLabel: 'Profile',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name="settings"
-              color={color}
-              size={size}
-            />
-          ),
+          tabBarIcon: 'account'
         }}
       />
     </Tab.Navigator>
