@@ -1,6 +1,5 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-import { IconButton } from 'react-native-paper'
 
 import { connect } from 'react-redux'
 import Firebase from '../../config/Firebase'
