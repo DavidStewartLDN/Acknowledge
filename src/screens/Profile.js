@@ -21,7 +21,9 @@ class Profile extends React.Component {
         this.props.logout()
     }
 
+
     render() {
+        console.log(this.props.user.uid)
         return (
             <>
                 <Header titleText='Access' />

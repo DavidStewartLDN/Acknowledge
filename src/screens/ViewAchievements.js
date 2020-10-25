@@ -8,7 +8,6 @@ import Firebase from '../../config/Firebase'
 // Access state in Redux
 import { useSelector, useDispatch } from 'react-redux'
 import { addachievement, deleteachievement} from '../redux/achievements/achievements.actions'
-import { logout } from '../redux/user/user.actions'
 
 function ViewAchievements({ navigation }) {
   const achievements = useSelector(state => state.achievements)
@@ -16,7 +15,6 @@ function ViewAchievements({ navigation }) {
   const dispatch = useDispatch()
   const addAchievement = achievement => dispatch(addachievement(achievement))
   const deleteAchievement = id => dispatch(deleteachievement(id))
-  const logOut = () => dispatch(logout())
   return (
     <>
       <Header titleText='Access' />
