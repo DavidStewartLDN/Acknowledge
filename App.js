@@ -19,6 +19,8 @@ import Signup from './src/screens/Signup';
 import { NavigationContainer } from '@react-navigation/native';
 import { useSelector } from 'react-redux'
 
+import MainStackNavigator from './src/navigation/MainStackNavigation';
+
 const AuthStack = createStackNavigator()
 const AchievementStack = createStackNavigator()
 const Tab = createMaterialBottomTabNavigator();
@@ -104,29 +106,6 @@ function MainAppBottomTabNavigator() {
   )
 }
 
-function MainStackNavigator() {
-  const user = useSelector(state => state.user)
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        gestureEnabled: true,
-        headerShown: false
-      }}
-      >
-      {user.uid == undefined ? (
-        <Stack.Screen
-          name='AuthenticationStack'
-          component={AuthenticationStack}
-        />
-      ) : (
-        <Stack.Screen
-          name='MainAppBottomTabNavigator'
-          component={MainAppBottomTabNavigator}
-        />
-      ) }
-    </Stack.Navigator>
-  )
-}
 
 function App() {
   return (
