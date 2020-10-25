@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, View, Dimensions} from 'react-native';
-import { IconButton } from 'react-native-paper';
 
 import Header from '../components/Header'
 
@@ -60,13 +59,6 @@ function GraphAchievements({ navigation }) {
   return (
     <>
       <Header titleText='Access' />
-      <IconButton
-        icon='close'
-        size={25}
-        color='white'
-        onPress={() => navigation.goBack()}
-        style={styles.iconButton}
-      />
       <View style={styles.container}>
         <BarChart
           data={data}
