@@ -96,7 +96,7 @@ function MainAppBottomTabNavigator() {
   )
 }
 
-function MainStackNavigator() {
+function FullAppNavigator() {
   const user = useSelector(state => state.user)
   return (
     <Stack.Navigator
@@ -120,4 +120,4 @@ function MainStackNavigator() {
   )
 }
 
-export default MainStackNavigator;
+export default FullAppNavigator;
