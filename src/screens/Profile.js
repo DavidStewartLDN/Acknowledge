@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import Firebase from '../../config/Firebase'
 
 import { logout } from '../redux/user/user.actions'
+import { bindActionCreators } from 'redux'
 
 import Header from '../components/Header'
 
@@ -17,7 +18,7 @@ class Profile extends React.Component {
 
     handleSignout = () => {
         Firebase.auth().signOut()
-        this.props.navigation.navigate('Login')
+        this.props.logout()
     }
 
     render() {
