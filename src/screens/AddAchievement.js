@@ -4,7 +4,10 @@ import { IconButton, TextInput, FAB, Text } from 'react-native-paper';
 
 import Checkbox from "../components/checkbox";
 
-import Header from '../components/Header'
+import Header from '../components/Header';
+
+import firebase from 'firebase'
+import 'firebase/firestore'
 
 function AddAchievement({ navigation, route }) {
   const [achievementTitle, setAchievementTitle] = useState('')
@@ -12,10 +15,10 @@ function AddAchievement({ navigation, route }) {
   const [selectedB, setSelectedB] = useState([])
 
   function onSaveAchievement() {
-    route.params.addAchievement({ achievementTitle, selectedA, selectedB })
+    const createdAt = firebase.firestore.FieldValue.serverTimestamp()
+    route.params.addAchievementFirebase({ achievementTitle, selectedA, selectedB, createdAt })
     navigation.goBack()
   }
-
 
   const saveSelectedPartOfLife = (isSelected, label) => {
     isSelected ? setSelectedA([...selectedA.filter(x => x !== label)]) : setSelectedA([...selectedA, label])
@@ -24,9 +27,6 @@ function AddAchievement({ navigation, route }) {
   const saveSelectedSatisfied = (isSelected, label) => {
     isSelected ? setSelectedB([...selectedB.filter(x => x !== label)]) : setSelectedB([...selectedB, label])
   };
-
-  console.log(selectedA);
-  console.log(selectedB);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 import { Text, FAB, List } from 'react-native-paper';
 
@@ -6,15 +6,31 @@ import Header from '../components/Header'
 import Firebase from '../../config/Firebase'
 
 // Access state in Redux
+
 import { useSelector, useDispatch } from 'react-redux'
-import { addachievement, deleteachievement} from '../redux/achievements/achievements.actions'
+
+import { getachievementsfirebase, deleteachievementfirebase, addachievementfirebase } from '../redux/achievements/achievements.actions'
+import { logout } from '../redux/user/user.actions'
+
 
 function ViewAchievements({ navigation }) {
   const achievements = useSelector(state => state.achievements)
 
   const dispatch = useDispatch()
-  const addAchievement = achievement => dispatch(addachievement(achievement))
-  const deleteAchievement = id => dispatch(deleteachievement(id))
+  const getAchievementsFirebase = () => dispatch(getachievementsfirebase())
+  const deleteAchievementFirebase = (id) => dispatch(deleteachievementfirebase(id))
+  const addAchievementFirebase = (achievement) => dispatch(addachievementfirebase(achievement))
+  const logOut = () => dispatch(logout())
+
+  const handleSignout = () => {
+    Firebase.auth().signOut()
+    logOut()
+  }
+
+  useEffect(() => {
+    getAchievementsFirebase()
+  }, [])
+
   return (
     <>
       <Header titleText='Access' />
@@ -28,11 +44,11 @@ function ViewAchievements({ navigation }) {
             data={achievements}
             renderItem={({ item }) => (
               <List.Item
-                title={item.achievement.achievementTitle}
-                description = {[item.achievement.selectedA.join(),",", item.achievement.selectedB.join()]}
+                title={item.achievementTitle}
+                description = {[item.selectedA.join(),',', item.selectedB.join()]}
                 descriptionNumberOfLines={2}
                 titleStyle={styles.listTitle}
-                onPress={() => deleteAchievement(item.id)}
+                onPress={() => deleteAchievementFirebase(item.id)}
               />
             )}
             keyExtractor={item => item.id.toString()}
@@ -45,7 +61,7 @@ function ViewAchievements({ navigation }) {
           label='Add Achievement'
           onPress={() =>
             navigation.navigate('AddAchievement', {
-              addAchievement
+              addAchievementFirebase
           })
         }
         />
