@@ -15,29 +15,12 @@ import Signup from '../screens/Signup';
 
 import { useSelector } from 'react-redux'
 
-const AuthStack = createStackNavigator()
+import AuthenticationStack from './AuthenticationStack'
+
 const AchievementStack = createStackNavigator()
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator()
 
-function AuthenticationStack() {
-  return (
-    <AuthStack.Navigator
-      initialRouteName='ViewAchievements'
-      screenOptions={{
-        gestureEnabled: true,
-        headerShown: false
-      }}>
-      <AuthStack.Screen
-        name='Login'
-        component={Login}
-      />
-      <AuthStack.Screen
-        name='Signup'
-        component={Signup}
-      />
-    </AuthStack.Navigator>
-  ) }
 
 function AchievementsStack() {
   return (
