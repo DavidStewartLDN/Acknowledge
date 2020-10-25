@@ -92,12 +92,9 @@ function GraphStackScreen() {
   );
 }
 
-function App() {
-  return (
-    <Provider store={store}>
-      <PaperProvider>
-      <NavigationContainer>
-      <Tab.Navigator
+function BottomTabs() {
+  return(
+    <Tab.Navigator
       initialRouteName="Feed"
            tabBarOptions={{
              activeTintColor: '#42f44b',
@@ -141,11 +138,18 @@ function App() {
              }}
            />
          </Tab.Navigator>
-       </NavigationContainer>
+  )
+}
 
+function App() {
+  return (
+    <Provider store={store}>
+      <PaperProvider>
+        <NavigationContainer>
+          <BottomTabs />
+        </NavigationContainer>
       </PaperProvider>
     </Provider>
-
   );
 }
 export default App;
