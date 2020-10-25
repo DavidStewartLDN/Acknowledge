@@ -71,21 +71,6 @@ function AuthenticationStackScreen() {
     );
   }
 
-function GraphStackScreen() {
-  return (
-    <GraphStack.Navigator
-    screenOptions={{
-          gestureEnabled: true,
-          headerShown: false
-        }}
-        >
-    <GraphStack.Screen
-      name='Graph Achievements'
-      component={GraphAchievements}
-    />
-    </GraphStack.Navigator>
-  );
-}
 
 function BottomTabs() {
   return(
@@ -106,7 +91,7 @@ function BottomTabs() {
       />
       <Tab.Screen
         name="GraphAchievements"
-        component={GraphStackScreen}
+        component={GraphAchievements}
         options={{
           tabBarLabel: 'Graph',
           tabBarIcon: 'chart-bar',
