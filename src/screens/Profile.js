@@ -1,41 +1,74 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-
-import { connect } from 'react-redux'
-import Firebase from '../../config/Firebase'
-
-import { logout } from '../redux/user/user.actions'
-import { bindActionCreators } from 'redux'
-
 import Header from '../components/Header'
 
-class Profile extends React.Component {
+import Firebase from '../../config/Firebase'
+import { logout } from '../redux/user/user.actions'
+import { useSelector, useDispatch } from 'react-redux'
 
-  moveStack = () => {
-    this.props.navigation.navigate('View Achievements')
-  }
+// Imports for Push Notifications
 
-  handleSignout = () => {
+import * as Notifications from 'expo-notifications';
+import { schedulePushNotification, registerForPushNotificationsAsync } from '../notifications/pushNotifications'
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
+
+function Profile(){
+  const user = useSelector(state => state.user)
+  const dispatch = useDispatch()
+  const logOut = () => dispatch(logout())
+
+  // State and Refs for push notifications
+  const [expoPushToken, setExpoPushToken] = useState('');
+  const [notification, setNotification] = useState(false);
+  const notificationListener = useRef();
+  const responseListener = useRef();
+
+  useEffect(() => {
+    registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
+
+    // This listener is fired whenever a notification is received while the app is foregrounded
+    notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
+      setNotification(notification);
+    });
+
+    // This listener is fired whenever a user taps on or interacts with a notification (works when app is foregrounded, backgrounded, or killed)
+    responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
+      console.log(response);
+    });
+
+    return () => {
+      Notifications.removeNotificationSubscription(notificationListener);
+      Notifications.removeNotificationSubscription(responseListener);
+    };
+  }, []);
+
+  const handleSignout = () => {
     Firebase.auth().signOut()
-    this.props.logout()
+    logOut()
   }
-
-
-  render() {
-    console.log(this.props.user.uid)
-    return (
-      <>
-        <Header titleText='Access' />
-        <View style={styles.container}>
-          <Text>Profile Screen</Text>
-          <Text>{this.props.user.email}</Text>
-          <TouchableOpacity style={styles.button} onPress={this.handleSignout}>
-            <Text style={styles.buttonText}>Log out</Text>
-          </TouchableOpacity>
-        </View>
-      </>
-    )
-  }
+  
+  return (
+    <>
+      <Header titleText='Access' />
+      <View style={styles.container}>
+        <Text>Profile Screen</Text>
+        <Text>{user.email}</Text>
+        <TouchableOpacity style={styles.button} onPress={handleSignout}>
+          <Text style={styles.buttonText}>Log out</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={async () => {await schedulePushNotification();}}>
+          <Text style={styles.buttonText}>Test push Notification</Text>
+        </TouchableOpacity>
+      </View>
+    </>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -70,17 +103,6 @@ const styles = StyleSheet.create({
   },
 })
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ logout }, dispatch)
-}
 
-const mapStateToProps = state => {
-  return {
-    user: state.user
-  }
-}
 
-export default connect(
-  mapStateToProps, 
-  mapDispatchToProps
-)(Profile)
+export default Profile
