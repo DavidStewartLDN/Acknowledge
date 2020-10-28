@@ -24,14 +24,14 @@ class Signup extends React.Component {
             style={styles.inputBox}
             value={this.props.user.email}
             onChangeText={email => this.props.updateEmail(email)}
-            placeholder='Email'
+            placeholder='Your Email'
             autoCapitalize='none'
           />
           <TextInput
             style={styles.inputBox}
             value={this.props.user.password}
             onChangeText={password => this.props.updatePassword(password)}
-            placeholder='Password'
+            placeholder='Your Password'
             secureTextEntry={true}
         />
           <TouchableOpacity style={styles.button} onPress={this.handleSignUp}>
