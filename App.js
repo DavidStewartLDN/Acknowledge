@@ -12,7 +12,7 @@ import store from './src/redux/store'
 // Push notifications
 import * as Notifications from 'expo-notifications';
 import { Text, View, Button, Platform } from 'react-native';
-import { sendPushNotification, registerForPushNotificationsAsync } from './src/components/pushNotifications'
+import { schedulePushNotification, registerForPushNotificationsAsync } from './src/components/pushNotifications'
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -63,7 +63,7 @@ export default function App() {
       <Button
         title="Press to Send Notification"
         onPress={async () => {
-          await sendPushNotification(expoPushToken);
+          await schedulePushNotification();
         }}
       />
     </View>
