@@ -31,14 +31,13 @@ describe('<App />', () => {
 
   test('Signup flow', () => {
     const app = render(<App />);
-    fireEvent.click(app.getByText("Sign up", { exact: false }))
-    console.log(app)
+    userEvent.click(app.getByText("Sign up", { exact: false }))
     const email = app.getByPlaceholderText("Your Email")
-    userEvent.type(email, "tom@gmail.com" )
+    userEvent.type(email, "testemail@gmail.com")
     const password = app.getByPlaceholderText("Your Password")
-    userEvent.type(password, "password123" )
-    fireEvent.click(app.getByText("Signup"))
-    expect(app.queryByText("You have not saved any Achievements yet!")).toBeTruthy(); 
+    userEvent.type(password, "password123")
+    userEvent.click(app.getByText("Signup"))
+    expect(app.getByText("You have not saved any Achievements yet!")).toBeTruthy(); 
   });
 });
 
