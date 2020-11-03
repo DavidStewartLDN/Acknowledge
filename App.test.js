@@ -2,12 +2,13 @@
 * @jest-environment jsdom
 */
 
- import React from 'react';
+import React from 'react';
 import renderer from 'react-test-renderer';
 import { act } from 'react-test-renderer';
 import App from './App';
 import Checkbox from './src/components/checkbox';
 import {fireEvent, render, screen} from '@testing-library/react';
+import userEvent from '@testing-library/user-event'
 
 
 jest.useFakeTimers();
@@ -30,8 +31,13 @@ describe('<App />', () => {
 
   test('Signup flow', () => {
     const app = render(<App />);
-    fireEvent.click(app.getByText("Sign up", { exact: false }))
-    expect(app.queryByText("Create an account today")).toBeTruthy(); 
+    userEvent.click(app.getByText("Sign up", { exact: false }))
+    const email = app.getByPlaceholderText("Your Email")
+    userEvent.type(email, "testemail@gmail.com")
+    const password = app.getByPlaceholderText("Your Password")
+    userEvent.type(password, "password123")
+    userEvent.click(app.getByText("Signup"))
+    expect(app.getByText("You have not saved any Achievements yet!")).toBeTruthy(); 
   });
 });
 
