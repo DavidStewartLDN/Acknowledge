@@ -2,6 +2,7 @@ import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
 import * as Notifications from 'expo-notifications';
 
+
 export async function schedulePushNotification() {
   await Notifications.scheduleNotificationAsync({
     content: {

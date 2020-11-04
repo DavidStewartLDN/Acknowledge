@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Button, Platform } from 'react-native'
 import Header from '../components/Header'
 
 import Firebase from '../../config/Firebase'
 import { logout } from '../redux/user/user.actions'
 import { useSelector, useDispatch } from 'react-redux'
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 // Imports for Push Notifications
 
@@ -23,12 +24,34 @@ function Profile(){
   const user = useSelector(state => state.user)
   const dispatch = useDispatch()
   const logOut = () => dispatch(logout())
+  const [date, setDate] = useState(new Date(1598051730000));
+  const [mode, setMode] = useState('date');
+  const [show, setShow] = useState(false);
 
   // State and Refs for push notifications
   const [expoPushToken, setExpoPushToken] = useState('');
   const [notification, setNotification] = useState(false);
   const notificationListener = useRef();
   const responseListener = useRef();
+
+    const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === 'ios');
+    setDate(currentDate);
+  };
+
+  const showMode = currentMode => {
+    setShow(true);
+    setMode(currentMode);
+  };
+
+  const showDatepicker = () => {
+    showMode('date');
+  };
+
+  const showTimepicker = () => {
+    showMode('time');
+  };
 
   useEffect(() => {
     registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
@@ -66,6 +89,25 @@ function Profile(){
         <TouchableOpacity style={styles.button} onPress={async () => {await schedulePushNotification();}}>
           <Text style={styles.buttonText}>Test push Notification</Text>
         </TouchableOpacity>
+        <View>
+              <View>
+        <Button onPress={showDatepicker} title="Show date picker!" />
+      </View>
+      <View>
+        <Button onPress={showTimepicker} title="Show time picker!" />
+      </View>
+      {show && (
+        <DateTimePicker
+          testID="dateTimePicker"
+          timeZoneOffsetInMinutes={0}
+          value={date}
+          mode={mode}
+          is24Hour={true}
+          display="default"
+          onChange={onChange}
+        />
+      )}
+      </View>
       </View>
     </>
   )
