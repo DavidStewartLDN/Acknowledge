@@ -5,11 +5,10 @@ import * as Notifications from 'expo-notifications';
 export async function schedulePushNotification() {
   await Notifications.scheduleNotificationAsync({
     content: {
-      title: "You've got mail! 📬",
-      body: 'Here is the notification body',
-      data: { data: 'goes here' },
+      title: "It's time to log an achievement",
+      body: 'What have you done today?',
     },
-    trigger: { seconds: 2 },
+    trigger: { hour: 12, minute: 28, repeats: true },
   });
 }
 
