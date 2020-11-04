@@ -4,7 +4,7 @@ Access is an app to save your achievements over your day. A lot of acheivements 
 
 This coding project is being built by David Stewat with the direction of Julie McManus.
 
-## Try out the app now!
+## Try out the app now!!
 
 The app has been deployed to netlify using a web build version of the project. It can be access(ed) [here](https://access-your-achievements.netlify.app/).
 
