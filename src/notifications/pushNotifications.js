@@ -3,13 +3,14 @@ import * as Permissions from 'expo-permissions';
 import * as Notifications from 'expo-notifications';
 
 
-export async function schedulePushNotification() {
+
+export async function schedulePushNotification(hours, minutes) {
   await Notifications.scheduleNotificationAsync({
     content: {
       title: "It's time to log an achievement",
       body: 'What have you done today?',
     },
-    trigger: { hour: 12, minute: 28, repeats: true },
+    trigger: { hour: hours, minute: minutes , repeats: true },
   });
 }
 

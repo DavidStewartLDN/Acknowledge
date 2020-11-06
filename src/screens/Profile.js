@@ -24,9 +24,11 @@ function Profile(){
   const user = useSelector(state => state.user)
   const dispatch = useDispatch()
   const logOut = () => dispatch(logout())
-  const [date, setDate] = useState(new Date(1598051730000));
-  const [mode, setMode] = useState('date');
+  const [date, setDate] = useState(new Date(51730000));
+  const [mode, setMode] = useState('time');
   const [show, setShow] = useState(false);
+  const [hours, setHours] = useState(12)
+  const [minutes, setMinutes] = useState(0)
 
   // State and Refs for push notifications
   const [expoPushToken, setExpoPushToken] = useState('');
@@ -38,6 +40,10 @@ function Profile(){
     const currentDate = selectedDate || date;
     setShow(Platform.OS === 'ios');
     setDate(currentDate);
+    let d = new Date(selectedDate)
+    setHours = d.getHours()
+    setMinutes = d.getMinutes()
+    console.log(minutes);
   };
 
   const showMode = currentMode => {
@@ -45,7 +51,7 @@ function Profile(){
     setMode(currentMode);
   };
 
-  const showDatepicker = () => {
+    const showDatepicker = () => {
     showMode('date');
   };
 
@@ -86,11 +92,11 @@ function Profile(){
         <TouchableOpacity style={styles.button} onPress={handleSignout}>
           <Text style={styles.buttonText}>Log out</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={async () => {await schedulePushNotification();}}>
+        <TouchableOpacity style={styles.button} onPress={async () => {await schedulePushNotification(hours, minutes);}}>
           <Text style={styles.buttonText}>Test push Notification</Text>
         </TouchableOpacity>
         <View>
-              <View>
+                <View>
         <Button onPress={showDatepicker} title="Show date picker!" />
       </View>
       <View>
@@ -108,6 +114,7 @@ function Profile(){
         />
       )}
       </View>
+      <View>schedulePushNotification minutes={minutes}</View>
       </View>
     </>
   )
