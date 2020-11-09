@@ -23,9 +23,9 @@ class Login extends React.Component {
   render() {
     return (
       <>
-      <Header titleText='Access' />
+      <Header titleText='Acknowledge' />
         <View style={styles.container}>
-          <Text style={styles.title}>Welcome to Access</Text>
+          <Text style={styles.title}>Welcome to Acknowledge</Text>
           <TextInput
             style={styles.inputBox}
             value={this.props.user.email}

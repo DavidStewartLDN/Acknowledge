@@ -17,7 +17,7 @@ class Signup extends React.Component {
   render() {
     return (
       <>
-        <Header titleText='Access' />
+        <Header titleText='Acknowledge' />
         <View style={styles.container}>
           <Text style={styles.title}>Create an account today</Text>
           <TextInput

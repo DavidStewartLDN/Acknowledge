@@ -1,12 +1,12 @@
-# Access
+# Acknowledge
 
-Access is an app to save your achievements over your day. A lot of acheivements that we make day to day are usually lost in the noise of our busy lives; sometimes small, sometimes intangible but Access seeks to change that. Wiht Access you can record day your acheivements and place where they fit into your lives.
+Acknowledge is an app to save your achievements over your day. A lot of acheivements that we make day to day are usually lost in the noise of our busy lives; sometimes small, sometimes intangible but Acknowledge seeks to change that. With Acknowledge you can record day your acheivements and place where they fit into your lives.
 
 This coding project is being built by David Stewat with the direction of Julie McManus.
 
 ## Try out the app now!
 
-The app has been deployed to netlify using a web build version of the project. It can be access(ed) [here](https://access-your-achievements.netlify.app/).
+The app has been deployed to netlify using a web build version of the project. It can be accessed [here](https://access-your-achievements.netlify.app/).
 
 ## Getting Started
 
