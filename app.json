@@ -19,7 +19,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.acknowledge"
+      "bundleIdentifier": "com.acknowledge.acknowledge"
     },
     "web": {
       "favicon": "./assets/favicon.png"
