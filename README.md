@@ -6,7 +6,7 @@
 
 Acknowledge is an app to save your achievements over your day. A lot of acheivements that we make day to day are usually lost in the noise of our busy lives; sometimes small, sometimes intangible but Acknowledge seeks to change that. With Acknowledge you can record day your acheivements and place where they fit into your lives.
 
-This coding project is being built by David Stewat with the direction of Julie McManus.
+This coding project is being built by a team of coders from Makers Academy, lead by David Stewart at the direction of Julie McManus.
 
 ## Try out the app now!
 
@@ -115,3 +115,10 @@ So that I can save them.
 ## Authors
 
 * **David Stewart** - *Initial work* - [DavidStewartLDN](https://github.com/DavidStewartLDN)
+* **Illias - the Greek - Grigoropoulos** - *Team Member* - [IliasMariosG](https://github.com/IliasMariosG)
+* **Katie Jones** - *Team Member* - [katieljones](https://github.com/katieljones)
+* **Matthew Lock** - *Team Member* - [mattybwoy](https://github.com/mattybwoy)
+* **Tom Ratcliffe** - *Team Member* - [ratcliffetj](https://github.com/ratcliffetj)
+* **India Rex** - *Team Member* - [indisaurusrex](https://github.com/indisaurusrex)
+* **Joanne Chen** - *Team Member* - [Joanne0330](https://github.com/Joanne0330)
+
