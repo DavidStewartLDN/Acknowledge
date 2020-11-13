@@ -1,5 +1,7 @@
 # Acknowledge
 
+<img align="right" src="images/access.gif" width="300" />
+
 **What it is**: This app is a way for people to see & track everything they do
 
 **What it’s about**: It is a way for people to see all of their achievements and acknowledge themselves for it
