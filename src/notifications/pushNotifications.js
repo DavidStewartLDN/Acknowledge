@@ -5,7 +5,7 @@ import * as Notifications from 'expo-notifications';
 
 
 export async function schedulePushNotification(hours, minutes) {
-  console.log("notify " + hours + " mins " + minutes)
+  await Notifications.cancelAllScheduledNotificationsAsync();
   await Notifications.scheduleNotificationAsync({
     content: {
       title: "It's time to log an achievement",
