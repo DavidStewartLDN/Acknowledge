@@ -28,7 +28,7 @@ function Profile(){
   const [mode, setMode] = useState('time');
   const [show, setShow] = useState(false);
   const [hours, setHours] = useState(12)
-  const [minutes, setMinutes] = useState(0)
+  const [minutes, setMinutes] = useState(15)
 
   // State and Refs for push notifications
   const [expoPushToken, setExpoPushToken] = useState('');
@@ -97,7 +97,7 @@ function Profile(){
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.button} onPress={async () => { await schedulePushNotification(hours, minutes); }}>
-            <Text style={styles.buttonText}>Test push Notification</Text>
+            <Text style={styles.buttonText}>Schedule push notifications for {hours}:{String(minutes).padStart(2,"0")}</Text>
           </TouchableOpacity>
         
           <View>
