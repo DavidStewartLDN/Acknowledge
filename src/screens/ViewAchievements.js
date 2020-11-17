@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 import { Text, FAB, List } from 'react-native-paper';
-
+import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import Header from '../components/Header'
 import Firebase from '../../config/Firebase'
-
+// import Calendar from '../components/Calendar'
 // Access state in Redux
 
 import { useSelector, useDispatch } from 'react-redux'
@@ -31,9 +31,14 @@ function ViewAchievements({ navigation }) {
     getAchievementsFirebase()
   }, [])
 
+  console.log(achievements[0].createdAt)
+  
   return (
     <>
       <Header titleText='Access' />
+      <Calendar
+      onDayPress={(day) => {console.log('selected day', day)}}
+      />
       <View style={styles.container}>
         {achievements.length === 0 ? (
           <View style={styles.titleContainer}>
