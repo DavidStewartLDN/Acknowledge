@@ -105,13 +105,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     paddingHorizontal: 20,
-    paddingVertical: 20
+    paddingVertical: 20,
+    paddingBottom: 120
   },
   iconButton: {
     backgroundColor: 'rgba(46, 113, 102, 0.8)',
     position: 'absolute',
     right: 0,
-    top: 40,
+    top: 20,
     margin: 10
   },
   title: {
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     margin: 20,
     right: 0,
-    bottom: 0
+    bottom: 70
   }
 })
 

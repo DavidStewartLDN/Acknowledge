@@ -11,15 +11,21 @@ function AchievementsStack() {
     <Stack.Navigator 
     screenOptions={{
         gestureEnabled: true,
-        headerShown: false
+        headerShown: true
       }}>
       <Stack.Screen
           name='ViewAchievements'
           component={ViewAchievements}
+          options={{
+            title: 'Acknowledge',
+          }}
         />
       <Stack.Screen
         name='AddAchievement'
         component={AddAchievement}
+        options={{
+          title: 'Add an Achievement',
+        }}
       />
     </Stack.Navigator>
   );
