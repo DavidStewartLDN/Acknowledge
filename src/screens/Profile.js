@@ -27,8 +27,8 @@ function Profile(){
   const [date, setDate] = useState(new Date(51730000));
   const [mode, setMode] = useState('time');
   const [show, setShow] = useState(false);
-  const [hours, setHours] = useState(12)
-  const [minutes, setMinutes] = useState(0)
+  let [hours, setHours] = useState(12)
+  let [minutes, setMinutes] = useState(0)
 
   // State and Refs for push notifications
   const [expoPushToken, setExpoPushToken] = useState('');
@@ -36,13 +36,14 @@ function Profile(){
   const notificationListener = useRef();
   const responseListener = useRef();
 
-    const onChange = (event, selectedDate) => {
+  const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === 'ios');
     setDate(currentDate);
     let d = new Date(selectedDate)
-    setHours = d.getHours()
-    setMinutes = d.getMinutes()
+    hours = d.getHours()
+    minutes = d.getMinutes()
+    console.log(hours)
     console.log(minutes);
   };
 
@@ -97,7 +98,7 @@ function Profile(){
         </TouchableOpacity>
         <View>
                 <View>
-        <Button onPress={showDatepicker} title="Show date picker!" />
+        {/* <Button onPress={showDatepicker} title="Show date picker!" /> */}
       </View>
       <View>
         <Button onPress={showTimepicker} title="Show time picker!" />
@@ -114,7 +115,7 @@ function Profile(){
         />
       )}
       </View>
-      <View>schedulePushNotification minutes={minutes}</View>
+      {/* <View>schedulePushNotification minutes={minutes}</View> */}
       </View>
     </>
   )
