@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
 import { IconButton, TextInput, FAB, Text } from 'react-native-paper';
 
 import Checkbox from "../components/checkbox";
@@ -38,6 +38,8 @@ function AddAchievement({ navigation, route }) {
         onPress={() => navigation.goBack()}
         style={styles.iconButton}
       />
+      <SafeAreaView>
+      <ScrollView >
       <View style={styles.container}>
         <TextInput
           label='Add Title Here'
@@ -92,6 +94,8 @@ function AddAchievement({ navigation, route }) {
           onPress={() => onSaveAchievement()}
         />
       </View>
+      </ScrollView>
+      </SafeAreaView>
     </>
   )
 }
