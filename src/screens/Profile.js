@@ -7,8 +7,6 @@ import Firebase from '../../config/Firebase'
 import { logout } from '../redux/user/user.actions'
 import { bindActionCreators } from 'redux'
 
-import Header from '../components/Header'
-
 class Profile extends React.Component {
 
   moveStack = () => {

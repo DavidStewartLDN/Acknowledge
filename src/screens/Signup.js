@@ -6,8 +6,6 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { updateEmail, updatePassword, signup } from '../redux/user/user.actions'
 
-import Header from '../components/Header'
-
 class Signup extends React.Component {
 
   handleSignUp = () => {

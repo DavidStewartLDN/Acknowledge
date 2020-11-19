@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 import { Text, FAB, List } from 'react-native-paper';
 
-import Header from '../components/Header'
 import Firebase from '../../config/Firebase'
 
 // Access state in Redux
@@ -20,12 +19,6 @@ function ViewAchievements({ navigation }) {
   const getAchievementsFirebase = () => dispatch(getachievementsfirebase())
   const deleteAchievementFirebase = (id) => dispatch(deleteachievementfirebase(id))
   const addAchievementFirebase = (achievement) => dispatch(addachievementfirebase(achievement))
-  const logOut = () => dispatch(logout())
-
-  const handleSignout = () => {
-    Firebase.auth().signOut()
-    logOut()
-  }
 
   useEffect(() => {
     getAchievementsFirebase()

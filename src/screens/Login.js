@@ -7,7 +7,6 @@ import { connect } from 'react-redux'
 import { updateEmail, updatePassword, login, getUser } from '../redux/user/user.actions'
 import Firebase from '../../config/Firebase'
 
-import Header from '../components/Header'
 
 class Login extends React.Component {
 
