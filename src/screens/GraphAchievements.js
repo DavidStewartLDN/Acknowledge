@@ -58,7 +58,6 @@ function GraphAchievements() {
 
   return (
     <>
-      <Header titleText='Acknowledge' />
       <View style={styles.container}>
         <BarChart
           data={data}

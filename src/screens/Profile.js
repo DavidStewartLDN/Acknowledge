@@ -25,7 +25,6 @@ class Profile extends React.Component {
     console.log(this.props.user.uid)
     return (
       <>
-        <Header titleText='Acknowledge' />
         <View style={styles.container}>
           <Text>Profile Screen</Text>
           <Text>{this.props.user.email}</Text>
