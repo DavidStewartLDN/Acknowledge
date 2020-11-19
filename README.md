@@ -1,12 +1,20 @@
-# Access
+# Acknowledge
 
-Access is an app to save your achievements over your day. A lot of acheivements that we make day to day are usually lost in the noise of our busy lives; sometimes small, sometimes intangible but Access seeks to change that. Wiht Access you can record day your acheivements and place where they fit into your lives.
+<img align="right" src="images/access.gif" width="300" />
 
-This coding project is being built by David Stewat with the direction of Julie McManus.
+**What it is**: This app is a way for people to see & track everything they do
+
+**What it’s about**: It is a way for people to see all of their achievements and acknowledge themselves for it
+
+**What we want it to leave people with**: With feelings of success, satisfaction and self appreciation. With excitement for what will come next.
+
+Acknowledge is an app to save your achievements over your day. A lot of acheivements that we make day to day are usually lost in the noise of our busy lives; sometimes small, sometimes intangible but Acknowledge seeks to change that. With Acknowledge you can record day your acheivements and place where they fit into your lives.
+
+This coding project is being built by a team of coders from Makers Academy, lead by David Stewart at the direction of Julie McManus.
 
 ## Try out the app now!!!
 
-The app has been deployed to netlify using a web build version of the project. It can be access(ed) [here](https://access-your-achievements.netlify.app/).
+The app has been deployed to netlify using a web build version of the project. It can be accessed [here](https://access-your-achievements.netlify.app/).
 
 ## Getting Started
 
@@ -111,3 +119,10 @@ So that I can save them.
 ## Authors
 
 * **David Stewart** - *Initial work* - [DavidStewartLDN](https://github.com/DavidStewartLDN)
+* **Illias - the Greek - Grigoropoulos** - *Team Member* - [IliasMariosG](https://github.com/IliasMariosG)
+* **Katie Jones** - *Team Member* - [katieljones](https://github.com/katieljones)
+* **Matthew Lock** - *Team Member* - [mattybwoy](https://github.com/mattybwoy)
+* **Tom Ratcliffe** - *Team Member* - [ratcliffetj](https://github.com/ratcliffetj)
+* **India Rex** - *Team Member* - [indisaurusrex](https://github.com/indisaurusrex)
+* **Joanne Chen** - *Team Member* - [Joanne0330](https://github.com/Joanne0330)
+
