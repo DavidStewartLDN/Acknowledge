@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, Button, Platform } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Platform, Switch } from 'react-native'
 import Header from '../components/Header'
 
 import Firebase from '../../config/Firebase'
@@ -25,38 +25,34 @@ function Profile(){
   const dispatch = useDispatch()
   const logOut = () => dispatch(logout())
   const [date, setDate] = useState(new Date(51730000));
-  const [mode, setMode] = useState('time');
-  const [show, setShow] = useState(false);
   const [hours, setHours] = useState(12)
-  const [minutes, setMinutes] = useState(15)
+  const [minutes, setMinutes] = useState(0)
 
   // State and Refs for push notifications
+  const [notifications, setNotifications] = useState(false);
   const [expoPushToken, setExpoPushToken] = useState('');
-  const [notification, setNotification] = useState(false);
   const notificationListener = useRef();
   const responseListener = useRef();
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
-    setShow(Platform.OS === 'ios');
     setDate(currentDate);
     let d = new Date(selectedDate)
     setHours(d.getHours())
     setMinutes(d.getMinutes())
+    schedulePushNotification(d.getHours(), d.getMinutes());
   };
 
-  const showMode = currentMode => {
-    setShow(true);
-    setMode(currentMode);
-  };
+  const toggleNotifications = async () => {
+    if(notifications) {
+      await Notifications.cancelAllScheduledNotificationsAsync();
+    }
+    setNotifications(!notifications);
 
-  const showTimepicker = () => {
-    showMode('time');
   };
 
   useEffect(() => {
     let isMounted = true;
-    
     
     registerForPushNotificationsAsync().then(token => {
       if (isMounted) setExpoPushToken(token);
@@ -87,64 +83,67 @@ function Profile(){
   return (
     <>
       <Header titleText='Access' />
-        <View style={styles.container}>
-        
-          <Text>Profile Screen</Text>
-          <Text>{user.email}</Text>
-          
-          <TouchableOpacity style={styles.button} onPress={handleSignout}>
-            <Text style={styles.buttonText}>Log out</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.button} onPress={async () => { await schedulePushNotification(hours, minutes); }}>
-            <Text style={styles.buttonText}>Schedule push notifications for {hours}:{String(minutes).padStart(2,"0")}</Text>
-          </TouchableOpacity>
-        
-          <View>
-            <View>
-              <Button onPress={showTimepicker} title="Show time picker!" />
-            </View>
-              {show && (
-                <DateTimePicker
-                  testID="dateTimePicker"
-                  timeZoneOffsetInMinutes={0}
-                  value={date}
-                  mode={mode}
-                  is24Hour={true}
-                  display="default"
-                  onChange={onChange}
-                />
-              )}
+        <View>
+          <Text style={styles.text}>{user.email}</Text>
+          <View style={{ flexDirection: 'row'}}>
+            <Text style={styles.switchText}>Enable push notifications</Text>
+            <Switch style={styles.switchText}
+              onChange={toggleNotifications}
+              value={notifications}
+            >
+            </Switch>
           </View>
-      {/* <View>schedulePushNotification minutes={minutes}</View> */}
+          {notifications && (
+            <DateTimePicker
+              testID="dateTimePicker"
+              timeZoneOffsetInMinutes={0}
+              value={date}
+              mode="time"
+              is24Hour={true}
+              display="default"
+              onChange={onChange}
+            />
+          )}
+          <View style={styles.center}>
+            <TouchableOpacity style={styles.button} onPress={handleSignout}>
+              <Text style={styles.buttonText}>Log out</Text>
+            </TouchableOpacity>
+          </View>
       </View>
     </>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
   button: {
     marginTop: 30,
     marginBottom: 20,
     paddingVertical: 5,
-    alignItems: 'center',
     backgroundColor: '#60DBC5',
     borderColor: '#60DBC5',
     borderWidth: 1,
     borderRadius: 5,
     width: 200
   },
+  center: {
+    alignItems: 'center'
+  },
   buttonText: {
     fontSize: 20,
     fontWeight: 'bold',
     color: '#fff',
     textAlign: 'center'
+  },
+  text: {
+    margin: 20,
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
+  switchText: {
+    margin: 20,
+    fontSize: 20,
+    fontWeight: 'bold',
   },
   iconButton: {
     backgroundColor: 'rgba(46, 113, 102, 0.8)',
