@@ -32,6 +32,9 @@ function AuthenticationStack() {
       <AuthStack.Screen
         name='Signup'
         component={Signup}
+        options={{
+            title: 'Sign up',
+          }}
       />
     </AuthStack.Navigator>
   )
