@@ -31,8 +31,6 @@ function ViewAchievements({ navigation }) {
     getAchievementsFirebase()
   }, [])
 
-  console.log(achievements[achievements.length-1])
-
   return (
     <>
       <View style={styles.container}>
