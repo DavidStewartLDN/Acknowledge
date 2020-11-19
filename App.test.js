@@ -7,8 +7,10 @@ import renderer from 'react-test-renderer';
 import { act } from 'react-test-renderer';
 import App from './App';
 import Checkbox from './src/components/checkbox';
-import {fireEvent, render, screen} from '@testing-library/react';
-import userEvent from '@testing-library/user-event'
+import { screen } from '@testing-library/dom';
+import {fireEvent, render} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
 
 
 jest.useFakeTimers();
@@ -29,15 +31,31 @@ describe('<App />', () => {
     })
   });
 
-  test('Signup flow', () => {
+  test('Signup flow', async () => {
+  
     const app = render(<App />);
+
     userEvent.click(app.getByText("Sign up", { exact: false }))
-    const email = app.getByPlaceholderText("Your Email")
-    userEvent.type(email, "testemail@gmail.com")
-    const password = app.getByPlaceholderText("Your Password")
-    userEvent.type(password, "password123")
-    userEvent.click(app.getByText("Signup"))
-    expect(app.getByText("You have not saved any Achievements yet!")).toBeTruthy(); 
+    
+    userEvent.type(app.getByPlaceholderText("Your Email"), 'testemail@gmail.com' )
+
+    userEvent.type(app.getByPlaceholderText("Your Password"), 'password123' )
+
+    await act(async () => {
+      userEvent.click(app.getByText("Signup", { exact: false }))
+      await act(async () => {
+        expect(app).toMatchSnapshot();
+      })
+    })
+    
+
+    // userEvent.click(screen.getByText("Signup"))
+
+   
+
+    // // expect(screen).toContain("You have not saved any Achievements yet!");
+    // expect(screen.getByText("You have not saved any Achievements yet!")).toBeTruthy(); 
+
   });
 });
 

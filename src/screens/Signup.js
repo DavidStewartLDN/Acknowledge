@@ -17,7 +17,7 @@ class Signup extends React.Component {
       <>
         <View style={styles.container}>
           <Text style={styles.title}>Create an account today</Text>
-          <TextInput
+          <TextInput 
             style={styles.inputBox}
             value={this.props.user.email}
             onChangeText={email => this.props.updateEmail(email)}

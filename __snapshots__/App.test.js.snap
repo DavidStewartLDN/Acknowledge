@@ -1,5 +1,578 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<App /> Signup flow 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <view
+        pointer-events="box-none"
+        style="flex: 1;"
+      >
+        <view
+          style="flex: 1;"
+        >
+          <rncsafeareaprovider>
+            <view
+              style="flex: 1;"
+            >
+              <view
+                pointer-events="box-none"
+                style="position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"
+              >
+                <view
+                  style="opacity: 1;"
+                />
+                <view
+                  gesturevelocityimpact="0.3"
+                  importantforaccessibility="auto"
+                  pointer-events="box-none"
+                  style="position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"
+                  transitionspec="[object Object]"
+                >
+                  <view
+                    pointer-events="box-none"
+                    style="flex: 1; margin-top: 0px;"
+                  >
+                    <view
+                      style="flex: 1; transform: [object Object],[object Object];"
+                    >
+                      <view
+                        pointer-events="none"
+                        style="position: absolute; top: 0px; bottom: 0px; width: 3px; left: 0px; background-color: rgb(242, 242, 242);"
+                      />
+                      <view>
+                        <view
+                          style="flex: 1; flex-direction: column-reverse;"
+                        >
+                          <view
+                            style="flex: 1;"
+                          >
+                            <view
+                              style="flex: 1;"
+                            >
+                              <view
+                                style="flex: 1;"
+                              >
+                                <view
+                                  pointer-events="box-none"
+                                  style="position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"
+                                >
+                                  <view
+                                    style="opacity: 1;"
+                                  />
+                                  <view
+                                    gesturevelocityimpact="0.3"
+                                    importantforaccessibility="no-hide-descendants"
+                                    pointer-events="box-none"
+                                    style="position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"
+                                    transitionspec="[object Object]"
+                                  >
+                                    <view
+                                      pointer-events="box-none"
+                                      style="flex: 1; margin-top: 0px;"
+                                    >
+                                      <view
+                                        style="flex: 1; transform: [object Object],[object Object];"
+                                      >
+                                        <view
+                                          pointer-events="none"
+                                          style="position: absolute; top: 0px; bottom: 0px; width: 3px; left: 0px; background-color: rgb(242, 242, 242);"
+                                        />
+                                        <view>
+                                          <view
+                                            style="flex: 1; flex-direction: column-reverse;"
+                                          >
+                                            <view
+                                              style="flex: 1;"
+                                            >
+                                              <rctsafeareaview>
+                                                <view
+                                                  style="background-color: rgb(96, 219, 197); height: 56px; flex-direction: row; align-items: center; elevation: 0; margin-top: 0px;"
+                                                >
+                                                  <view
+                                                    style="flex: 1; justify-content: center; align-items: center;"
+                                                  >
+                                                    <text>
+                                                      Access
+                                                    </text>
+                                                  </view>
+                                                </view>
+                                              </rctsafeareaview>
+                                              <view
+                                                style="flex: 1; background-color: rgb(255, 255, 255); align-items: center; justify-content: center;"
+                                              >
+                                                <text
+                                                  style="font-size: 45px; margin-bottom: 40px; text-align: center;"
+                                                >
+                                                  Welcome to Access
+                                                </text>
+                                                <textinput
+                                                  autocapitalize="none"
+                                                  placeholder="Email"
+                                                  style="width: 85%; margin: 10px; padding: 15px; font-size: 16px; border-color: #d3d3d3; border-bottom-width: 1px; text-align: center;"
+                                                  underlinecolorandroid="transparent"
+                                                />
+                                                <textinput
+                                                  placeholder="Password"
+                                                  style="width: 85%; margin: 10px; padding: 15px; font-size: 16px; border-color: #d3d3d3; border-bottom-width: 1px; text-align: center;"
+                                                  underlinecolorandroid="transparent"
+                                                />
+                                                <view
+                                                  focusable="true"
+                                                  style="margin-top: 30px; margin-bottom: 20px; align-items: center; background-color: rgb(96, 219, 197); border-color: #60dbc5; border-width: 1px; border-radius: 5px; width: 300px; opacity: 1;"
+                                                >
+                                                  <text
+                                                    style="font-size: 20px; font-weight: bold; color: rgb(255, 255, 255);"
+                                                  >
+                                                    Login
+                                                  </text>
+                                                </view>
+                                                <view
+                                                  focusable="true"
+                                                  style="margin-top: 30px; margin-bottom: 20px; align-items: center; background-color: rgb(96, 219, 197); border-color: #60dbc5; border-width: 1px; border-radius: 5px; width: 300px; opacity: 1;"
+                                                >
+                                                  <text
+                                                    style="font-size: 20px; font-weight: bold; color: rgb(255, 255, 255); text-align: center;"
+                                                  >
+                                                    Don't have an account yet? 
+                                                    
+
+                                                     Sign up
+                                                  </text>
+                                                </view>
+                                              </view>
+                                            </view>
+                                          </view>
+                                        </view>
+                                      </view>
+                                    </view>
+                                  </view>
+                                </view>
+                                <view
+                                  pointer-events="box-none"
+                                  style="position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"
+                                >
+                                  <view
+                                    style="opacity: 0;"
+                                  />
+                                  <view
+                                    gesturevelocityimpact="0.3"
+                                    importantforaccessibility="auto"
+                                    pointer-events="box-none"
+                                    style="position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"
+                                    transitionspec="[object Object]"
+                                  >
+                                    <view
+                                      pointer-events="box-none"
+                                      style="flex: 1; margin-top: 0px;"
+                                    >
+                                      <view
+                                        style="flex: 1; transform: [object Object],[object Object];"
+                                      >
+                                        <view
+                                          pointer-events="none"
+                                          style="position: absolute; top: 0px; bottom: 0px; width: 3px; left: 0px; background-color: rgb(242, 242, 242);"
+                                        />
+                                        <view>
+                                          <view
+                                            style="flex: 1; flex-direction: column-reverse;"
+                                          >
+                                            <view
+                                              style="flex: 1;"
+                                            >
+                                              <rctsafeareaview>
+                                                <view
+                                                  style="background-color: rgb(96, 219, 197); height: 56px; flex-direction: row; align-items: center; elevation: 0; margin-top: 0px;"
+                                                >
+                                                  <view
+                                                    style="flex: 1; justify-content: center; align-items: center;"
+                                                  >
+                                                    <text>
+                                                      Access
+                                                    </text>
+                                                  </view>
+                                                </view>
+                                              </rctsafeareaview>
+                                              <view
+                                                style="flex: 1; background-color: rgb(255, 255, 255); align-items: center; justify-content: center;"
+                                              >
+                                                <text
+                                                  style="font-size: 45px; margin-bottom: 40px; text-align: center;"
+                                                >
+                                                  Create an account today
+                                                </text>
+                                                <textinput
+                                                  autocapitalize="none"
+                                                  placeholder="Your Email"
+                                                  style="width: 85%; margin: 10px; padding: 15px; font-size: 16px; border-color: #d3d3d3; border-bottom-width: 1px; text-align: center;"
+                                                  underlinecolorandroid="transparent"
+                                                />
+                                                <textinput
+                                                  placeholder="Your Password"
+                                                  style="width: 85%; margin: 10px; padding: 15px; font-size: 16px; border-color: #d3d3d3; border-bottom-width: 1px; text-align: center;"
+                                                  underlinecolorandroid="transparent"
+                                                />
+                                                <view
+                                                  focusable="true"
+                                                  style="margin-top: 30px; margin-bottom: 20px; align-items: center; background-color: rgb(96, 219, 197); border-color: #60dbc5; border-width: 1px; border-radius: 5px; width: 200px; opacity: 1;"
+                                                >
+                                                  <text
+                                                    style="font-size: 20px; font-weight: bold; color: rgb(255, 255, 255);"
+                                                  >
+                                                    Signup
+                                                  </text>
+                                                </view>
+                                                <view
+                                                  focusable="true"
+                                                  style="margin-top: 30px; margin-bottom: 20px; align-items: center; background-color: rgb(96, 219, 197); border-color: #60dbc5; border-width: 1px; border-radius: 5px; width: 200px; opacity: 1;"
+                                                >
+                                                  <text
+                                                    style="font-size: 20px; font-weight: bold; color: rgb(255, 255, 255);"
+                                                  >
+                                                    Back to Login
+                                                  </text>
+                                                </view>
+                                              </view>
+                                            </view>
+                                          </view>
+                                        </view>
+                                      </view>
+                                    </view>
+                                  </view>
+                                </view>
+                              </view>
+                              <view
+                                pointer-events="box-none"
+                              />
+                            </view>
+                          </view>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <view
+              pointer-events="box-none"
+            />
+          </rncsafeareaprovider>
+        </view>
+      </view>
+    </div>
+  </body>,
+  "container": <div>
+    <view
+      pointer-events="box-none"
+      style="flex: 1;"
+    >
+      <view
+        style="flex: 1;"
+      >
+        <rncsafeareaprovider>
+          <view
+            style="flex: 1;"
+          >
+            <view
+              pointer-events="box-none"
+              style="position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"
+            >
+              <view
+                style="opacity: 1;"
+              />
+              <view
+                gesturevelocityimpact="0.3"
+                importantforaccessibility="auto"
+                pointer-events="box-none"
+                style="position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"
+                transitionspec="[object Object]"
+              >
+                <view
+                  pointer-events="box-none"
+                  style="flex: 1; margin-top: 0px;"
+                >
+                  <view
+                    style="flex: 1; transform: [object Object],[object Object];"
+                  >
+                    <view
+                      pointer-events="none"
+                      style="position: absolute; top: 0px; bottom: 0px; width: 3px; left: 0px; background-color: rgb(242, 242, 242);"
+                    />
+                    <view>
+                      <view
+                        style="flex: 1; flex-direction: column-reverse;"
+                      >
+                        <view
+                          style="flex: 1;"
+                        >
+                          <view
+                            style="flex: 1;"
+                          >
+                            <view
+                              style="flex: 1;"
+                            >
+                              <view
+                                pointer-events="box-none"
+                                style="position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"
+                              >
+                                <view
+                                  style="opacity: 1;"
+                                />
+                                <view
+                                  gesturevelocityimpact="0.3"
+                                  importantforaccessibility="no-hide-descendants"
+                                  pointer-events="box-none"
+                                  style="position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"
+                                  transitionspec="[object Object]"
+                                >
+                                  <view
+                                    pointer-events="box-none"
+                                    style="flex: 1; margin-top: 0px;"
+                                  >
+                                    <view
+                                      style="flex: 1; transform: [object Object],[object Object];"
+                                    >
+                                      <view
+                                        pointer-events="none"
+                                        style="position: absolute; top: 0px; bottom: 0px; width: 3px; left: 0px; background-color: rgb(242, 242, 242);"
+                                      />
+                                      <view>
+                                        <view
+                                          style="flex: 1; flex-direction: column-reverse;"
+                                        >
+                                          <view
+                                            style="flex: 1;"
+                                          >
+                                            <rctsafeareaview>
+                                              <view
+                                                style="background-color: rgb(96, 219, 197); height: 56px; flex-direction: row; align-items: center; elevation: 0; margin-top: 0px;"
+                                              >
+                                                <view
+                                                  style="flex: 1; justify-content: center; align-items: center;"
+                                                >
+                                                  <text>
+                                                    Access
+                                                  </text>
+                                                </view>
+                                              </view>
+                                            </rctsafeareaview>
+                                            <view
+                                              style="flex: 1; background-color: rgb(255, 255, 255); align-items: center; justify-content: center;"
+                                            >
+                                              <text
+                                                style="font-size: 45px; margin-bottom: 40px; text-align: center;"
+                                              >
+                                                Welcome to Access
+                                              </text>
+                                              <textinput
+                                                autocapitalize="none"
+                                                placeholder="Email"
+                                                style="width: 85%; margin: 10px; padding: 15px; font-size: 16px; border-color: #d3d3d3; border-bottom-width: 1px; text-align: center;"
+                                                underlinecolorandroid="transparent"
+                                              />
+                                              <textinput
+                                                placeholder="Password"
+                                                style="width: 85%; margin: 10px; padding: 15px; font-size: 16px; border-color: #d3d3d3; border-bottom-width: 1px; text-align: center;"
+                                                underlinecolorandroid="transparent"
+                                              />
+                                              <view
+                                                focusable="true"
+                                                style="margin-top: 30px; margin-bottom: 20px; align-items: center; background-color: rgb(96, 219, 197); border-color: #60dbc5; border-width: 1px; border-radius: 5px; width: 300px; opacity: 1;"
+                                              >
+                                                <text
+                                                  style="font-size: 20px; font-weight: bold; color: rgb(255, 255, 255);"
+                                                >
+                                                  Login
+                                                </text>
+                                              </view>
+                                              <view
+                                                focusable="true"
+                                                style="margin-top: 30px; margin-bottom: 20px; align-items: center; background-color: rgb(96, 219, 197); border-color: #60dbc5; border-width: 1px; border-radius: 5px; width: 300px; opacity: 1;"
+                                              >
+                                                <text
+                                                  style="font-size: 20px; font-weight: bold; color: rgb(255, 255, 255); text-align: center;"
+                                                >
+                                                  Don't have an account yet? 
+                                                  
+
+                                                   Sign up
+                                                </text>
+                                              </view>
+                                            </view>
+                                          </view>
+                                        </view>
+                                      </view>
+                                    </view>
+                                  </view>
+                                </view>
+                              </view>
+                              <view
+                                pointer-events="box-none"
+                                style="position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"
+                              >
+                                <view
+                                  style="opacity: 0;"
+                                />
+                                <view
+                                  gesturevelocityimpact="0.3"
+                                  importantforaccessibility="auto"
+                                  pointer-events="box-none"
+                                  style="position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"
+                                  transitionspec="[object Object]"
+                                >
+                                  <view
+                                    pointer-events="box-none"
+                                    style="flex: 1; margin-top: 0px;"
+                                  >
+                                    <view
+                                      style="flex: 1; transform: [object Object],[object Object];"
+                                    >
+                                      <view
+                                        pointer-events="none"
+                                        style="position: absolute; top: 0px; bottom: 0px; width: 3px; left: 0px; background-color: rgb(242, 242, 242);"
+                                      />
+                                      <view>
+                                        <view
+                                          style="flex: 1; flex-direction: column-reverse;"
+                                        >
+                                          <view
+                                            style="flex: 1;"
+                                          >
+                                            <rctsafeareaview>
+                                              <view
+                                                style="background-color: rgb(96, 219, 197); height: 56px; flex-direction: row; align-items: center; elevation: 0; margin-top: 0px;"
+                                              >
+                                                <view
+                                                  style="flex: 1; justify-content: center; align-items: center;"
+                                                >
+                                                  <text>
+                                                    Access
+                                                  </text>
+                                                </view>
+                                              </view>
+                                            </rctsafeareaview>
+                                            <view
+                                              style="flex: 1; background-color: rgb(255, 255, 255); align-items: center; justify-content: center;"
+                                            >
+                                              <text
+                                                style="font-size: 45px; margin-bottom: 40px; text-align: center;"
+                                              >
+                                                Create an account today
+                                              </text>
+                                              <textinput
+                                                autocapitalize="none"
+                                                placeholder="Your Email"
+                                                style="width: 85%; margin: 10px; padding: 15px; font-size: 16px; border-color: #d3d3d3; border-bottom-width: 1px; text-align: center;"
+                                                underlinecolorandroid="transparent"
+                                              />
+                                              <textinput
+                                                placeholder="Your Password"
+                                                style="width: 85%; margin: 10px; padding: 15px; font-size: 16px; border-color: #d3d3d3; border-bottom-width: 1px; text-align: center;"
+                                                underlinecolorandroid="transparent"
+                                              />
+                                              <view
+                                                focusable="true"
+                                                style="margin-top: 30px; margin-bottom: 20px; align-items: center; background-color: rgb(96, 219, 197); border-color: #60dbc5; border-width: 1px; border-radius: 5px; width: 200px; opacity: 1;"
+                                              >
+                                                <text
+                                                  style="font-size: 20px; font-weight: bold; color: rgb(255, 255, 255);"
+                                                >
+                                                  Signup
+                                                </text>
+                                              </view>
+                                              <view
+                                                focusable="true"
+                                                style="margin-top: 30px; margin-bottom: 20px; align-items: center; background-color: rgb(96, 219, 197); border-color: #60dbc5; border-width: 1px; border-radius: 5px; width: 200px; opacity: 1;"
+                                              >
+                                                <text
+                                                  style="font-size: 20px; font-weight: bold; color: rgb(255, 255, 255);"
+                                                >
+                                                  Back to Login
+                                                </text>
+                                              </view>
+                                            </view>
+                                          </view>
+                                        </view>
+                                      </view>
+                                    </view>
+                                  </view>
+                                </view>
+                              </view>
+                            </view>
+                            <view
+                              pointer-events="box-none"
+                            />
+                          </view>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view
+            pointer-events="box-none"
+          />
+        </rncsafeareaprovider>
+      </view>
+    </view>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
 exports[`<App /> renders correctly 1`] = `
 <View
   collapsable={false}
