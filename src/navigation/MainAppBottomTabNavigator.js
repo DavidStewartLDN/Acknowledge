@@ -1,10 +1,9 @@
 import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 
-import GraphAchievements from '../screens/GraphAchievements';
-import Profile from '../screens/Profile';
 import AchievementsStack from './AchievementsStack'
 import GraphStack from './GraphStack';
+import ProfileStack from './ProfileStack';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -36,7 +35,7 @@ function MainAppBottomTabNavigator() {
       />
       <Tab.Screen
         name="Profile"
-        component={Profile}
+        component={ProfileStack}
         options={{
           tabBarLabel: 'Profile',
           tabBarIcon: 'account'
