@@ -30,7 +30,6 @@ function AddAchievement({ navigation, route }) {
 
   return (
     <>
-      <Header titleText='Add an Achievement' />
       <IconButton
         icon='close'
         size={25}
