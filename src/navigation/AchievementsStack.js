@@ -9,7 +9,7 @@ import { IconButton } from 'react-native-paper';
 
 const Stack = createStackNavigator()
 
-function AchievementsStack() {
+function AchievementsStack({ navigation }) {
   return (
     <Stack.Navigator 
     screenOptions={{
@@ -19,6 +19,10 @@ function AchievementsStack() {
           backgroundColor: '#60DBC5',
         },
         headerTintColor: '#2E7166',
+        headerTitleStyle: {
+          fontSize: 20,
+          fontWeight: '600'
+        },
       }}>
       <Stack.Screen
           name='ViewAchievements'
