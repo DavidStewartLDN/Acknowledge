@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, View, Dimensions} from 'react-native';
 
-import Header from '../components/Header'
-
 import { BarChart } from "react-native-chart-kit";
 
 // Access state in Redux
@@ -24,12 +22,10 @@ function GraphAchievements() {
     for (i = 0; i < achievements.length; i++) {
       var j;
       const partOfLifeValues = achievements[i].selectedA
-      console.log(partOfLifeValues)
       for (j = 0; j < partOfLifeValues.length; j++) {
         allData.push(partOfLifeValues[j])
       }
     }
-    console.log(allData)
     var k;
     for (k = 0; k < partOfLife.length; k++) {
       countValues.push(countOccurrences(allData,partOfLife[k]))
@@ -39,7 +35,7 @@ function GraphAchievements() {
 
   useEffect(() => {
     countLabels()
-  }, []);
+  }, [achievements]);
 
   const data = {
     labels: partOfLife,
@@ -58,7 +54,6 @@ function GraphAchievements() {
 
   return (
     <>
-      <Header titleText='Acknowledge' />
       <View style={styles.container}>
         <BarChart
           data={data}

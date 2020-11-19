@@ -1,12 +1,11 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack'
 
-import ViewAchievements from '../screens/ViewAchievements';
-import AddAchievement from '../screens/AddAchievement';
+import GraphAchievements from '../screens/GraphAchievements';
 
 const Stack = createStackNavigator()
 
-function AchievementsStack({ navigation }) {
+function GraphStack() {
   return (
     <Stack.Navigator 
     screenOptions={{
@@ -22,21 +21,14 @@ function AchievementsStack({ navigation }) {
         },
       }}>
       <Stack.Screen
-          name='ViewAchievements'
-          component={ViewAchievements}
+          name='GraphAchievements'
+          component={GraphAchievements}
           options={{
             title: 'Acknowledge',
           }}
         />
-      <Stack.Screen
-        name='AddAchievement'
-        component={AddAchievement}
-        options={{
-          title: 'Add an Achievement',
-        }}
-      />
     </Stack.Navigator>
   );
 }
- 
-export default AchievementsStack
+
+export default GraphStack

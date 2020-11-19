@@ -9,6 +9,7 @@ export const addachievementfirebase = (achievement) => {
       const { uid } = getState().user
       db.collection('users').doc(uid).collection('achievements')
         .add(achievement)
+      console.log('Added achievement to firebase')
     } catch (e) {
         alert(e)
     }
@@ -32,6 +33,7 @@ export const getachievementsfirebase = () => {
   return async (dispatch, getState) => {
     try {
       const { uid } = getState().user
+      console.log('Fetched achievements')
       db.collection('users').doc(uid).collection('achievements')
       .orderBy('createdAt', 'asc')
       .onSnapshot(

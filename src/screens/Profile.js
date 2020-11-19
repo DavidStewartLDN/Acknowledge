@@ -7,6 +7,7 @@ import { logout } from '../redux/user/user.actions'
 import { useSelector, useDispatch } from 'react-redux'
 import DateTimePicker from '@react-native-community/datetimepicker';
 
+
 // Imports for Push Notifications
 
 import * as Notifications from 'expo-notifications';
@@ -78,6 +79,7 @@ function Profile(){
   const handleSignout = () => {
     Firebase.auth().signOut()
     logOut()
+
   }
   
   return (
