@@ -31,6 +31,8 @@ function ViewAchievements({ navigation }) {
     getAchievementsFirebase()
   }, [])
 
+  console.log(achievements[achievements.length-1])
+
   return (
     <>
       <Header titleText='Acknowledge' />

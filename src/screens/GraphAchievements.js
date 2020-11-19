@@ -39,7 +39,7 @@ function GraphAchievements() {
 
   useEffect(() => {
     countLabels()
-  }, []);
+  }, [achievements]);
 
   const data = {
     labels: partOfLife,
