@@ -14,7 +14,11 @@ function AchievementsStack() {
     <Stack.Navigator 
     screenOptions={{
         gestureEnabled: true,
-        headerShown: true
+        headerShown: true,
+        headerStyle: {
+          backgroundColor: '#60DBC5',
+        },
+        headerTintColor: '#2E7166',
       }}>
       <Stack.Screen
           name='ViewAchievements'
@@ -27,11 +31,6 @@ function AchievementsStack() {
         name='AddAchievement'
         component={AddAchievement}
         options={{
-          title: 'Add an Achievement',
-          headerStyle: {
-            backgroundColor: '#60DBC5',
-          },
-          headerTintColor: '#2E7166',
           headerLeft: null,
           headerRight: () => (
             <IconButton
