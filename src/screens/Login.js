@@ -23,7 +23,6 @@ class Login extends React.Component {
   render() {
     return (
       <>
-      <Header titleText='Acknowledge' />
         <View style={styles.container}>
           <Text style={styles.title}>Welcome to Acknowledge</Text>
           <TextInput

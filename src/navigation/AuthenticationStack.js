@@ -25,6 +25,9 @@ function AuthenticationStack() {
       <AuthStack.Screen
         name='Login'
         component={Login}
+        options={{
+          title: 'Acknowledge',
+        }}
       />
       <AuthStack.Screen
         name='Signup'
