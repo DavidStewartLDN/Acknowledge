@@ -28,6 +28,7 @@ function AchievementsStack() {
         component={AddAchievement}
         options={{
           title: 'Add an Achievement',
+          headerLeft: null,
           headerRight: () => (
             <IconButton
               icon='close'
