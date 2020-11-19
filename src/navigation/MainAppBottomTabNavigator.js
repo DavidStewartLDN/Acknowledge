@@ -4,6 +4,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import GraphAchievements from '../screens/GraphAchievements';
 import Profile from '../screens/Profile';
 import AchievementsStack from './AchievementsStack'
+import GraphStack from './GraphStack';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -27,7 +28,7 @@ function MainAppBottomTabNavigator() {
       />
       <Tab.Screen
         name="GraphAchievements"
-        component={GraphAchievements}
+        component={GraphStack}
         options={{
           tabBarLabel: 'Graph',
           tabBarIcon: 'chart-bar',

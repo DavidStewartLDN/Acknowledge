@@ -35,7 +35,6 @@ function ViewAchievements({ navigation }) {
 
   return (
     <>
-      <Header titleText='Acknowledge' />
       <View style={styles.container}>
         {achievements.length === 0 ? (
           <View style={styles.titleContainer}>
