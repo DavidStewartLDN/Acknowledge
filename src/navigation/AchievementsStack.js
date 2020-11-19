@@ -28,6 +28,10 @@ function AchievementsStack() {
         component={AddAchievement}
         options={{
           title: 'Add an Achievement',
+          headerStyle: {
+            backgroundColor: '#60DBC5',
+          },
+          headerTintColor: '#2E7166',
           headerLeft: null,
           headerRight: () => (
             <IconButton
