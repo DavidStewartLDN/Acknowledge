@@ -20,7 +20,7 @@ class Signup extends React.Component {
         <Header titleText='Acknowledge' />
         <View style={styles.container}>
           <Text style={styles.title}>Create an account today</Text>
-          <TextInput
+          <TextInput 
             style={styles.inputBox}
             value={this.props.user.email}
             onChangeText={email => this.props.updateEmail(email)}
