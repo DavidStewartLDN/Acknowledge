@@ -9,7 +9,6 @@ import Firebase from '../../config/Firebase'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { getachievementsfirebase, deleteachievementfirebase, addachievementfirebase } from '../redux/achievements/achievements.actions'
-import { logout } from '../redux/user/user.actions'
 
 
 function ViewAchievements({ navigation }) {
