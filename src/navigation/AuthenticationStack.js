@@ -19,7 +19,8 @@ function AuthenticationStack() {
         headerTintColor: '#2E7166',
         headerTitleStyle: {
           fontSize: 20,
-          fontWeight: '600'
+          fontWeight: '600',
+          alignSelf: 'center'
         },
       }}>
       <AuthStack.Screen
