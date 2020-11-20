@@ -17,8 +17,9 @@ function GraphStack() {
         headerTintColor: '#2E7166',
         headerTitleStyle: {
           fontSize: 20,
-          fontWeight: '600'
+          fontWeight: '600',
         },
+        headerTitleAlign: 'center'
       }}>
       <Stack.Screen
           name='GraphAchievements'
