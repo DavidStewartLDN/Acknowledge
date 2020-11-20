@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, Platform, Switch } from 'react-native'
-import Header from '../components/Header'
+import { View, Text, StyleSheet, TouchableOpacity, Switch } from 'react-native'
 
 import Firebase from '../../config/Firebase'
 import { logout } from '../redux/user/user.actions'
 import { useSelector, useDispatch } from 'react-redux'
 import DateTimePicker from '@react-native-community/datetimepicker';
-
 
 // Imports for Push Notifications
 
@@ -84,33 +82,32 @@ function Profile(){
   
   return (
     <>
-      <Header titleText='Access' />
-        <View>
-          <Text style={styles.text}>{user.email}</Text>
-          <View style={{ flexDirection: 'row'}}>
-            <Text style={styles.switchText}>Enable push notifications</Text>
-            <Switch style={styles.switchText}
-              onChange={toggleNotifications}
-              value={notifications}
-            >
-            </Switch>
-          </View>
-          {notifications && (
-            <DateTimePicker
-              testID="dateTimePicker"
-              timeZoneOffsetInMinutes={0}
-              value={date}
-              mode="time"
-              is24Hour={true}
-              display="default"
-              onChange={onChange}
-            />
-          )}
-          <View style={styles.center}>
-            <TouchableOpacity style={styles.button} onPress={handleSignout}>
-              <Text style={styles.buttonText}>Log out</Text>
-            </TouchableOpacity>
-          </View>
+      <View>
+        <Text style={styles.text}>{user.email}</Text>
+        <View style={{ flexDirection: 'row'}}>
+          <Text style={styles.switchText}>Enable push notifications</Text>
+          <Switch style={styles.switchText}
+            onChange={toggleNotifications}
+            value={notifications}
+          >
+          </Switch>
+        </View>
+        {notifications && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            timeZoneOffsetInMinutes={0}
+            value={date}
+            mode="time"
+            is24Hour={true}
+            display="default"
+            onChange={onChange}
+          />
+        )}
+        <View style={styles.center}>
+          <TouchableOpacity style={styles.button} onPress={handleSignout}>
+            <Text style={styles.buttonText}>Log out</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </>
   )
