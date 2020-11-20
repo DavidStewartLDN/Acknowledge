@@ -18,8 +18,8 @@ function ProfileStack() {
         headerTitleStyle: {
           fontSize: 20,
           fontWeight: '600',
-          alignSelf: 'center'
         },
+        headerTitleAlign: 'center'
       }}>
       <Stack.Screen
           name='GraphAchievements'

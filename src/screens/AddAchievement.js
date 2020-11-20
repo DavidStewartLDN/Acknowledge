@@ -30,13 +30,6 @@ function AddAchievement({ navigation, route }) {
 
   return (
     <>
-      <IconButton
-        icon='close'
-        size={25}
-        color='white'
-        onPress={() => navigation.goBack()}
-        style={styles.iconButton}
-      />
       <SafeAreaView>
       <ScrollView >
       <View style={styles.container}>

@@ -1,6 +1,8 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack'
 
+import { View} from 'react-native';
+
 import ViewAchievements from '../screens/ViewAchievements';
 import AddAchievement from '../screens/AddAchievement';
 
@@ -19,8 +21,8 @@ function AchievementsStack({ navigation }) {
         headerTitleStyle: {
           fontSize: 20,
           fontWeight: '600',
-          alignSelf: 'center'
         },
+        headerTitleAlign: 'center'
       }}>
       <Stack.Screen
           name='ViewAchievements'

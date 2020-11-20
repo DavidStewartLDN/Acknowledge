@@ -20,8 +20,8 @@ function AuthenticationStack() {
         headerTitleStyle: {
           fontSize: 20,
           fontWeight: '600',
-          alignSelf: 'center'
         },
+        headerTitleAlign: 'center'
       }}>
       <AuthStack.Screen
         name='Login'
