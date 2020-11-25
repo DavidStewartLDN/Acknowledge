@@ -1,12 +1,18 @@
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, View, Dimensions} from 'react-native';
+import { StyleSheet, View, Dimensions, useWindowDimensions} from 'react-native';
 import BarChartVerticalWithLabels from '../components/BarChartVerticalWithLabels'
 import { BarChart } from "react-native-chart-kit";
 
 // Access state in Redux
 import { useSelector } from 'react-redux'
 
+
 function GraphAchievements() {
+
+  const windowWidth = useWindowDimensions().width;
+  const windowHeight = useWindowDimensions().height;
+  console.log(windowHeight)
+
   // const achievements = useSelector(state => state.achievements)
   //
   // const [count, setCount] = useState([])
