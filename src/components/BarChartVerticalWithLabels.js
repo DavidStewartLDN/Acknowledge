@@ -29,7 +29,7 @@ function BarChartVerticalWithLabels() {
   )
 
   return (
-    <View style={{ flexDirection: 'row', height: 700, paddingVertical: 16 }}>
+    <View style={{ flexDirection: 'row', height: useWindowDimensions().height - 180, paddingVertical: 16 }}>
       <BarChart
         style={{ flex: 1 }}
         data={data}
