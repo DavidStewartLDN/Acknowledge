@@ -10,11 +10,33 @@ function BarChartVerticalWithLabels(props) {
   const windowHeight = useWindowDimensions().height;
   console.log(props.finalArray)
 
+  const testData = [
+    {
+        value: 50,
+        label: 'One',
+    },
+    {
+        value: 10,
+        label: 'Two',
+    },
+    {
+        value: 40,
+        label: 'Three',
+    },
+    {
+        value: 95,
+        label: 'Four',
+    },
+    {
+        value: 85,
+        label: 'Five',
+    },
+]
+
 
   const achievementsData = props.data
   const xAxisData = ["Work", "Self", "Play", "Living"]
-
-  const axesSvg = { fontSize: 10, fill: 'grey' };
+  
   const CUT_OFF = 20
   const Labels = ({ x, y, bandwidth, data }) => (
     data.map((value, index) => (
@@ -33,7 +55,7 @@ function BarChartVerticalWithLabels(props) {
   )
 
   return (
-    <View style={{ height: useWindowDimensions().height - 300, paddingVertical: 16 }}>
+    <View style={{ height: useWindowDimensions().height - 200, paddingVertical: 16 }}>
       <BarChart
         style={{ flex: 1 }}
         data={achievementsData}
@@ -45,12 +67,12 @@ function BarChartVerticalWithLabels(props) {
       <Labels/>
       </BarChart>
       <XAxis
-        style={{ marginHorizontal: -10, alignContent: "space-between" }}
+        style={{ marginHorizontal: -10}}
         scale={scale.scaleBand}
         data={xAxisData}
         formatLabel={(_, index) => xAxisData[ index ]}
         contentInset={{ left: 10, right: 10 }}
-        svg={{ fontSize: 10, fill: 'black', justifyContent: 'center' }}
+        svg={{ fontSize: 16, fill: 'black'}}
       />
     </View>
   )

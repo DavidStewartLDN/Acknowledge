@@ -43,37 +43,10 @@ function GraphAchievements() {
   }, [achievements]);
   //
 
-  console.log(count)
-
-  var rObj = {};
-  var finalArray = [];
-  const allData = []
-  var i;
-  for (i = 0; i < achievements.length; i++) {
-    var j;
-    const partOfLifeValues = achievements[i].selectedA
-    for (j = 0; j < partOfLifeValues.length; j++) {
-      allData.push(partOfLifeValues[j])
-    }
-  }
-  allData.map(function(currentValue, index) {
-    if (rObj.hasOwnProperty(currentValue)) {
-      rObj[currentValue] = rObj[currentValue] + 1;
-    } else {
-      rObj[currentValue] = 1
-    }
-
-  });
-  for (var keys in rObj) {
-    var obj = {};
-    obj[keys] = rObj[keys];
-    finalArray.push(obj)
-  };
-
   return (
     <>
       <View style={styles.container}>
-        <BarChartVerticalWithLabels data={count} newData={finalArray}/>
+        <BarChartVerticalWithLabels data={count} />
       </View>
     </>
   )
