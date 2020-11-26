@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, View, Dimensions, useWindowDimensions, Text} from 'react-native';
-import BarChartVerticalWithLabels from '../components/BarChartVerticalWithLabels'
+import { StyleSheet, View, Dimensions, useWindowDimensions } from 'react-native';
+import BarChartVerticalWithLabels from '../components/BarChartVerticalWithLabels';
+import { Text, FAB} from 'react-native-paper';
 
 // Access state in Redux
 import { useSelector } from 'react-redux'
@@ -50,7 +51,14 @@ function GraphAchievements() {
       <View style={styles.container}>
         <Text style={styles.title}>Part of Life</Text>
         <BarChartVerticalWithLabels data={count} />
-        <Button>Toggle Graph</Button>
+        <FAB
+          style={styles.fabAdd}
+          small
+          label='Toggle graph'
+          onPress={() =>
+            navigation.navigate('AddAchievement')
+        }
+        />
       </View>
     </>
   )
@@ -73,7 +81,12 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     textAlign: 'center'
-  }
+  },
+  fabAdd: {
+    margin: 10,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
 })
 
 export default GraphAchievements
