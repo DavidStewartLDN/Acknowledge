@@ -46,6 +46,7 @@ function BarChartVerticalWithLabels(props) {
       </BarChart>
       <XAxis
         style={{ marginHorizontal: -10, alignContent: "space-between" }}
+        scale={scale.scaleBand}
         data={xAxisData}
         formatLabel={(_, index) => xAxisData[ index ]}
         contentInset={{ left: 10, right: 10 }}
