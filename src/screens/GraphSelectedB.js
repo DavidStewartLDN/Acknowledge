@@ -6,10 +6,7 @@ import { Text, FAB} from 'react-native-paper';
 // Access state in Redux
 import { useSelector } from 'react-redux'
 
-import { Button } from 'react-native-paper';
-
-
-function GraphAchievements() {
+function GraphSelectedB({navigation}) {
 
   const windowWidth = useWindowDimensions().width;
   const windowHeight = useWindowDimensions().height;
@@ -56,7 +53,7 @@ function GraphAchievements() {
           small
           label='Toggle graph'
           onPress={() =>
-            navigation.navigate('AddAchievement')
+            navigation.navigate('GraphSelectedA')
         }
         />
       </View>
@@ -89,4 +86,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default GraphAchievements
+export default GraphSelectedB
