@@ -48,7 +48,7 @@ function GraphSelectedA({navigation}) {
     <>
       <View style={styles.container}>
         <Text style={styles.title}>Part of Life</Text>
-        <BarChartVerticalWithLabels data={count} />
+        <BarChartVerticalWithLabels data={count} xAxisData={partOfLife}/>
         <FAB
           style={styles.fabAdd}
           small

@@ -8,7 +8,7 @@ import * as scale from 'd3-scale'
 function BarChartVerticalWithLabels(props) {
 
   const achievementsData = props.data
-  const xAxisData = ["Work", "Self", "Play", "Living"]
+  const xAxisData = props.xAxisData
   
   const CUT_OFF = 20
   const Labels = ({ x, y, bandwidth, data }) => (

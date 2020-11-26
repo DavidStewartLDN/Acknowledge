@@ -15,8 +15,9 @@ function GraphSelectedB({navigation}) {
   const achievements = useSelector(state => state.achievements)
   
   const [count, setCount] = useState([])
-  const partOfLife = ["Work", "Self", "Play", "Living"]
-  // const satisfier = ["Health, Wellbeing, Fitness","Creating","New Developments","Giving"]
+  console.log(count)
+
+  const satisfier = ["Health, Wellbeing, Fitness","Creating","New Developments","Giving", "Receiving"]
   
   const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
   
@@ -26,14 +27,14 @@ function GraphSelectedB({navigation}) {
     var i;
     for (i = 0; i < achievements.length; i++) {
       var j;
-      const partOfLifeValues = achievements[i].selectedA
-      for (j = 0; j < partOfLifeValues.length; j++) {
-        allData.push(partOfLifeValues[j])
+      const satisfierValues = achievements[i].selectedB
+      for (j = 0; j < satisfierValues.length; j++) {
+        allData.push(satisfierValues[j])
       }
     }
     var k;
-    for (k = 0; k < partOfLife.length; k++) {
-      countValues.push(countOccurrences(allData,partOfLife[k]))
+    for (k = 0; k < satisfier.length; k++) {
+      countValues.push(countOccurrences(allData,satisfier[k]))
     }
     setCount(countValues)
   }
@@ -47,7 +48,7 @@ function GraphSelectedB({navigation}) {
     <>
       <View style={styles.container}>
         <Text style={styles.title}>Part of Life</Text>
-        <BarChartVerticalWithLabels data={count} />
+        <BarChartVerticalWithLabels data={count} xAxisData={satisfier}/>
         <FAB
           style={styles.fabAdd}
           small
