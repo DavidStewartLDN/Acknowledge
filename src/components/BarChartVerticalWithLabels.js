@@ -6,33 +6,6 @@ import * as scale from 'd3-scale'
 
 
 function BarChartVerticalWithLabels(props) {
-  const windowWidth = useWindowDimensions().width;
-  const windowHeight = useWindowDimensions().height;
-  console.log(props.finalArray)
-
-  const testData = [
-    {
-        value: 50,
-        label: 'One',
-    },
-    {
-        value: 10,
-        label: 'Two',
-    },
-    {
-        value: 40,
-        label: 'Three',
-    },
-    {
-        value: 95,
-        label: 'Four',
-    },
-    {
-        value: 85,
-        label: 'Five',
-    },
-]
-
 
   const achievementsData = props.data
   const xAxisData = ["Work", "Self", "Play", "Living"]
