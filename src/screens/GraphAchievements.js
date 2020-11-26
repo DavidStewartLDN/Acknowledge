@@ -82,23 +82,6 @@ const styles = StyleSheet.create({
     right: 0,
     top: 40,
     margin: 10
-  },
-  titleContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex:1
-  },
-  title: {
-    fontSize: 20
-  },
-  fab: {
-    position: 'absolute',
-    margin: 20,
-    right: 0,
-    bottom: 10
-  },
-  listTitle: {
-    fontSize: 20
   }
 })
 
