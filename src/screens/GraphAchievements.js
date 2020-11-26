@@ -13,36 +13,38 @@ function GraphAchievements() {
   const windowHeight = useWindowDimensions().height;
   console.log(windowHeight)
 
-  // const achievements = useSelector(state => state.achievements)
+  const achievements = useSelector(state => state.achievements)
+  
+  const [count, setCount] = useState([])
+  const partOfLife = ["Work", "Self", "Play", "Living"]
+  // const satisfier = ["Health, Wellbeing, Fitness","Creating","New Developments","Giving"]
+  
+  const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
+  
+  const countLabels = () => {
+    const allData = []
+    const countValues = []
+    var i;
+    for (i = 0; i < achievements.length; i++) {
+      var j;
+      const partOfLifeValues = achievements[i].selectedA
+      for (j = 0; j < partOfLifeValues.length; j++) {
+        allData.push(partOfLifeValues[j])
+      }
+    }
+    var k;
+    for (k = 0; k < partOfLife.length; k++) {
+      countValues.push(countOccurrences(allData,partOfLife[k]))
+    }
+    setCount(countValues)
+  }
+  
+  useEffect(() => {
+    countLabels()
+  }, [achievements]);
   //
-  // const [count, setCount] = useState([])
-  // const partOfLife = ["Work", "Self", "Play", "Living"]
-  // // const satisfier = ["Health, Wellbeing, Fitness","Creating","New Developments","Giving"]
-  //
-  // const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
-  //
-  // const countLabels = () => {
-  //   const allData = []
-  //   const countValues = []
-  //   var i;
-  //   for (i = 0; i < achievements.length; i++) {
-  //     var j;
-  //     const partOfLifeValues = achievements[i].selectedA
-  //     for (j = 0; j < partOfLifeValues.length; j++) {
-  //       allData.push(partOfLifeValues[j])
-  //     }
-  //   }
-  //   var k;
-  //   for (k = 0; k < partOfLife.length; k++) {
-  //     countValues.push(countOccurrences(allData,partOfLife[k]))
-  //   }
-  //   setCount(countValues)
-  // }
-  //
-  // useEffect(() => {
-  //   countLabels()
-  // }, [achievements]);
-  //
+
+  console.log(count)
   // const data = {
   //   labels: partOfLife,
   //   datasets: [{
@@ -61,7 +63,7 @@ function GraphAchievements() {
   return (
     <>
       <View style={styles.container}>
-        <BarChartVerticalWithLabels/>
+        <BarChartVerticalWithLabels data={count}/>
       </View>
     </>
   )

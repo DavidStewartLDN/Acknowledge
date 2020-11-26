@@ -4,12 +4,13 @@ import { BarChart, Grid } from 'react-native-svg-charts'
 import { Text } from 'react-native-svg'
 
 
-function BarChartVerticalWithLabels() {
+function BarChartVerticalWithLabels(props) {
   const windowWidth = useWindowDimensions().width;
   const windowHeight = useWindowDimensions().height;
-  console.log(windowHeight)
+  console.log(props.data)
 
-  const data = [ 10, 5, 25, 15, 20 ]
+
+  const data = props.data
 
   const CUT_OFF = 20
   const Labels = ({ x, y, bandwidth, data }) => (
@@ -38,8 +39,7 @@ function BarChartVerticalWithLabels() {
         spacing={0.2}
         gridMin={0}
       >
-        <Grid direction={Grid.Direction.HORIZONTAL}/>
-        <Labels/>
+      <Labels/>
       </BarChart>
     </View>
   )
