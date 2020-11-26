@@ -33,7 +33,7 @@ function BarChartVerticalWithLabels() {
       <BarChart
         style={{ flex: 1 }}
         data={data}
-        svg={{ fill: 'rgba(134, 65, 244, 0.8)' }}
+        svg={{ fill: 'rgba(46, 113, 102, 0.8)' }}
         contentInset={{ top: 10, bottom: 10 }}
         spacing={0.2}
         gridMin={0}
