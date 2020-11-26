@@ -28,7 +28,7 @@ function BarChartVerticalWithLabels(props) {
   )
 
   return (
-    <View style={{ height: useWindowDimensions().height - 200, paddingVertical: 16 }}>
+    <View style={{ height: useWindowDimensions().height - 300, paddingVertical: 16 }}>
       <BarChart
         style={{ flex: 1 }}
         data={achievementsData}
