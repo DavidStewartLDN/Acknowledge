@@ -1,17 +1,20 @@
 import React from 'react'
 import { View, useWindowDimensions } from 'react-native'
-import { BarChart, Grid } from 'react-native-svg-charts'
+import { BarChart, XAxis } from 'react-native-svg-charts'
 import { Text } from 'react-native-svg'
+import * as scale from 'd3-scale'
 
 
 function BarChartVerticalWithLabels(props) {
   const windowWidth = useWindowDimensions().width;
   const windowHeight = useWindowDimensions().height;
-  console.log(props.data)
+  console.log(props.finalArray)
 
 
-  const data = props.data
+  const achievementsData = props.data
+  const xAxisData = ["Work", "Self", "Play", "Living"]
 
+  const axesSvg = { fontSize: 10, fill: 'grey' };
   const CUT_OFF = 20
   const Labels = ({ x, y, bandwidth, data }) => (
     data.map((value, index) => (
@@ -30,17 +33,24 @@ function BarChartVerticalWithLabels(props) {
   )
 
   return (
-    <View style={{ flexDirection: 'row', height: useWindowDimensions().height - 180, paddingVertical: 16 }}>
+    <View style={{ height: useWindowDimensions().height - 300, paddingVertical: 16 }}>
       <BarChart
         style={{ flex: 1 }}
-        data={data}
+        data={achievementsData}
         svg={{ fill: 'rgba(46, 113, 102, 0.8)' }}
-        contentInset={{ top: 10, bottom: 10 }}
+        contentInset={{ top: 20, bottom: 10 }}
         spacing={0.2}
         gridMin={0}
       >
       <Labels/>
       </BarChart>
+      <XAxis
+        style={{ marginHorizontal: -10, alignContent: "space-between" }}
+        data={xAxisData}
+        formatLabel={(_, index) => xAxisData[ index ]}
+        contentInset={{ left: 10, right: 10 }}
+        svg={{ fontSize: 10, fill: 'black', justifyContent: 'center' }}
+      />
     </View>
   )
 

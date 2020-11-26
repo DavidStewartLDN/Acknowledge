@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, View, Dimensions, useWindowDimensions} from 'react-native';
 import BarChartVerticalWithLabels from '../components/BarChartVerticalWithLabels'
-import { BarChart } from "react-native-chart-kit";
 
 // Access state in Redux
 import { useSelector } from 'react-redux'
@@ -45,25 +44,36 @@ function GraphAchievements() {
   //
 
   console.log(count)
-  // const data = {
-  //   labels: partOfLife,
-  //   datasets: [{
-  //     data: count
-  //   }]
-  // }
-  //
-  // const chartConfig = {
-  //   backgroundGradientFrom: '#1E2923',
-  //   backgroundGradientTo: '#60DBC5',
-  //   backgroundColor: '#60DBC5',
-  //   decimalPlaces: 0,
-  //   color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`
-  // }
+
+  var rObj = {};
+  var finalArray = [];
+  const allData = []
+  var i;
+  for (i = 0; i < achievements.length; i++) {
+    var j;
+    const partOfLifeValues = achievements[i].selectedA
+    for (j = 0; j < partOfLifeValues.length; j++) {
+      allData.push(partOfLifeValues[j])
+    }
+  }
+  allData.map(function(currentValue, index) {
+    if (rObj.hasOwnProperty(currentValue)) {
+      rObj[currentValue] = rObj[currentValue] + 1;
+    } else {
+      rObj[currentValue] = 1
+    }
+
+  });
+  for (var keys in rObj) {
+    var obj = {};
+    obj[keys] = rObj[keys];
+    finalArray.push(obj)
+  };
 
   return (
     <>
       <View style={styles.container}>
-        <BarChartVerticalWithLabels data={count}/>
+        <BarChartVerticalWithLabels data={count} newData={finalArray}/>
       </View>
     </>
   )
