@@ -14,7 +14,34 @@ import { logout } from '../redux/user/user.actions'
 
 
 function ViewAchievements({ navigation }) {
-  const achievements = useSelector(state => state.achievements)
+  const [selectedDate, setDate] = useState('2020-11-27');
+  
+  const selectDate = (date) => {
+    setDate(date.dateString)
+  };
+
+  const convertDate = (date) => {
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear()
+    return year + '-' + month + '-' + day
+  }
+
+  const getMS = (date) => {
+    if (date != null ) {
+      return date.toMillis();
+    }
+    else {
+      date = new Date()
+      return date.getTime();
+    }
+  }
+
+  // const selectAchievements = (state) => state.achievements.filter(achievement => achievement.createdAt.seconds === seconds);
+  const selectAchievements = (state) => state.achievements.filter(achievement => convertDate(new Date(getMS(achievement.createdAt))) === selectedDate);
+  const achievements = useSelector(selectAchievements)
+  console.log(achievements)
+
 
   const dispatch = useDispatch()
   const getAchievementsFirebase = () => dispatch(getachievementsfirebase())
@@ -30,19 +57,19 @@ function ViewAchievements({ navigation }) {
   useEffect(() => {
     getAchievementsFirebase()
   }, [])
-
-  console.log(achievements[0].createdAt)
   
   return (
     <>
       <Header titleText='Access' />
       <Calendar
-      onDayPress={(day) => {console.log('selected day', day)}}
+      // onDayPress={day => {selectDate(day)}}
+      onDayPress={(day) => {selectDate(day)}}
+      // onDayPress={(day) => {selectDate(day)}}
       />
       <View style={styles.container}>
         {achievements.length === 0 ? (
           <View style={styles.titleContainer}>
-            <Text style={styles.title}> You have not saved any Achievements yet!</Text>
+            <Text style={styles.title}> No achievements saved on selected day</Text>
           </View>
         ) : (
           <FlatList
