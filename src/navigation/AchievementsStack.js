@@ -2,13 +2,22 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack'
 
 import { View} from 'react-native';
+import { IconButton } from 'react-native-paper';
 
 import ViewAchievements from '../screens/ViewAchievements';
 import AddAchievement from '../screens/AddAchievement';
 
 const Stack = createStackNavigator()
 
+import { useDispatch } from 'react-redux'
+
+import { getachievementsfirebase } from '../redux/achievements/achievements.actions'
+
 function AchievementsStack({ navigation }) {
+
+  const dispatch = useDispatch()
+  const getAchievementsFirebase = () => dispatch(getachievementsfirebase())
+
   return (
     <Stack.Navigator 
     screenOptions={{
@@ -25,12 +34,18 @@ function AchievementsStack({ navigation }) {
         headerTitleAlign: 'center'
       }}>
       <Stack.Screen
-          name='ViewAchievements'
-          component={ViewAchievements}
-          options={{
-            title: 'Acknowledge',
-          }}
-        />
+        name='ViewAchievements'
+        component={ViewAchievements}
+        options={{
+          title: 'Acknowledge',
+          headerRight: () => (
+            <IconButton
+              icon="refresh"
+              onPress={() => getAchievementsFirebase()}
+            />
+          ),
+        }}
+      />
       <Stack.Screen
         name='AddAchievement'
         component={AddAchievement}
