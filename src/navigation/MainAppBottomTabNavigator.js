@@ -31,7 +31,7 @@ function MainAppBottomTabNavigator() {
         component={AchievementsStack}
         options={{
           tabBarLabel: 'Achievements',
-          tabBarIcon: 'home',
+          tabBarIcon: 'trophy',
         }}
       />
       <Tab.Screen
