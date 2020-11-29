@@ -10,7 +10,19 @@ function HomeScreen() {
     <>
       <View style={styles.container}>
         <View style={styles.titleContainer}>
-          <Text style={styles.title}> Hey, Welcome to Acknowledge there my friends</Text>
+          <Text style={styles.title}>Welcome to Acknowledge</Text>
+
+          <Text style={styles.body}>
+
+          This is a space for you to acknowledge everything you achieve and are proud of each day.
+          There are things you maybe didn’t want to do, but you still did them {"\n"}{"\n"}
+          
+          You can tag each entry to see where it sits and what is covers -
+          get present to everything that you are already doing.{"\n"}{"\n"}
+          
+          No stress, no pressure, you’re doing enough. 
+          Here is where you can see it all and give yourself credit. {"\n"}{"\n"}
+          </Text>
         </View>
       </View>
     </>
@@ -29,17 +41,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flex:1
   },
+  body: {
+    fontSize: 20,
+    textAlign: 'justify'
+  },
   title: {
-    fontSize: 20
-  },
-  fabAdd: {
-    position: 'absolute',
-    margin: 20,
-    right: 0,
-    bottom: 10
-  },
-  listTitle: {
-    fontSize: 20
+    fontSize: 45,
+    marginBottom: 40,
+    textAlign: 'center'
   },
 })
 
