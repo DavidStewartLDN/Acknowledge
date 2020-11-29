@@ -9,7 +9,7 @@ function HomeScreen() {
   return (
     <>
       <LinearGradient
-        colors={['#448AFF', '#9E9E9E', '#FFEB3B', '#FF5722']}
+        colors={['#60DBC5', '#B2F0E5', '#68EDD5','#70FFE5','#60DBC5']}
         style={{flex: 1}}
         //  Linear Gradient 
         // start={{ x: 0, y: 0 }}
