@@ -1,13 +1,32 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-paper';
-
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 function HomeScreen() {
 
   return (
     <>
+      <LinearGradient
+        colors={['#448AFF', '#9E9E9E', '#FFEB3B', '#FF5722']}
+        style={{flex: 1}}
+        //  Linear Gradient 
+        // start={{ x: 0, y: 0 }}
+        // end={{ x: 0, y: 1 }}
+
+        // Linear Gradient Reversed
+        // start={{ x: 0, y: 1 }}
+        // end={{ x: 1, y: 0 }}
+
+        // Horizontal Gradient
+        // start={{ x: 0, y: 0 }}
+        // end={{ x: 1, y: 0 }}
+
+        // Diagonal Gradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+      >
       <View style={styles.container}>
         <View style={styles.titleContainer}>
           <Text style={styles.title}>Welcome to Acknowledge</Text>
@@ -24,7 +43,8 @@ function HomeScreen() {
           Here is where you can see it all and give yourself credit. {"\n"}{"\n"}
           </Text>
         </View>
-      </View>
+        </View>
+      </LinearGradient>
     </>
   )
 }
@@ -32,7 +52,6 @@ function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex:1,
-    backgroundColor: '#fff',
     paddingHorizontal: 10,
     paddingVertical: 20
   },
