@@ -10,7 +10,7 @@ import Firebase from '../../config/Firebase'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { getachievementsfirebase, deleteachievementfirebase, addachievementfirebase } from '../redux/achievements/achievements.actions'
-import { logout } from '../redux/user/user.actions'
+
 
 
 function ViewAchievements({ navigation }) {
@@ -47,12 +47,6 @@ function ViewAchievements({ navigation }) {
   const getAchievementsFirebase = () => dispatch(getachievementsfirebase())
   const deleteAchievementFirebase = (id) => dispatch(deleteachievementfirebase(id))
   const addAchievementFirebase = (achievement) => dispatch(addachievementfirebase(achievement))
-  const logOut = () => dispatch(logout())
-
-  const handleSignout = () => {
-    Firebase.auth().signOut()
-    logOut()
-  }
 
   useEffect(() => {
     getAchievementsFirebase()
@@ -62,9 +56,7 @@ function ViewAchievements({ navigation }) {
     <>
       <Header titleText='Access' />
       <Calendar
-      // onDayPress={day => {selectDate(day)}}
-      onDayPress={(day) => {selectDate(day)}}
-      // onDayPress={(day) => {selectDate(day)}}
+        onDayPress={(day) => {selectDate(day)}}
       />
       <View style={styles.container}>
         {achievements.length === 0 ? (
