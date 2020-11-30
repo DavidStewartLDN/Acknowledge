@@ -1,7 +1,8 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack'
 
-import GraphAchievements from '../screens/GraphAchievements';
+import GraphSelectedA from '../screens/GraphSelectedA';
+import GraphSelectedB from '../screens/GraphSelectedB';
 
 const Stack = createStackNavigator()
 
@@ -22,12 +23,19 @@ function GraphStack() {
         headerTitleAlign: 'center'
       }}>
       <Stack.Screen
-          name='GraphAchievements'
-          component={GraphAchievements}
+          name='GraphSelectedA'
+          component={GraphSelectedA}
           options={{
             title: 'Acknowledge',
           }}
         />
+      <Stack.Screen
+        name='GraphSelectedB'
+        component={GraphSelectedB}
+        options={{
+          title: 'Acknowledge',
+        }}
+      />
     </Stack.Navigator>
   );
 }
