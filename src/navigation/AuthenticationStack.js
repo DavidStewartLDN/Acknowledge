@@ -9,7 +9,6 @@ const AuthStack = createStackNavigator()
 function AuthenticationStack() {
   return (
     <AuthStack.Navigator
-      initialRouteName='ViewAchievements'
       screenOptions={{
         gestureEnabled: true,
         headerShown: true,

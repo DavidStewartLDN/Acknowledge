@@ -4,6 +4,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import AchievementsStack from './AchievementsStack'
 import GraphStack from './GraphStack';
 import ProfileStack from './ProfileStack';
+import HomeScreenStack from './HomeScreenStack';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -18,11 +19,19 @@ function MainAppBottomTabNavigator() {
       inactiveColor='#2E7166'
       >
       <Tab.Screen
+        name="HomeScreen"
+        component={HomeScreenStack}
+        options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: 'home',
+        }}
+      />
+      <Tab.Screen
         name="ViewAchievements"
         component={AchievementsStack}
         options={{
           tabBarLabel: 'Achievements',
-          tabBarIcon: 'home',
+          tabBarIcon: 'trophy',
         }}
       />
       <Tab.Screen
