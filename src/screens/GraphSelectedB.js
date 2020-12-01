@@ -18,6 +18,7 @@ function GraphSelectedB({navigation}) {
   console.log(count)
 
   const satisfier = ["Health, Wellbeing, Fitness","Creating","New Developments","Giving", "Receiving"]
+  const satisfier_labels = ["Wellbeing","Creating","New Devs","Giving", "Receiving"]
   
   const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
   
@@ -48,7 +49,7 @@ function GraphSelectedB({navigation}) {
     <>
       <View style={styles.container}>
         <Text style={styles.title}>Part of Life</Text>
-        <BarChartVerticalWithLabels data={count} xAxisData={satisfier}/>
+        <BarChartVerticalWithLabels data={count} xAxisData={satisfier_labels}/>
         <FAB
           style={styles.fabAdd}
           small
