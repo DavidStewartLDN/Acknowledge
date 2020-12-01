@@ -45,9 +45,12 @@ function HomeScreen() {
       <View style={styles.container}>
         <View style={styles.titleContainer}>
           <Text style={styles.title}>Welcome to Acknowledge</Text>
-          </View>
         </View>
+      </View>
       <PieChartWithDynamicSlices data={count} labels={partOfLife} colors={graphColors} />
+      <View style={styles.titleContainer}>
+        <Text style={styles.body}>{achievements[Math.floor(Math.random()* achievements.length)].achievementTitle}</Text>
+      </View>
     </>
   )
 }
@@ -69,7 +72,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 45,
-    marginBottom: 40,
+    marginBottom: 0,
     textAlign: 'center'
   },
 })
