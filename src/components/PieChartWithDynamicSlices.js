@@ -21,9 +21,9 @@ import { PieChart } from 'react-native-svg-charts'
   render() {
     const { labelWidth, selectedSlice } = this.state;
     const { label, value } = selectedSlice;
-    const keys = ['google', 'facebook', 'linkedin', 'youtube', 'Twitter'];
-    const values = [15, 25, 35, 45, 55];
-    const colors = ['#600080', '#9900cc', '#c61aff', '#d966ff', '#ecb3ff']
+    const keys = this.props.labels;
+    const values = [3, 2, 0, 6];
+    const colors = ['#600080', '#9900cc', '#c61aff', '#d966ff']
     const data = keys.map((key, index) => {
         return {
           key,

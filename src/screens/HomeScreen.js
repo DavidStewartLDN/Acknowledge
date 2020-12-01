@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 import PieChartWithDynamicSlices from '../components/PieChartWithDynamicSlices';
 
+import { useSelector } from 'react-redux';
 
 function HomeScreen() {
 
@@ -44,7 +45,7 @@ function HomeScreen() {
           <Text style={styles.title}>Welcome to Acknowledge</Text>
           </View>
         </View>
-      <PieChartWithDynamicSlices />
+      <PieChartWithDynamicSlices data={count} labels={partOfLife}/>
     </>
   )
 }
