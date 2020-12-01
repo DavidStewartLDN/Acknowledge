@@ -23,18 +23,18 @@ import { PieChart } from 'react-native-svg-charts'
     const { label, value } = selectedSlice;
     const keys = this.props.labels;
     const values = this.props.data;
-    const colors = ['#600080', '#9900cc', '#c61aff', '#d966ff']
+    const total = values.reduce((a, b) => a + b)
+    const colors = ['#9352EB', '#EB5A23', '#3BEBCA', '#EBE62F']
     const data = keys.map((key, index) => {
         return {
           key,
           value: values[index],
           svg: { fill: colors[index] },
-          arc: { outerRadius: (70 + values[index]) + '%', padAngle: label === key ? 0.1 : 0 },
+          arc: { outerRadius: (70 + 100*(values[index]/total)) + '%', padAngle: label === key ? 0.1 : 0 },
           onPress: () => this.setState({ selectedSlice: { label: key, value: values[index] } })
         }
       })
     const deviceWidth = Dimensions.get('window').width
-    console.log(this.state.labelWidth)
     return (
       <View style={{ justifyContent: 'center', flex: 1 }}>
         <PieChart
