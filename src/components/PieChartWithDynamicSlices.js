@@ -24,7 +24,7 @@ import { PieChart } from 'react-native-svg-charts'
     const keys = this.props.labels;
     const values = this.props.data;
     const total = values.reduce((a, b) => a + b)
-    const colors = ['#9352EB', '#EB5A23', '#3BEBCA', '#EBE62F']
+    const colors = this.props.colors;
     const data = keys.map((key, index) => {
         return {
           key,

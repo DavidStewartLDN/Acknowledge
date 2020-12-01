@@ -10,7 +10,7 @@ function HomeScreen() {
 
   const achievements = useSelector(state => state.achievements)
   
-  const [count, setCount] = useState([])
+  const [count, setCount] = useState([0,0,0,0])
   const partOfLife = ["Work", "Self", "Play", "Living"]
   // const satisfier = ["Health, Wellbeing, Fitness","Creating","New Developments","Giving"]
   
@@ -38,6 +38,8 @@ function HomeScreen() {
     countLabels()
   }, [achievements]);
 
+  const graphColors = ['#9352EB', '#EB5A23', '#3BEBCA', '#EBE62F']
+
   return (
     <>
       <View style={styles.container}>
@@ -45,7 +47,7 @@ function HomeScreen() {
           <Text style={styles.title}>Welcome to Acknowledge</Text>
           </View>
         </View>
-      <PieChartWithDynamicSlices data={count} labels={partOfLife}/>
+      <PieChartWithDynamicSlices data={count} labels={partOfLife} colors={graphColors} />
     </>
   )
 }
