@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 import PieChartWithDynamicSlices from '../components/PieChartWithDynamicSlices';
+import StackedBarChart from '../components/StackedBarChart'
 
 import { useSelector } from 'react-redux';
 
@@ -51,6 +52,7 @@ function HomeScreen() {
       <View style={styles.titleContainer}>
         <Text style={styles.body}>{achievements[Math.floor(Math.random()* achievements.length)].achievementTitle}</Text>
       </View>
+        <StackedBarChart data={count} labels={partOfLife} colors={graphColors} />
     </>
   )
 }
