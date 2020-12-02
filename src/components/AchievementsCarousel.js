@@ -32,7 +32,6 @@ class AchievementsCarousel extends React.Component {
       });
   };
 
-
   changeAchievement = () => {
     this.setState({
       currentAchievement: this.props.data[Math.floor(Math.random() * this.props.data.length)].achievementTitle
@@ -56,9 +55,6 @@ class AchievementsCarousel extends React.Component {
         >
           <Text style={styles.fadingText}>{this.state.currentAchievement}</Text>
         </Animated.View>
-        <View style={styles.buttonRow}>
-          <Button title="Change" onPress={this.changeAchievement} />
-        </View>
       </View>
     );
   }
@@ -76,14 +72,10 @@ const styles = StyleSheet.create({
     backgroundColor: "powderblue"
   },
   fadingText: {
-    fontSize: 28,
+    fontSize: 20,
     textAlign: "center",
     margin: 10
   },
-  buttonRow: {
-    flexDirection: "row",
-    marginVertical: 16
-  }
 });
 
 export default AchievementsCarousel;
