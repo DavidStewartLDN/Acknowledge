@@ -1,71 +1,55 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, Component} from "react";
 import { Animated,Easing, Text, View, StyleSheet, Button } from "react-native";
 
-const AchievementsCarousel = () => {
+class AchievementsCarousel extends Component {
 
-  const initialOpacity = 0;
-  const maxOpacity = 1;
-  const standardTime = 4000;
-  const delayTime = 5000;
-  // fadeAnim will be used as the value for opacity. Initial Value: 0
-  const fadeAnim = useRef(new Animated.Value(initialOpacity)).current;
+  constructor(props){
+    super(props);
+    this.state = {
+      fadeAnim: new Animated.Value(0)
+    };
+  }
 
-  const fadeIn = () => {
-    // Will change fadeAnim value to 1 in 5 seconds
-    Animated.timing(fadeAnim, {
-      toValue: 1,
-      duration: 5000,
-      useNativeDriver: true
-    }).start();
-  };
-
-  const fadeOut = () => {
-    // Will change fadeAnim value to 0 in 5 seconds
-    Animated.timing(fadeAnim, {
-      toValue: 0,
-      duration: 5000,
-      useNativeDriver: true
-    }).start();
-  };
-
-  const infiniteLoop = () => {
+  infiniteLoop = () => {
     Animated.loop(
       Animated.sequence([
-        Animated.timing(fadeAnim, {
-        toValue: maxOpacity,
+        Animated.timing(this.state.fadeAnim, {
+        toValue: 1,
         easing: Easing.inOut(Easing.sin),
-        duration: standardTime,
+        duration: 1000,
         useNativeDriver: true
         }),
-        Animated.delay(delayTime),
-        Animated.timing(fadeAnim, {
-          toValue: initialOpacity,
+        Animated.delay(1000),
+        Animated.timing(this.state.fadeAnim, {
+          toValue: 0,
           easing: Easing.inOut(Easing.sin),
-          duration: standardTime,
+          duration: 1000,
           useNativeDriver: true
         }),
       ])).start();
   };
 
-  return (
-    <View style={styles.container}>
-      <Animated.View
-        style={[
-          styles.fadingContainer,
-          {
-            opacity: fadeAnim // Bind opacity to animated value
-          }
-        ]}
-      >
-        <Text style={styles.fadingText}>Fading View!</Text>
-      </Animated.View>
-      <View style={styles.buttonRow}>
-        <Button title="Fade In" onPress={fadeIn} />
-        <Button title="Fade Out" onPress={fadeOut} />
-        <Button title="Infinite" onPress={infiniteLoop} />
+  // setCurrentAchievement(props.data[Math.floor(Math.random() * props.data.length)].achievementTitle)
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Animated.View
+          style={[
+            styles.fadingContainer,
+            {
+              opacity: this.state.fadeAnim // Bind opacity to animated value
+            }
+          ]}
+        >
+          <Text style={styles.fadingText}>Potato</Text>
+        </Animated.View>
+        <View style={styles.buttonRow}>
+          <Button title="Infinite" onPress={this.infiniteLoop} />
+        </View>
       </View>
-    </View>
-  );
+    );
+  }
 }
 
 const styles = StyleSheet.create({
