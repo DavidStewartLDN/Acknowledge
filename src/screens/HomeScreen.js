@@ -6,6 +6,7 @@ import PieChartWithDynamicSlices from '../components/PieChartWithDynamicSlices';
 import StackedBarChart from '../components/StackedBarChart'
 
 import { useSelector } from 'react-redux';
+import AchievementsCarousel from '../components/AchievementsCarousel';
 
 function HomeScreen() {
 
@@ -52,7 +53,8 @@ function HomeScreen() {
       <View style={styles.titleContainer}>
         <Text style={styles.body}>{achievements[Math.floor(Math.random()* achievements.length)].achievementTitle}</Text>
       </View>
-        <StackedBarChart data={count} labels={partOfLife} colors={graphColors} />
+      <AchievementsCarousel />
+      <StackedBarChart data={count} labels={partOfLife} colors={graphColors} />
     </>
   )
 }
