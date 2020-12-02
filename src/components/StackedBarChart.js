@@ -35,7 +35,7 @@ class StackedBarChartGraph extends React.PureComponent {
             },
         ]
 
-        const colors = ['#7b4173', '#a55194', '#ce6dbd', '#de9ed6']
+        const colors = this.props.colors
         const keys = ['apples', 'bananas', 'cherries', 'dates']
 
         return (
