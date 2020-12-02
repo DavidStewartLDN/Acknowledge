@@ -1,35 +1,47 @@
-import React, { useRef, useState, Component} from "react";
+import React, { useRef, setState, Component} from "react";
 import { Animated,Easing, Text, View, StyleSheet, Button } from "react-native";
 
-class AchievementsCarousel extends Component {
+class AchievementsCarousel extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {
-      fadeAnim: new Animated.Value(0)
+      fadeAnim: new Animated.Value(0),
+      currentAchievement: this.props.data[Math.floor(Math.random() * this.props.data.length)].achievementTitle
     };
   }
 
-  infiniteLoop = () => {
-    Animated.loop(
+  infiniteLoop() {
       Animated.sequence([
         Animated.timing(this.state.fadeAnim, {
         toValue: 1,
         easing: Easing.inOut(Easing.sin),
-        duration: 1000,
+        duration: 3000,
         useNativeDriver: true
         }),
-        Animated.delay(1000),
+        Animated.delay(10000),
         Animated.timing(this.state.fadeAnim, {
           toValue: 0,
           easing: Easing.inOut(Easing.sin),
-          duration: 1000,
+          duration: 3000,
           useNativeDriver: true
         }),
-      ])).start();
+      ]).start(() => {
+        this.changeAchievement(),
+        this.infiniteLoop()
+      });
   };
 
-  // setCurrentAchievement(props.data[Math.floor(Math.random() * props.data.length)].achievementTitle)
+
+  changeAchievement = () => {
+    this.setState({
+      currentAchievement: this.props.data[Math.floor(Math.random() * this.props.data.length)].achievementTitle
+    })
+  }
+
+  componentDidMount() {
+    this.infiniteLoop();
+  }
 
   render() {
     return (
@@ -42,10 +54,10 @@ class AchievementsCarousel extends Component {
             }
           ]}
         >
-          <Text style={styles.fadingText}>Potato</Text>
+          <Text style={styles.fadingText}>{this.state.currentAchievement}</Text>
         </Animated.View>
         <View style={styles.buttonRow}>
-          <Button title="Infinite" onPress={this.infiniteLoop} />
+          <Button title="Change" onPress={this.changeAchievement} />
         </View>
       </View>
     );
