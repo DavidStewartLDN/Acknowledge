@@ -12,17 +12,22 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getachievementsfirebase, deleteachievementfirebase, addachievementfirebase } from '../redux/achievements/achievements.actions'
 
 
-
+  let counter = 0;
 function ViewAchievements({ navigation }) {
-  //const [selectedDate, setDate] = useState('2020-11-27');
   const [startDate, setStartDate] = useState('2020-11-27')
-  
-  const selectDate = (date) => {
-    setDate(date.dateString)
-  };
+  const [endDate, setEndDate] = useState('2020-11-27')
 
-  const selectStartDate = (date) => {
-    setStartDate(date.dateString)
+  const dateSelector = (date) => {
+      
+    if(counter === 0) {
+      setStartDate(date.dateString)
+      console.log(counter)
+      counter ++
+      console.log(counter)
+    } else {
+      setEndDate(date.dateString)
+      counter = 0;
+    }
   }
 
   const convertDate = (date) => {
@@ -57,12 +62,16 @@ console.log(startDate)
     getAchievementsFirebase()
   }, [])
   
+  
+
   return (
     <>
       <Header titleText='Access' />
       <Calendar 
-         //onDayPress={(day) => {selectDate(day)}}
-         onDayPress={(day) => {selectStartDate(day)}}
+
+        onDayPress={(day) => {
+          dateSelector(day)
+        }}
          
     markedDates={{
     '2020-12-17': {textColor: 'black'},
@@ -71,7 +80,7 @@ console.log(startDate)
     '2020-12-22': {color: '#70d7c7', textColor: 'white'},
     '2020-12-23': {color: '#70d7c7', textColor: 'white', marked: true, dotColor: 'white'},
     '2020-12-24': {color: '#70d7c7', textColor: 'white'},
-    '2020-12-25': {endingDay: true, color: '#50cebb', textColor: 'white'},
+    [endDate]: {endingDay: true, color: '#50cebb', textColor: 'white'},
     //'2020-12-24': {selected: true, endingDay: true, color: 'yellow', textColor: 'gray'},
     //'2020-12-04': {disabled: true, startingDay: true, color: 'green', endingDay: true}
   // Date marking style [simple/period/multi-dot/custom]. Default = 'simple'
