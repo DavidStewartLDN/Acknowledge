@@ -15,26 +15,39 @@ import { getachievementsfirebase, deleteachievementfirebase, addachievementfireb
   let counter = 0;
 function ViewAchievements({ navigation }) {
   const [startDate, setStartDate] = useState('2020-11-27')
-  const [endDate, setEndDate] = useState('2020-11-27')
-
+  const [customMarkedDates, setMarkedDates] = useState({})
+   
   const dateSelector = (date) => {
       
     if(counter === 0) {
-      setStartDate(date.dateString)
-      console.log(counter)
-      counter ++
-      console.log(counter)
+        setMarkedDates({ [date.dateString]: { color: '#50cebb', textColor: 'white' } })
+        setStartDate(date.dateString)
+        counter ++
+    } else if (counter === 1 && (date.dateString) === startDate) {
+        setMarkedDates({ 
+            [date.dateString]: { startingDay: true, color: '#50cebb', textColor: 'white', endingDay: true }
+        })
+        counter = 0;
     } else {
-      setEndDate(date.dateString)
-      counter = 0;
+        let arr = [];
+        var getDaysArray = function (start, end) {
+            for (var dt = new Date(start); dt <= new Date(end); dt.setDate(dt.getDate() + 1)) {
+                arr.push(convertDate(dt));
+            }
+        };
+
+        getDaysArray(startDate, date.dateString)
+
+        setMarkedDates(arr.reduce((a, b) => (a[b] = { color: '#70d7c7', textColor: 'white' }, a), {}))
+        counter = 0;
     }
   }
 
   const convertDate = (date) => {
-    var day = date.getDate();
-    var month = date.getMonth() + 1;
-    var year = date.getFullYear()
-    return year + '-' + month + '-' + day
+      var day = ("0" + date.getDate()).slice(-2);
+      var month = ("0" + (date.getMonth() + 1)).slice(-2);
+      var year = date.getFullYear()
+      return year + '-' + month + '-' + day
   }
 
   const getMS = (date) => {
@@ -73,19 +86,9 @@ console.log(startDate)
           dateSelector(day)
         }}
          
-    markedDates={{
-    '2020-12-17': {textColor: 'black'},
-    //[startDate]: {startingDay: true, color: 'yellow'},
-    [startDate]: {startingDay: true, color: '#50cebb', textColor: 'white'},
-    '2020-12-22': {color: '#70d7c7', textColor: 'white'},
-    '2020-12-23': {color: '#70d7c7', textColor: 'white', marked: true, dotColor: 'white'},
-    '2020-12-24': {color: '#70d7c7', textColor: 'white'},
-    [endDate]: {endingDay: true, color: '#50cebb', textColor: 'white'},
-    //'2020-12-24': {selected: true, endingDay: true, color: 'yellow', textColor: 'gray'},
-    //'2020-12-04': {disabled: true, startingDay: true, color: 'green', endingDay: true}
-  // Date marking style [simple/period/multi-dot/custom]. Default = 'simple'
-    }}
-  markingType={'period'}
+        markedDates={customMarkedDates}
+        markingType={'period'}
+
       />
       <View style={styles.container}>
         {achievements.length === 0 ? (
