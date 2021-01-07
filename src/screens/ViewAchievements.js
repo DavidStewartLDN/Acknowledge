@@ -11,15 +11,15 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { getachievementsfirebase, deleteachievementfirebase, addachievementfirebase } from '../redux/achievements/achievements.actions'
 
+let counter = 0;
 
-  let counter = 0;
 function ViewAchievements({ navigation }) {
   const [startDate, setStartDate] = useState('2020-11-27')
-  const [customMarkedDates, setMarkedDates] = useState({})
+  const [markedDates, setMarkedDates] = useState({})
    
   const dateSelector = (date) => {
       
-    if(counter === 0) {
+    if (counter === 0) {
         setMarkedDates({ [date.dateString]: { color: '#50cebb', textColor: 'white' } })
         setStartDate(date.dateString)
         counter ++
@@ -61,22 +61,26 @@ function ViewAchievements({ navigation }) {
   }
 
   // const selectAchievements = (state) => state.achievements.filter(achievement => achievement.createdAt.seconds === seconds);
-  const selectAchievements = (state) => state.achievements.filter(achievement => convertDate(new Date(getMS(achievement.createdAt))) === startDate);
-  const achievements = useSelector(selectAchievements)
-  console.log(achievements)
-console.log(startDate)
+  const achievements = useSelector(state => state.achievements)
+  const filteredAchievements = achievements.filter(achievement => convertDate(new Date(getMS(achievement.createdAt))) === startDate);
+  // const achievements = useSelector(selectAchievements)
+  // console.log(achievements)
+  console.log('------------------------------------------')
+  console.log(filteredAchievements)
+  console.log(startDate)
+  console.log('------------------------------------------')
 
+  // Adding redux dispatch commands to update redux.
   const dispatch = useDispatch()
   const getAchievementsFirebase = () => dispatch(getachievementsfirebase())
   const deleteAchievementFirebase = (id) => dispatch(deleteachievementfirebase(id))
   const addAchievementFirebase = (achievement) => dispatch(addachievementfirebase(achievement))
 
+  // Call firebase database and add achievements to firebase store
   useEffect(() => {
     getAchievementsFirebase()
   }, [])
   
-  
-
   return (
     <>
       <Header titleText='Access' />
@@ -86,7 +90,7 @@ console.log(startDate)
           dateSelector(day)
         }}
          
-        markedDates={customMarkedDates}
+        markedDates={markedDates}
         markingType={'period'}
 
       />
