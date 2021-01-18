@@ -87,7 +87,8 @@ function ViewAchievements({ navigation }) {
       <Calendar 
 
         onDayPress={(day) => {
-          dateSelector(day)
+          dateSelector(day),
+          console.log('selected day', day)
         }}
          
         markedDates={markedDates}
