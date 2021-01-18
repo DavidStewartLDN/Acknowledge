@@ -96,13 +96,13 @@ function ViewAchievements({ navigation }) {
 
       />
       <View style={styles.container}>
-        {achievements.length === 0 ? (
+        {filteredAchievements.length === 0 ? (
           <View style={styles.titleContainer}>
             <Text style={styles.title}> No achievements saved on selected day</Text>
           </View>
         ) : (
           <FlatList
-            data={achievements}
+            data={filteredAchievements}
             renderItem={({ item }) => (
               <List.Item
                 title={item.achievementTitle}
