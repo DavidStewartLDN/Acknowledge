@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Text, FAB } from 'react-native-paper';
-import { LinearGradient } from 'expo-linear-gradient';
 import PieChartWithDynamicSlices from '../components/PieChartWithDynamicSlices';
-import StackedBarChart from '../components/StackedBarChart'
 
 import { useSelector } from 'react-redux';
 import AchievementsCarousel from '../components/AchievementsCarousel';
@@ -85,6 +83,7 @@ const styles = StyleSheet.create({
   },
   fabAdd: {
     margin: 10,
+    marginBottom: 20,
     alignItems: 'center',
     justifyContent: 'center'
   },

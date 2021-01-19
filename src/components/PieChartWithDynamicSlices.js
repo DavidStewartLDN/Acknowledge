@@ -12,7 +12,7 @@ import { PieChart } from 'react-native-svg-charts'
     super(props);
     this.state = {
       selectedSlice: {
-        label: '',
+        label: 'Click on me',
         value: 0
       },
       labelWidth: 0
