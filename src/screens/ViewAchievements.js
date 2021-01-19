@@ -8,7 +8,7 @@ import Firebase from '../../config/Firebase'
 
 import { useSelector, useDispatch } from 'react-redux'
 
-import { getachievementsfirebase, deleteachievementfirebase, addachievementfirebase } from '../redux/achievements/achievements.actions'
+import { getachievementsfirebase, deleteachievementfirebase } from '../redux/achievements/achievements.actions'
 
 
 function ViewAchievements({ navigation }) {
@@ -17,7 +17,6 @@ function ViewAchievements({ navigation }) {
   const dispatch = useDispatch()
   const getAchievementsFirebase = () => dispatch(getachievementsfirebase())
   const deleteAchievementFirebase = (id) => dispatch(deleteachievementfirebase(id))
-  const addAchievementFirebase = (achievement) => dispatch(addachievementfirebase(achievement))
 
   useEffect(() => {
     getAchievementsFirebase()
@@ -51,10 +50,8 @@ function ViewAchievements({ navigation }) {
           icon='plus'
           label='Add Achievement'
           onPress={() =>
-            navigation.navigate('AddAchievement', {
-              addAchievementFirebase
-          })
-        }
+            navigation.navigate('AddAchievement')
+          }
         />
       </View>
     </>
