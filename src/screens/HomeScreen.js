@@ -50,11 +50,7 @@ function HomeScreen() {
         </View>
       </View>
       <PieChartWithDynamicSlices data={count} labels={partOfLife} colors={graphColors} />
-      <View style={styles.titleContainer}>
-        <Text style={styles.body}>{achievements[Math.floor(Math.random()* achievements.length)].achievementTitle}</Text>
-      </View>
       <AchievementsCarousel data={achievements}/>
-      <StackedBarChart data={count} labels={partOfLife} colors={graphColors} />
     </>
   )
 }
