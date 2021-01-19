@@ -48,7 +48,13 @@ function HomeScreen({navigation}) {
         </View>
       </View>
       <PieChartWithDynamicSlices data={count} labels={partOfLife} colors={graphColors} />
-      <AchievementsCarousel data={achievements}/>
+      { achievements.length === 0 ? (
+          <AchievementsCarousel data={[{achievementTitle: 'Your achievements will appear here when you add one :)'}]}/>
+        ) : (
+          <AchievementsCarousel data={achievements}/>
+        )
+      }
+      
       <FAB
           style={styles.fabAdd}
           small
