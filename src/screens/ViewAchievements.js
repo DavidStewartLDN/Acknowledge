@@ -17,6 +17,7 @@ function ViewAchievements({ navigation }) {
   const [startDate, setStartDate] = useState('2020-11-27')
   const [endDate, setEndDate] = useState('2020-11-27')
   const [markedDates, setMarkedDates] = useState({})
+  // const [dateArr, setDateArr] = useState([])  //Joanne  
    
   const dateSelector = (date) => {
       
@@ -38,6 +39,9 @@ function ViewAchievements({ navigation }) {
                 arr.push(convertDate(dt));
                 setEndDate(arr.slice(-1).pop())
                 console.log(arr)
+
+                //maybe we have to setArray with this arr here so we can use is later: //Joanne
+                //setDateArr(arr)
             }
         };
 
@@ -67,8 +71,23 @@ function ViewAchievements({ navigation }) {
 
   // const selectAchievements = (state) => state.achievements.filter(achievement => achievement.createdAt.seconds === seconds);
   const achievements = useSelector(state => state.achievements)
+  // may have to subsitude the following 2 lines with Joanne's code: //Joanne
   const filteredAchievements = achievements.filter(achievement => convertDate(new Date(getMS(achievement.createdAt))) === startDate);
   const filteredEnd = achievements.filter(achievement => convertDate(new Date(getMS(achievement.createdAt))) === endDate);
+ 
+ 
+  //Joanne's code here:
+  // let filteredArrays = [];
+  // for (let i = 0; i< arr.length; i++) {
+  //   const x = achievements.filter(achievement => convertDate(new Date(getMS(achievement.createdAt))) === dateArr[i]);
+    
+  //   filteredArrays.push(x);
+  // }
+  
+  // const filteredAchievements = filteredArrays.flat(1);
+
+
+
   
   // const achievements = useSelector(selectAchievements)
   // console.log(achievements)
