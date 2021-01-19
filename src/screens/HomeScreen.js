@@ -7,8 +7,9 @@ import StackedBarChart from '../components/StackedBarChart'
 
 import { useSelector } from 'react-redux';
 import AchievementsCarousel from '../components/AchievementsCarousel';
+import { Button } from 'react-native';
 
-function HomeScreen() {
+function HomeScreen({navigation}) {
 
   const achievements = useSelector(state => state.achievements)
   
@@ -51,6 +52,10 @@ function HomeScreen() {
       </View>
       <PieChartWithDynamicSlices data={count} labels={partOfLife} colors={graphColors} />
       <AchievementsCarousel data={achievements}/>
+      <Button title='Add Achievement' onPress={() =>
+        navigation.navigate('AddAchievement') 
+       }
+      />
     </>
   )
 }
