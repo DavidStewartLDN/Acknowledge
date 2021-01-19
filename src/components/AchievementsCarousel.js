@@ -1,5 +1,7 @@
 import React, { useRef, setState, Component} from "react";
-import { Animated,Easing, Text, View, StyleSheet, Button } from "react-native";
+import { Animated,Easing, Text, View, StyleSheet, Button, Dimensions } from "react-native";
+
+const width = Dimensions.get('window').width;
 
 class AchievementsCarousel extends React.Component {
 
@@ -68,8 +70,9 @@ const styles = StyleSheet.create({
   },
   fadingContainer: {
     paddingVertical: 8,
-    paddingHorizontal: 16,
-    backgroundColor: "powderblue"
+    width: width -20,
+    backgroundColor: "#60DBC5",
+    borderWidth: 2
   },
   fadingText: {
     fontSize: 20,
