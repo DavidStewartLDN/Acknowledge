@@ -1,13 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Text } from 'react-native-paper';
+import { Text, FAB } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 import PieChartWithDynamicSlices from '../components/PieChartWithDynamicSlices';
 import StackedBarChart from '../components/StackedBarChart'
 
 import { useSelector } from 'react-redux';
 import AchievementsCarousel from '../components/AchievementsCarousel';
-import { Button } from 'react-native';
 
 function HomeScreen({navigation}) {
 
@@ -52,10 +51,14 @@ function HomeScreen({navigation}) {
       </View>
       <PieChartWithDynamicSlices data={count} labels={partOfLife} colors={graphColors} />
       <AchievementsCarousel data={achievements}/>
-      <Button title='Add Achievement' onPress={() =>
-        navigation.navigate('AddAchievement') 
-       }
-      />
+      <FAB
+          style={styles.fabAdd}
+          small
+          label='Add an achievement now!'
+          onPress={() =>
+            navigation.navigate('AddAchievement') 
+        }
+        />
     </>
   )
 }
@@ -79,6 +82,11 @@ const styles = StyleSheet.create({
     fontSize: 45,
     marginBottom: 0,
     textAlign: 'center'
+  },
+  fabAdd: {
+    margin: 10,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 })
 
