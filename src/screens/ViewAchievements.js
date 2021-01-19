@@ -15,6 +15,7 @@ let counter = 0;
 
 function ViewAchievements({ navigation }) {
   const [startDate, setStartDate] = useState('2020-11-27')
+  const [endDate, setEndDate] = useState('2020-11-27')
   const [markedDates, setMarkedDates] = useState({})
    
   const dateSelector = (date) => {
@@ -29,10 +30,14 @@ function ViewAchievements({ navigation }) {
         })
         counter = 0;
     } else {
+      console.log("hey")
         let arr = [];
         var getDaysArray = function (start, end) {
+          
             for (var dt = new Date(start); dt <= new Date(end); dt.setDate(dt.getDate() + 1)) {
                 arr.push(convertDate(dt));
+                setEndDate(arr.slice(-1).pop())
+                console.log(arr)
             }
         };
 
@@ -63,11 +68,14 @@ function ViewAchievements({ navigation }) {
   // const selectAchievements = (state) => state.achievements.filter(achievement => achievement.createdAt.seconds === seconds);
   const achievements = useSelector(state => state.achievements)
   const filteredAchievements = achievements.filter(achievement => convertDate(new Date(getMS(achievement.createdAt))) === startDate);
+  const filteredEnd = achievements.filter(achievement => convertDate(new Date(getMS(achievement.createdAt))) === endDate);
+  
   // const achievements = useSelector(selectAchievements)
   // console.log(achievements)
   console.log('------------------------------------------')
   console.log(filteredAchievements)
   console.log(startDate)
+  console.log(endDate)
   console.log('------------------------------------------')
 
   // Adding redux dispatch commands to update redux.
