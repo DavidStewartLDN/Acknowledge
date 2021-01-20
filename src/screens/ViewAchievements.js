@@ -17,7 +17,7 @@ function ViewAchievements({ navigation }) {
   const [startDate, setStartDate] = useState('2020-11-27')
   const [endDate, setEndDate] = useState('2020-11-27')
   const [markedDates, setMarkedDates] = useState({})
-  // const [dateArr, setDateArr] = useState([])  //Joanne  
+  const [dateArr, setDateArr] = useState([])  
    
   const dateSelector = (date) => {
       
@@ -38,14 +38,11 @@ function ViewAchievements({ navigation }) {
             for (var dt = new Date(start); dt <= new Date(end); dt.setDate(dt.getDate() + 1)) {
                 arr.push(convertDate(dt));
                 setEndDate(arr.slice(-1).pop())
-                console.log(arr)
-
+                //console.log(arr)
+                setDateArr(arr);
               }
-              //1)maybe we have to setArray with this arr here so we can use is later: //Joanne
-              //setDateArr(arr);
 
-              //2)call the function that will loop the arr 
-              //filterAchievementWithDates(dateArr);
+              filterAchievementWithDates(dateArr);
         };
 
         getDaysArray(startDate, date.dateString)
@@ -74,30 +71,24 @@ function ViewAchievements({ navigation }) {
 
   // const selectAchievements = (state) => state.achievements.filter(achievement => achievement.createdAt.seconds === seconds);
   const achievements = useSelector(state => state.achievements)
-  // may have to subsitude the following 2 lines with Joanne's code: //Joanne
-  const filteredAchievements = achievements.filter(achievement => convertDate(new Date(getMS(achievement.createdAt))) === startDate);
-  const filteredEnd = achievements.filter(achievement => convertDate(new Date(getMS(achievement.createdAt))) === endDate);
- 
- 
-  //Joanne's code here:
-  // let filteredAchievements = [];
 
-  // function filterAchievementWithDates(arr) {
+  let filteredAchievements = achievements.filter(achievement => convertDate(new Date(getMS(achievement.createdAt))) === startDate);
+  //const filteredEnd = achievements.filter(achievement => convertDate(new Date(getMS(achievement.createdAt))) === endDate);
+ 
+
+  function filterAchievementWithDates(arr) {
     
-  //   let filteredArrays = [];
-  //   for (let i = 0; i< arr.length; i++) {
-  //     const x = achievements.filter(achievement => convertDate(new Date(getMS(achievement.createdAt))) === dateArr[i]);
+    let filteredArrays = [];
+    for (let i = 0; i< arr.length; i++) {
+      const x = achievements.filter(achievement => convertDate(new Date(getMS(achievement.createdAt))) === dateArr[i]);
       
-  //     filteredArrays.push(x);
-  //   }
+      filteredArrays.push(x);
+    }
     
-  //   const filteredAchievements = filteredArrays.flat(1);
-    
-  // }
-  
-
-
-
+    filteredAchievements = filteredArrays.flat(1);
+    console.log("filteredachievements ===")
+    console.log(filteredAchievements)
+  }
   
   // const achievements = useSelector(selectAchievements)
   // console.log(achievements)
