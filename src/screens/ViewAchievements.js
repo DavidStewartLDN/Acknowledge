@@ -40,9 +40,12 @@ function ViewAchievements({ navigation }) {
                 setEndDate(arr.slice(-1).pop())
                 console.log(arr)
 
-                //maybe we have to setArray with this arr here so we can use is later: //Joanne
-                //setDateArr(arr)
-            }
+              }
+              //1)maybe we have to setArray with this arr here so we can use is later: //Joanne
+              //setDateArr(arr);
+
+              //2)call the function that will loop the arr 
+              //filterAchievementWithDates(dateArr);
         };
 
         getDaysArray(startDate, date.dateString)
@@ -77,14 +80,21 @@ function ViewAchievements({ navigation }) {
  
  
   //Joanne's code here:
-  // let filteredArrays = [];
-  // for (let i = 0; i< arr.length; i++) {
-  //   const x = achievements.filter(achievement => convertDate(new Date(getMS(achievement.createdAt))) === dateArr[i]);
+  // let filteredAchievements = [];
+
+  // function filterAchievementWithDates(arr) {
     
-  //   filteredArrays.push(x);
+  //   let filteredArrays = [];
+  //   for (let i = 0; i< arr.length; i++) {
+  //     const x = achievements.filter(achievement => convertDate(new Date(getMS(achievement.createdAt))) === dateArr[i]);
+      
+  //     filteredArrays.push(x);
+  //   }
+    
+  //   const filteredAchievements = filteredArrays.flat(1);
+    
   // }
   
-  // const filteredAchievements = filteredArrays.flat(1);
 
 
 
