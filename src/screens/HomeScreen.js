@@ -65,6 +65,7 @@ function HomeScreen({navigation}) {
             navigation.navigate('AddAchievement') 
         }
         />
+        <Text style={styles.Achieved}>Already Achieved</Text>
       { achievements.length === 0 ? (
           <AchievementsCarousel data={[{achievementTitle: 'Your achievements will appear here when you add one :)'}]}/>
         ) : (
@@ -96,6 +97,10 @@ const styles = StyleSheet.create({
     fontSize: 45,
     marginBottom: 0,
     textAlign: 'center'
+  },
+  Achieved: {
+    textAlign: 'center',
+    bottom: -40
   },
   fabAddSeeMore: {
     marginBottom: 20,
