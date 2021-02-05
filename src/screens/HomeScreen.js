@@ -50,6 +50,14 @@ function HomeScreen({navigation}) {
       
       <PieChartWithDynamicSlices data={count} labels={partOfLife} colors={graphColors} />
       <FAB
+          style={styles.fabAddSeeMore}
+          small
+          label='See More'
+          onPress={() =>
+            navigation.navigate('GraphSelectedA') 
+        }
+        />
+      <FAB
           style={styles.fabAdd}
           small
           label='Add an achievement now!'
@@ -89,7 +97,17 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     textAlign: 'center'
   },
+  fabAddSeeMore: {
+    marginBottom: 20,
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+    position: 'absolute',
+    margin: 10,
+    right: 0,
+    bottom: 250
+  },
   fabAdd: {
+    marginTop: 80,
     margin: 10,
     marginBottom: 20,
     alignItems: 'center',
