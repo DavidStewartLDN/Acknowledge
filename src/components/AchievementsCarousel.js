@@ -32,7 +32,7 @@ class AchievementsCarousel extends React.Component {
         this.changeAchievement(),
         this.infiniteLoop()
       });
-  };
+  }
 
   changeAchievement = () => {
     this.setState({
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     width: width -20,
     //backgroundColor: "#60DBC5",
-    borderWidth: 2
+    //borderWidth: 2
   },
   fadingText: {
     fontSize: 20,
