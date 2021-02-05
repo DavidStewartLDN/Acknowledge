@@ -47,14 +47,8 @@ function HomeScreen({navigation}) {
           <Text style={styles.title}>Welcome to Acknowledge</Text>
         </View>
       </View>
-      <PieChartWithDynamicSlices data={count} labels={partOfLife} colors={graphColors} />
-      { achievements.length === 0 ? (
-          <AchievementsCarousel data={[{achievementTitle: 'Your achievements will appear here when you add one :)'}]}/>
-        ) : (
-          <AchievementsCarousel data={achievements}/>
-        )
-      }
       
+      <PieChartWithDynamicSlices data={count} labels={partOfLife} colors={graphColors} />
       <FAB
           style={styles.fabAdd}
           small
@@ -63,6 +57,14 @@ function HomeScreen({navigation}) {
             navigation.navigate('AddAchievement') 
         }
         />
+      { achievements.length === 0 ? (
+          <AchievementsCarousel data={[{achievementTitle: 'Your achievements will appear here when you add one :)'}]}/>
+        ) : (
+          <AchievementsCarousel data={achievements}/>
+        )
+      }
+      
+      
     </>
   )
 }
@@ -80,7 +82,7 @@ const styles = StyleSheet.create({
   },
   body: {
     fontSize: 20,
-    textAlign: 'justify'
+    textAlign: 'justify',
   },
   title: {
     fontSize: 45,
@@ -91,7 +93,7 @@ const styles = StyleSheet.create({
     margin: 10,
     marginBottom: 20,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 })
 
