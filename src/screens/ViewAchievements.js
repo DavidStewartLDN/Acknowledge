@@ -111,6 +111,7 @@ function ViewAchievements({ navigation }) {
   
   return (
     <>
+
       <Header titleText='Access' />
       <Calendar 
 
@@ -123,6 +124,7 @@ function ViewAchievements({ navigation }) {
         markingType={'period'}
 
       />
+
       <View style={styles.container}>
         {filteredAchievements.length === 0 ? (
           <View style={styles.titleContainer}>

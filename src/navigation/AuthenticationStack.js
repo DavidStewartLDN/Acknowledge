@@ -9,18 +9,32 @@ const AuthStack = createStackNavigator()
 function AuthenticationStack() {
   return (
     <AuthStack.Navigator
-      initialRouteName='ViewAchievements'
       screenOptions={{
         gestureEnabled: true,
-        headerShown: false
+        headerShown: true,
+        headerStyle: {
+          backgroundColor: '#60DBC5',
+        },
+        headerTintColor: '#2E7166',
+        headerTitleStyle: {
+          fontSize: 20,
+          fontWeight: '600',
+        },
+        headerTitleAlign: 'center'
       }}>
       <AuthStack.Screen
         name='Login'
         component={Login}
+        options={{
+          title: 'Acknowledge',
+        }}
       />
       <AuthStack.Screen
         name='Signup'
         component={Signup}
+        options={{
+            title: 'Sign up',
+          }}
       />
     </AuthStack.Navigator>
   )

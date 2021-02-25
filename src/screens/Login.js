@@ -7,7 +7,6 @@ import { connect } from 'react-redux'
 import { updateEmail, updatePassword, login, getUser } from '../redux/user/user.actions'
 import Firebase from '../../config/Firebase'
 
-import Header from '../components/Header'
 
 class Login extends React.Component {
 
@@ -23,9 +22,8 @@ class Login extends React.Component {
   render() {
     return (
       <>
-      <Header titleText='Access' />
         <View style={styles.container}>
-          <Text style={styles.title}>Welcome to Access</Text>
+          <Text style={styles.title}>Welcome to Acknowledge</Text>
           <TextInput
             style={styles.inputBox}
             value={this.props.user.email}

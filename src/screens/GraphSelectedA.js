@@ -1,16 +1,20 @@
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, View, Dimensions} from 'react-native';
-
-import Header from '../components/Header'
-
-import { BarChart } from "react-native-chart-kit";
+import { StyleSheet, View, Dimensions, useWindowDimensions } from 'react-native';
+import BarChartVerticalWithLabels from '../components/BarChartVerticalWithLabels';
+import { Text, FAB} from 'react-native-paper';
 
 // Access state in Redux
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 
-function GraphAchievements() {
+
+function GraphSelectedA({navigation}) {
+
+  const windowWidth = useWindowDimensions().width;
+  const windowHeight = useWindowDimensions().height;
+  console.log(windowHeight)
+
   const achievements = useSelector(state => state.achievements)
-
+  
   const [count, setCount] = useState([])
   const partOfLife = ["Work", "Self", "Play", "Living"]
   // const satisfier = ["Health, Wellbeing, Fitness","Creating","New Developments","Giving"]
@@ -24,47 +28,34 @@ function GraphAchievements() {
     for (i = 0; i < achievements.length; i++) {
       var j;
       const partOfLifeValues = achievements[i].selectedA
-      console.log(partOfLifeValues)
       for (j = 0; j < partOfLifeValues.length; j++) {
         allData.push(partOfLifeValues[j])
       }
     }
-    console.log(allData)
     var k;
     for (k = 0; k < partOfLife.length; k++) {
       countValues.push(countOccurrences(allData,partOfLife[k]))
     }
     setCount(countValues)
   }
-
+  
   useEffect(() => {
     countLabels()
-  }, []);
-
-  const data = {
-    labels: partOfLife,
-    datasets: [{
-      data: count
-    }]
-  }
-
-  const chartConfig = {
-    backgroundGradientFrom: '#1E2923',
-    backgroundGradientTo: '#60DBC5',
-    backgroundColor: '#60DBC5',
-    decimalPlaces: 0,
-    color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`
-  }
+  }, [achievements]);
+  //
 
   return (
     <>
-      <Header titleText='Access' />
       <View style={styles.container}>
-        <BarChart
-          data={data}
-          width={Dimensions.get("window").width-20} // from react-native
-          height={Dimensions.get("window").height-250}
-          chartConfig={chartConfig}
+        <Text style={styles.title}>Part of Life</Text>
+        <BarChartVerticalWithLabels data={count} xAxisData={partOfLife}/>
+        <FAB
+          style={styles.fabAdd}
+          small
+          label='Toggle graph'
+          onPress={() =>
+            navigation.navigate('GraphSelectedB')
+        }
         />
       </View>
     </>
@@ -85,23 +76,15 @@ const styles = StyleSheet.create({
     top: 40,
     margin: 10
   },
-  titleContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex:1
-  },
   title: {
-    fontSize: 20
+    fontSize: 30,
+    textAlign: 'center'
   },
-  fab: {
-    position: 'absolute',
-    margin: 20,
-    right: 0,
-    bottom: 10
+  fabAdd: {
+    margin: 10,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
-  listTitle: {
-    fontSize: 20
-  }
 })
 
-export default GraphAchievements
+export default GraphSelectedA

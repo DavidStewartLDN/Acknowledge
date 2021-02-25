@@ -2,9 +2,8 @@ import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
 import * as Notifications from 'expo-notifications';
 
-
-
 export async function schedulePushNotification(hours, minutes) {
+  await Notifications.cancelAllScheduledNotificationsAsync();
   await Notifications.scheduleNotificationAsync({
     content: {
       title: "It's time to log an achievement",
@@ -13,6 +12,7 @@ export async function schedulePushNotification(hours, minutes) {
     trigger: { hour: hours, minute: minutes , repeats: true },
   });
 }
+
 
 export async function registerForPushNotificationsAsync() {
   let token;
