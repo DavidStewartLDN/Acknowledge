@@ -1,50 +1,79 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Text } from 'react-native-paper';
-import { LinearGradient } from 'expo-linear-gradient';
+import { Text, FAB } from 'react-native-paper';
+import PieChartWithDynamicSlices from '../components/PieChartWithDynamicSlices';
 
+import { useSelector } from 'react-redux';
+import AchievementsCarousel from '../components/AchievementsCarousel';
 
-function HomeScreen() {
+function HomeScreen({navigation}) {
+
+  const achievements = useSelector(state => state.achievements)
+  
+  const [count, setCount] = useState([0,0,0,0])
+  const partOfLife = ["Work", "Self", "Play", "Living"]
+  // const satisfier = ["Health, Wellbeing, Fitness","Creating","New Developments","Giving"]
+  
+  const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
+  
+  const countLabels = () => {
+    const allData = []
+    const countValues = []
+    var i;
+    for (i = 0; i < achievements.length; i++) {
+      var j;
+      const partOfLifeValues = achievements[i].selectedA
+      for (j = 0; j < partOfLifeValues.length; j++) {
+        allData.push(partOfLifeValues[j])
+      }
+    }
+    var k;
+    for (k = 0; k < partOfLife.length; k++) {
+      countValues.push(countOccurrences(allData,partOfLife[k]))
+    }
+    setCount(countValues)
+  }
+  
+  useEffect(() => {
+    countLabels()
+  }, [achievements]);
+
+  const graphColors = ['#9352EB', '#EB5A23', '#3BEBCA', '#EBE62F']
 
   return (
     <>
-      <LinearGradient
-        colors={['#60DBC5', '#B2F0E5', '#68EDD5','#70FFE5','#60DBC5']}
-        style={{flex: 1}}
-        //  Linear Gradient 
-        // start={{ x: 0, y: 0 }}
-        // end={{ x: 0, y: 1 }}
-
-        // Linear Gradient Reversed
-        // start={{ x: 0, y: 1 }}
-        // end={{ x: 1, y: 0 }}
-
-        // Horizontal Gradient
-        // start={{ x: 0, y: 0 }}
-        // end={{ x: 1, y: 0 }}
-
-        // Diagonal Gradient
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-      >
       <View style={styles.container}>
         <View style={styles.titleContainer}>
           <Text style={styles.title}>Welcome to Acknowledge</Text>
-
-          <Text style={styles.body}>
-
-          This is a space for you to acknowledge everything you achieve and are proud of each day.
-          There are things you maybe didn’t want to do, but you still did them {"\n"}{"\n"}
-          
-          You can tag each entry to see where it sits and what is covers -
-          get present to everything that you are already doing.{"\n"}{"\n"}
-          
-          No stress, no pressure, you’re doing enough. 
-          Here is where you can see it all and give yourself credit. {"\n"}{"\n"}
-          </Text>
         </View>
-        </View>
-      </LinearGradient>
+      </View>
+      
+      <PieChartWithDynamicSlices data={count} labels={partOfLife} colors={graphColors} />
+      <FAB
+          style={styles.fabAddSeeMore}
+          small
+          label='See More'
+          onPress={() =>
+            navigation.navigate('GraphSelectedA') 
+        }
+        />
+      <FAB
+          style={styles.fabAdd}
+          small
+          label='Add an achievement now!'
+          onPress={() =>
+            navigation.navigate('AddAchievement') 
+        }
+        />
+        <Text style={styles.Achieved}>Already Achieved</Text>
+      { achievements.length === 0 ? (
+          <AchievementsCarousel data={[{achievementTitle: 'Your achievements will appear here when you add one :)'}]}/>
+        ) : (
+          <AchievementsCarousel data={achievements}/>
+        )
+      }
+      
+      
     </>
   )
 }
@@ -62,12 +91,32 @@ const styles = StyleSheet.create({
   },
   body: {
     fontSize: 20,
-    textAlign: 'justify'
+    textAlign: 'justify',
   },
   title: {
     fontSize: 45,
-    marginBottom: 40,
+    marginBottom: 0,
     textAlign: 'center'
+  },
+  Achieved: {
+    textAlign: 'center',
+    bottom: -40
+  },
+  fabAddSeeMore: {
+    marginBottom: 20,
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+    position: 'absolute',
+    margin: 10,
+    right: 0,
+    bottom: 250
+  },
+  fabAdd: {
+    marginTop: 80,
+    margin: 10,
+    marginBottom: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 })
 

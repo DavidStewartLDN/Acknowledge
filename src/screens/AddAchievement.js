@@ -4,19 +4,23 @@ import { IconButton, TextInput, FAB, Text } from 'react-native-paper';
 
 import Checkbox from "../components/checkbox";
 
-import Header from '../components/Header';
-
 import firebase from 'firebase'
 import 'firebase/firestore'
 
-function AddAchievement({ navigation, route }) {
+import { useDispatch } from 'react-redux'
+import { addachievementfirebase } from '../redux/achievements/achievements.actions'
+
+function AddAchievement({ navigation }) {
   const [achievementTitle, setAchievementTitle] = useState('')
   const [selectedA, setSelectedA] = useState([])
   const [selectedB, setSelectedB] = useState([])
 
+  const dispatch = useDispatch()
+  const addAchievementFirebase = (achievement) => dispatch(addachievementfirebase(achievement))
+
   function onSaveAchievement() {
     const createdAt = firebase.firestore.FieldValue.serverTimestamp()
-    route.params.addAchievementFirebase({ achievementTitle, selectedA, selectedB, createdAt })
+    addAchievementFirebase({ achievementTitle, selectedA, selectedB, createdAt })
     navigation.goBack()
   }
 
